@@ -23,7 +23,6 @@ $ repo init -u https://android.googlesource.com/platform/manifest -b master
 $ cd .repo
 $ git clone https://github.com/d3zd3z/optee_android_overlay.git local_manifests
 $ cd ..
-TODO
 ```
 ### 3.3. Sync
 ```bash
