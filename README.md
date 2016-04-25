@@ -1,10 +1,10 @@
-# Initial readme.
+# 1. Initial readme.
 
-## References
+## 1. References
 
 * [AOSP Hikey build instructions][1]
 
-## Prerequisites
+## 1. Prerequisites
 
 * Should already be able to build aosp.  Distro should have necessary
   packages installed, and the repo tool should be installed.  Note
@@ -12,39 +12,39 @@
   the `mtools` package is installed, which is needed to make the hikey
   boot image.
 
-## Build steps
+## 1. Build steps
 
-### In an empty directory, clone the tree:
+### 1. In an empty directory, clone the tree:
 ```bash
 $ repo init -u https://android.googlesource.com/platform/manifest -b master
 ```
-### Add the OP-TEE overlay:
+### 1. Add the OP-TEE overlay:
 ```bash
 $ cd .repo
 $ git clone https://github.com/d3zd3z/optee_android_overlay.git local_manifests
 $ cd ..
 TODO
 ```
-### Sync
+### 1. Sync
 ```bash
 $ repo sync
 ```
-### Download the HiKey vendor binary
+### 1. Download the HiKey vendor binary
 ```bash
 $ wget https://dl.google.com/dl/android/aosp/linaro-hikey-20160226-67c37b1a.tgz
 $ tar xzf linaro-hikey-20160226-67c37b1a.tgz
 $ ./extract-linaro-hikey.sh
 ```
-### Configure the environment for Android
+### 1. Configure the environment for Android
 ```bash
 source ./build/envsetup.sh
 lunch hikey-userdebug
 ```
-### Build the userspace libraries and trusted apps:
+### 1. Build the userspace libraries and trusted apps:
 ```bash
 ./optee/build_ta.sh hikey optee/android_optee_examples.cfg
 ```
-### Run the rest of the android build, For an 8GB board, use:
+### 1. Run the rest of the android build, For an 8GB board, use:
 ```bash
 make -j32
 ```
@@ -53,7 +53,7 @@ For a 4GB board, use:
 make -j32 TARGET_USERDATAIMAGE_4GB=true
 ```
 
-## Flashing the image
+## 1. Flashing the image
 The instructions for flashing the image can be found in detail under
 `device/linaro/hikey/install/README` in the tree.
 1. Jumper links 1-2 and 3-4, leaving 5-6 open, and reset the board.
@@ -66,7 +66,7 @@ the 3-4 jumper installed.  Note that the device only remains in this
 recovery mode for about 90 seconds.  If you take too long to run the
 flash commands, it will need to be reset again.
 
-## Partial flashing
+## 1. Partial flashing
 The last handful of lines in the `flash-all.sh` script flash various
 images.  After modifying and rebuilding Android, it is only necessary
 to flash *boot*, *system*, *cache*, and *userdata*.  If you aren't
