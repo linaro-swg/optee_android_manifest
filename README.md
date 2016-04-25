@@ -14,34 +14,37 @@
 
 ## Build steps
 
-1. In an empty directory, clone the tree:
+### In an empty directory, clone the tree:
 ```bash
 $ repo init -u https://android.googlesource.com/platform/manifest -b master
 ```
-2. Add the OP-TEE overlay:
+### Add the OP-TEE overlay:
 ```bash
+$ cd .repo
+$ git clone https://github.com/d3zd3z/optee_android_overlay.git local_manifests
+$ cd ..
 TODO
 ```
-3. Sync
+### Sync
 ```bash
 $ repo sync
 ```
-4. Download the HiKey vendor binary
+### Download the HiKey vendor binary
 ```bash
 $ wget https://dl.google.com/dl/android/aosp/linaro-hikey-20160226-67c37b1a.tgz
 $ tar xzf linaro-hikey-20160226-67c37b1a.tgz
 $ ./extract-linaro-hikey.sh
 ```
-5. Configure the environment for Android
+### Configure the environment for Android
 ```bash
 source ./build/envsetup.sh
 lunch hikey-userdebug
 ```
-6. Build the userspace libraries and trusted apps:
+### Build the userspace libraries and trusted apps:
 ```bash
 ./optee/build_ta.sh hikey optee/android_optee_examples.cfg
 ```
-7. Run the rest of the android build, For an 8GB board, use:
+### Run the rest of the android build, For an 8GB board, use:
 ```bash
 make -j32
 ```
