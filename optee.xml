@@ -6,10 +6,8 @@
   <remove-project name="device/linaro/hikey" />
   <remove-project name="device/linaro/hikey-kernel" />
 
-  <!--
-  <project path="device/linaro/hikey" name="kuscsik/device-linaro-hikey" remote="github" />
-  -->
-  <project path="device/linaro/hikey" name="d3zd3z/device-linaro-hikey" revision="master" remote="github" />
+  <project path="device/linaro/hikey" name="linaro-swg/device-linaro-hikey"
+    revision="master" remote="github" />
 
   <project path="device/linaro/hikey-kernel" name="kuscsik/device-linaro-hikey-kernel" clone-depth="1" remote="github" />
 
