@@ -21,7 +21,7 @@ $ repo init -u https://android.googlesource.com/platform/manifest -b master
 ### 3.2. Add the OP-TEE overlay:
 ```bash
 $ cd .repo
-$ git clone https://github.com/d3zd3z/optee_android_overlay.git local_manifests
+$ git clone https://github.com/d3zd3z/optee_android_manifest.git local_manifests
 $ cd ..
 ```
 ### 3.3. Sync
