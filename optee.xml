@@ -9,7 +9,8 @@
   <project path="device/linaro/hikey" name="linaro-swg/device-linaro-hikey"
     revision="master" remote="github" />
 
-  <project path="device/linaro/hikey-kernel" name="kuscsik/device-linaro-hikey-kernel" clone-depth="1" remote="github" />
+  <project path="device/linaro/hikey-kernel" name="linaro-swg/linux"
+    revision="aosp-optee-4.1" remote="github" />
 
   <project path="external/optee_test" name="OP-TEE/optee_test" revision="master" remote="github" />
 
@@ -19,11 +20,6 @@
 
   <project path="external/optee_hello_world" name="kuscsik/lcu14_optee_hello_world" branch="master" remote="github" />
 
-  <!--
-  <project path="optee" name="kuscsik/optee_android_tools" branch="master" remote="github" />
-  -->
   <project path="optee" name="d3zd3z/optee_android_tools" branch="master" remote="github" />
-
-  <project path="optee/gcc-linaro-4.9-2015.05-x86_64_aarch64-linux-gnu" name="kuscsik/prebuilt_gcc-linaro-4.9-2015.05-x86_64_aarch64-linux-gnu" branch="master" remote="github" />
 
 </manifest>
