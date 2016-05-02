@@ -11,10 +11,7 @@
 
   <project path="device/linaro/hikey-kernel" name="kuscsik/device-linaro-hikey-kernel" clone-depth="1" remote="github" />
 
-  <!--
   <project path="external/optee_test" name="OP-TEE/optee_test" revision="master" remote="github" />
-  -->
-  <project path="external/optee_test" name="d3zd3z/optee_test" revision="master" remote="github" />
 
   <project path="external/optee_client" name="OP-TEE/optee_client" revision="master" remote="github" />
 
