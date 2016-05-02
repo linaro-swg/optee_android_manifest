@@ -3,6 +3,9 @@
   <remote name="github"
     fetch="https://github.com/" />
 
+  <remote name="linaro-private"
+    fetch="ssh://git@dev-private-git.linaro.org/" />
+
   <remove-project name="device/linaro/hikey" />
   <remove-project name="device/linaro/hikey-kernel" />
 
@@ -21,5 +24,8 @@
   <project path="external/optee_hello_world" name="kuscsik/lcu14_optee_hello_world" branch="master" remote="github" />
 
   <project path="optee" name="linaro-swg/optee_android_tools" branch="master" remote="github" />
+
+  <project path="external/optee-widevine-ref" name="widevine/optee-widevine-ref"
+    revision="master" remote="linaro-private" />
 
 </manifest>
