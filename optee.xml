@@ -10,7 +10,7 @@
   <remove-project name="device/linaro/hikey-kernel" />
 
   <project path="device/linaro/hikey" name="linaro-swg/device-linaro-hikey"
-    revision="master" remote="github" />
+    revision="widevine" remote="github" />
 
   <project path="device/linaro/hikey-kernel" name="linaro-swg/linux"
     revision="aosp-optee-4.1" remote="github" />
@@ -19,11 +19,11 @@
 
   <project path="external/optee_client" name="OP-TEE/optee_client" revision="master" remote="github" />
 
-  <project path="optee/optee_os" name="OP-TEE/optee_os" branch="master" remote="github" />
+  <project path="optee/optee_os" name="OP-TEE/optee_os" revision="master" remote="github" />
 
-  <project path="external/optee_hello_world" name="kuscsik/lcu14_optee_hello_world" branch="master" remote="github" />
+  <project path="external/optee_hello_world" name="kuscsik/lcu14_optee_hello_world" revision="master" remote="github" />
 
-  <project path="optee" name="linaro-swg/optee_android_tools" branch="master" remote="github" />
+  <project path="optee" name="linaro-swg/optee_android_tools" branch="widevine" remote="github" />
 
   <project path="external/optee-widevine-ref" name="widevine/optee-widevine-ref"
     revision="master" remote="linaro-private" />
