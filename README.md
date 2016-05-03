@@ -1,4 +1,7 @@
-# Initial readme.
+# Android+OP-TEE manifest
+
+This repository contains a local manifest that can be used to build an
+AOSP build that includes OP-TEE for the hikey board.
 
 ## 1. References
 
