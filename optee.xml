@@ -20,6 +20,6 @@
 
   <project path="external/optee_hello_world" name="kuscsik/lcu14_optee_hello_world" branch="master" remote="github" />
 
-  <project path="optee" name="d3zd3z/optee_android_tools" branch="master" remote="github" />
+  <project path="optee" name="linaro-swg/optee_android_tools" branch="master" remote="github" />
 
 </manifest>
