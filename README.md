@@ -3,6 +3,12 @@
 This repository contains a local manifest that can be used to build an
 AOSP build that includes OP-TEE for the hikey board.
 
+This 'widevine' branch adds support for a repo that is only available
+to certain parties under NDA.  If you have access to this repo, you
+should make sure that you can access it before running the 'repo
+sync', otherwise repo tends to hang.  If you do not have access to
+this repo, you should use the 'master' branch.
+
 ## 1. References
 
 * [AOSP Hikey build instructions][1]
