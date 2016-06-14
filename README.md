@@ -21,6 +21,22 @@ this repo, you should use the 'master' branch.
   the `mtools` package is installed, which is needed to make the hikey
   boot image.
 
+* In addition, you will need the pre-requisites necessary to build
+  optee-os.  Currently, the trusted firmware image is not built as
+  part of these instructions.  Please follow the instructions on
+  https://github.com/OP-TEE/optee-os to build that platform for HiKey.
+  This will generate a file
+  `arm-trusted-firmware/build/hikey/release/fip.bin` that will be
+  needed for flashing.
+
+  After following the AOSP setup instructions, the following
+  additional packages are needed.
+
+```bash
+$ sudo apt-get install bc ncurses-dev realpath python-crypto \
+     android-tools-fsutils dosfstools python-want
+```
+
 ## 3. Build steps
 
 ### 3.1. In an empty directory, clone the tree:
