@@ -28,7 +28,7 @@ AOSP build that includes OP-TEE for the hikey board.
 
 ```bash
 $ sudo apt-get install bc ncurses-dev realpath python-crypto \
-     android-tools-fsutils dosfstools python-want
+     android-tools-fsutils dosfstools python-wand
 ```
 
 ## 3. Build steps
