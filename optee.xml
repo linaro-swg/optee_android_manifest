@@ -16,10 +16,10 @@
 
   <project path="external/optee_client" name="OP-TEE/optee_client" revision="master" remote="github" />
 
-  <project path="optee/optee_os" name="OP-TEE/optee_os" branch="master" remote="github" />
+  <project path="optee/optee_os" name="OP-TEE/optee_os" revision="master" remote="github" />
 
-  <project path="external/optee_hello_world" name="kuscsik/lcu14_optee_hello_world" branch="master" remote="github" />
+  <project path="external/optee_hello_world" name="kuscsik/lcu14_optee_hello_world" revision="master" remote="github" />
 
-  <project path="optee" name="linaro-swg/optee_android_tools" branch="master" remote="github" />
+  <project path="optee" name="linaro-swg/optee_android_tools" revision="master" remote="github" />
 
 </manifest>
