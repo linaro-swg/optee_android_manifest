@@ -99,4 +99,9 @@ images.  After modifying and rebuilding Android, it is only necessary
 to flash *boot*, *system*, *cache*, and *userdata*.  If you aren't
 modifying the kernel, *boot* is not necessary, either.
 
+## 6. Running xtest
+Please do NOT try to run `tee-supplicant` as it has already been started
+automatically as a service! Once booted to the command prompt, `xtest`
+can be run immediately.
+
 [1]: https://source.android.com/source/devices.html
