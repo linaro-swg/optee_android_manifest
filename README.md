@@ -52,6 +52,9 @@ $ ./android-patchsets/hikey-optee-4.9
 $ ./android-patchsets/hikey-optee-n
 $ ./android-patchsets/optee-230-workarounds
 ```
+**WARNING: If you run `repo sync` again at any time in the future to update
+all the repos, by default all the patches above would be discarded, so you'll
+have reapply them again before rebuilding!**
 ### 3.5. Download the HiKey vendor binary
 ```bash
 $ wget https://dl.google.com/dl/android/aosp/linaro-hikey-20160226-67c37b1a.tgz
@@ -79,6 +82,9 @@ For a 4GB board, use:
 ```bash
 make -j12 TARGET_USERDATAIMAGE_4GB=true TARGET_BUILD_KERNEL=true #TARGET_BOOTIMAGE_USE_FAT=true
 ```
+**WARNING: If you run `repo sync` again at any time in the future to update
+all the repos, by default all the patches from 3.4 above would be discarded,
+so you'll have reapply them again before rebuilding!**
 
 ## 4. Flashing the image
 The instructions for flashing the image can be found in detail under
