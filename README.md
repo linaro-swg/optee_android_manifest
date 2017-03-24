@@ -1,4 +1,4 @@
-# Android+OP-TEE manifest
+# AOSP+OP-TEE manifest
 
 This repository contains a local manifest that can be used to build an
 AOSP build that includes OP-TEE for the hikey board.
@@ -9,7 +9,7 @@ AOSP build that includes OP-TEE for the hikey board.
 
 ## 2. Prerequisites
 
-* Should already be able to build aosp.  Distro should have necessary
+* Should already be able to build AOSP.  Distro should have necessary
   packages installed, and the repo tool should be installed.  Note
   that AOSP needs to be built with Java.  Also make sure that
   the `mtools` package is installed, which is needed to make the hikey
@@ -61,7 +61,7 @@ $ wget https://dl.google.com/dl/android/aosp/linaro-hikey-20160226-67c37b1a.tgz
 $ tar xzf linaro-hikey-20160226-67c37b1a.tgz
 $ ./extract-linaro-hikey.sh
 ```
-### 3.6. Configure the environment for Android
+### 3.6. Configure the environment for AOSP
 ```bash
 source ./build/envsetup.sh
 lunch hikey-userdebug
@@ -74,7 +74,12 @@ $ popd
 $ cp out/dist/fip.bin device/linaro/hikey/installer/hikey/
 ```
 
-### 3.8. Run the rest of the android build, For an 8GB board, use:
+### 3.8. Run the rest of the AOSP build, For an 8GB board, use:
+To enable adb over usb, in `device/linaro/hikey/init.common.usb.rc`:
+```bash
+setprop sys.usb.configfs 1
+```
+To build AOSP:
 ```bash
 make -j12 TARGET_BUILD_KERNEL=true #TARGET_BOOTIMAGE_USE_FAT=true
 ```
