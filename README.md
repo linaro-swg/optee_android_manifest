@@ -45,12 +45,13 @@ $ cd ..
 $ repo sync -j12
 ```
 **WARNING**: Do NOT use -c option!
-### 3.4. Apply the required patches
+### 3.4. Apply the required patches (**please respect order!**)
 ``` bash
 $ ./android-patchsets/hikey-n-workarounds
 $ ./android-patchsets/hikey-optee-4.9
 $ ./android-patchsets/hikey-optee-n
 $ ./android-patchsets/optee-230-workarounds
+$ ./android-patchsets/swg-mods
 ```
 **WARNING: If you run `repo sync` again at any time in the future to update
 all the repos, by default all the patches above would be discarded, so you'll
