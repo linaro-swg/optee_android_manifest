@@ -7,10 +7,10 @@
 
  <remove-project name="device/linaro/hikey"/>
  <remove-project name="device/linaro/hikey-kernel"/>
- <!-- project path="device/linaro/hikey" name="device/linaro/hikey" revision="5e2670e4bc20998d1e690a5cf1f99ba040907de1" remote="aosp" groups="device,hikey" />
- <project path="device/linaro/hikey-kernel" name="device/linaro/hikey-kernel" revision="ad3de4f9c5337d106df5f30a775249f81f9c73c1" remote="aosp" groups="device,hikey" /-->
- <project path="device/linaro/hikey" name="device/linaro/hikey" revision="master" remote="aosp" groups="device,hikey" />
- <project path="device/linaro/hikey-kernel" name="device/linaro/hikey-kernel" revision="master" remote="aosp" groups="device,hikey" />
+ <project path="device/linaro/hikey" name="device/linaro/hikey" revision="5e2670e4bc20998d1e690a5cf1f99ba040907de1" remote="aosp" groups="device,hikey" />
+ <project path="device/linaro/hikey-kernel" name="device/linaro/hikey-kernel" revision="ad3de4f9c5337d106df5f30a775249f81f9c73c1" remote="aosp" groups="device,hikey" />
+ <!-- project path="device/linaro/hikey" name="device/linaro/hikey" revision="master" remote="aosp" groups="device,hikey" />
+ <project path="device/linaro/hikey-kernel" name="device/linaro/hikey-kernel" revision="master" remote="aosp" groups="device,hikey" /-->
 
  <!-- Linaro Kernels -->
  <project path="kernel/linaro/hisilicon" name="kernel/hikey-linaro" revision="android-hikey-linaro-4.9" remote="aosp" groups="device,hikey" />
