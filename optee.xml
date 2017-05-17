@@ -2,12 +2,9 @@
 <manifest>
  <remote name="github" fetch="https://github.com/" />
 
- <project path="external/optee_test" name="OP-TEE/optee_test" revision="refs/tags/2.3.0" remote="github" />
- <project path="external/optee_client" name="OP-TEE/optee_client" revision="refs/tags/2.3.0" remote="github" />
- <project path="optee/optee_os" name="OP-TEE/optee_os" revision="refs/tags/2.3.0" remote="github" />
- <!-- project path="external/optee_test" name="OP-TEE/optee_test" revision="master" remote="github" />
- <project path="external/optee_client" name="OP-TEE/optee_client" revision="master" remote="github" />
- <project path="optee/optee_os" name="OP-TEE/optee_os" revision="master" remote="github" /-->
+ <project path="external/optee_test" name="OP-TEE/optee_test" revision="refs/tags/2.4.0" remote="github" />
+ <project path="external/optee_client" name="OP-TEE/optee_client" revision="refs/tags/2.4.0" remote="github" />
+ <project path="optee/optee_os" name="OP-TEE/optee_os" revision="refs/tags/2.4.0" remote="github" />
  <project path="external/optee_hello_world" name="linaro-swg/hello_world" revision="master" remote="github" />
 
 </manifest>
