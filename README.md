@@ -1,4 +1,4 @@
-# NOTE: For building with scripts, please head over to https://github.com/linaro-swg/optee_android_manifest/tree/lcr-ref-hikey!
+# THIS BRANCH IS OBSOLETE, OUTDATED, NOT MAINTAINED, AND MOST IMPORTANTLY, NOT SUPPORTED ANYMORE!
 
 # AOSP+OP-TEE manifest
 
