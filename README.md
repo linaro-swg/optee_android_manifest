@@ -1,3 +1,5 @@
+# THIS BRANCH IS OBSOLETE, OUTDATED, NOT MAINTAINED, AND MOST IMPORTANTLY, NOT SUPPORTED ANYMORE!
+
 # AOSP+OP-TEE manifest
 
 This repository contains a local manifest that can be used to build an
