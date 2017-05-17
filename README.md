@@ -41,8 +41,10 @@ $ repo init -u https://android-git.linaro.org/git/platform/manifest.git -b andro
 
 ```bash
 $ cd .repo
-$ git clone https://github.com/linaro-swg/optee_android_manifest.git -b hikey-n-4.9-240 local_manifests
-$ cd ..
+$ git clone https://android-git.linaro.org/git/platform/manifest.git -b linaro-nougat-tv local_manifests
+$ cd local_manifests
+$ wget https://raw.githubusercontent.com/linaro-swg/optee_android_manifest/hikey-n-4.9-240/optee.xml
+$ cd ../../
 ```
 
 ### 3.3. Sync
@@ -56,8 +58,10 @@ $ repo sync
 ### 3.4. Apply the required patches (**please respect order!**)
 
 ``` bash
-$ ./android-patchsets/hikey-n-workarounds
+$ ./android-patchsets/NOUGAT-RLCR-PATCHSET
 $ ./android-patchsets/hikey-optee-n
+$ ./android-patchsets/hikey-optee-4.9
+$ ./android-patchsets/hikey-n-workarounds
 $ ./android-patchsets/optee-240-workarounds
 $ ./android-patchsets/swg-mods
 ```

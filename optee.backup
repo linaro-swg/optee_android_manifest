@@ -2,6 +2,10 @@
 <manifest>
  <remote name="github" fetch="https://github.com/" />
 
+ <remove-project name="OP-TEE/optee_test" />
+ <remove-project name="OP-TEE/optee_client" />
+ <remove-project name="OP-TEE/optee_os" />
+
  <project path="external/optee_test" name="OP-TEE/optee_test" revision="master" remote="github" />
  <project path="external/optee_client" name="OP-TEE/optee_client" revision="master" remote="github" />
  <project path="optee/optee_os" name="OP-TEE/optee_os" revision="master" remote="github" />
