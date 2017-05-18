@@ -87,19 +87,21 @@ lunch hikey-userdebug
 
 ### 3.7. Build the booloader firmware (fip.bin)
 
-If you've updated `optee_os` and are rebuilding `fip.bin`:
-```
-$ rm out/dist/fip.bin
-$ rm -f out/target/product/hikey/optee/arm-plat-hikey
-$ rm -f optee/optee_os/out
-```
-
-Then:
+**NOTE**: This step is **REQUIRED** for the initial build as well!
 ```bash
 $ pushd device/linaro/hikey/bootloader
 $ make TARGET_TEE_IS_OPTEE=true #make sure build is successful
 $ popd
 $ cp out/dist/fip.bin device/linaro/hikey/installer/hikey/
+```
+
+If you've updated `optee_os` and are having trouble rebuilding
+`fip.bin`, try deleting the old build artifacts first before
+running the build instruction above.
+```
+$ rm out/dist/fip.bin
+$ rm -f out/target/product/hikey/optee/arm-plat-hikey
+$ rm -f optee/optee_os/out
 ```
 
 ### 3.8. Run the rest of the AOSP build, For an 8GB board, use:
@@ -145,6 +147,10 @@ The last handful of lines in the `flash-all.sh` script flash various
 images.  After modifying and rebuilding Android, it is only necessary
 to flash *boot*, *system*, *cache*, and *userdata*.  If you aren't
 modifying the kernel, *boot* is not necessary, either.
+
+This directory contains a prebuilt trusted firmware image `fip.bin`.
+If you wish to build the trusted os from source, follow the steps in the
+**Build the bootloader firmware (fip.bin)** section above.
 
 ## 6. Running xtest
 
