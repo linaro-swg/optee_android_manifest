@@ -85,9 +85,14 @@ source ./build/envsetup.sh
 lunch hikey-userdebug
 ```
 
-### 3.7. Build the booloader firmware (fip.bin)
+### 3.7. Build the booloader firmware (fip.bin) [OPTIONAL]
 
-**NOTE**: This step is **REQUIRED** for the initial build as well!
+Previously, it was required to build `fip.bin` separately, but
+it has now been included as part of this AOSP build, so this
+step is **NO** longer required!
+
+**NOTE**: IF you just want to build `fip.bin` without rebuilding
+the rest of AOSP:
 ```bash
 $ pushd device/linaro/hikey/bootloader
 $ make TARGET_TEE_IS_OPTEE=true #make sure build is successful
@@ -95,9 +100,8 @@ $ popd
 $ cp out/dist/fip.bin device/linaro/hikey/installer/hikey/
 ```
 
-If you've updated `optee_os` and are having trouble rebuilding
-`fip.bin`, try deleting the old build artifacts first before
-running the build instruction above.
+If you get errors while `fip.bin` is building, try deleting the
+old build artifacts below and rebuild:
 ```
 $ rm out/dist/fip.bin
 $ rm -f out/target/product/hikey/optee/arm-plat-hikey
@@ -113,12 +117,12 @@ setprop sys.usb.configfs 1
 
 To build AOSP:
 ```bash
-make TARGET_BUILD_KERNEL=true #TARGET_BOOTIMAGE_USE_FAT=true
+make TARGET_BUILD_UEFI=true TARGET_BUILD_KERNEL=true #TARGET_BOOTIMAGE_USE_FAT=true
 ```
 
 For a 4GB board, use:
 ```bash
-make TARGET_USERDATAIMAGE_4GB=true TARGET_BUILD_KERNEL=true #TARGET_BOOTIMAGE_USE_FAT=true
+make TARGET_USERDATAIMAGE_4GB=true TARGET_BUILD_UEFI=true TARGET_BUILD_KERNEL=true #TARGET_BOOTIMAGE_USE_FAT=true
 ```
 
 **WARNING: If you run `repo sync` again at any time in the future to update
