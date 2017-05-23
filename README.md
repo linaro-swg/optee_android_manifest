@@ -31,8 +31,8 @@ $ sudo apt-get install bc ncurses-dev realpath python-crypto \
 ### 3.1. In an empty directory, clone the tree:
 
 ```bash
-$ repo init -u https://android-git.linaro.org/git/platform/manifest.git -b android-7.1.2_r6 -g "default,-non-default,-device,hikey,fugu"
-# repo init -u /home/ubuntu/aosp-mirror/platform/manifest.git -b android-7.1.2_r6 -g "default,-non-default,-device,hikey,fugu" -p linux --depth=1
+$ repo init -u https://android-git.linaro.org/git/platform/manifest.git -b android-7.1.2_r11 -g "default,-non-default,-device,hikey,fugu"
+# repo init -u /home/ubuntu/aosp-mirror/platform/manifest.git -b android-7.1.2_r11 -g "default,-non-default,-device,hikey,fugu" -p linux --depth=1
 ```
 
 **WARNING**: Do NOT use --depth=1 option!
