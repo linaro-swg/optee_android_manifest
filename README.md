@@ -79,6 +79,8 @@ $ tar xzf linaro-hikey-20160226-67c37b1a.tgz
 $ ./extract-linaro-hikey.sh
 ```
 
+This will extract files to `vendor/linaro/hikey`.
+
 ### 3.6. Configure the environment for AOSP
 
 ```bash
