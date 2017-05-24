@@ -65,30 +65,21 @@ $ ./android-patchsets/hikey-optee-4.9
 $ ./android-patchsets/hikey-n-workarounds
 $ ./android-patchsets/optee-240-workarounds
 $ ./android-patchsets/swg-mods
+$ ./android-patchsets/get-hikey-blobs
 ```
 
 **WARNING: If you run `repo sync` again at any time in the future to update
 all the repos, by default all the patches above would be discarded, so you'll
 have reapply them again before rebuilding!**
 
-### 3.5. Download the HiKey vendor binary
-
-```bash
-$ wget https://dl.google.com/dl/android/aosp/linaro-hikey-20160226-67c37b1a.tgz
-$ tar xzf linaro-hikey-20160226-67c37b1a.tgz
-$ ./extract-linaro-hikey.sh
-```
-
-This will extract files to `vendor/linaro/hikey`.
-
-### 3.6. Configure the environment for AOSP
+### 3.5. Configure the environment for AOSP
 
 ```bash
 source ./build/envsetup.sh
 lunch hikey-userdebug
 ```
 
-### 3.7. Build the booloader firmware (fip.bin) [OPTIONAL]
+### 3.6. Build the booloader firmware (fip.bin) [OPTIONAL]
 
 Previously, it was required to build `fip.bin` separately, but
 it has now been included as part of this AOSP build, so this
@@ -111,7 +102,7 @@ $ rm -f out/target/product/hikey/optee/arm-plat-hikey
 $ rm -f optee/optee_os/out
 ```
 
-### 3.8. Run the rest of the AOSP build, For an 8GB board, use:
+### 3.7. Run the rest of the AOSP build, For an 8GB board, use:
 
 To enable adb over usb, in `device/linaro/hikey/init.common.usb.rc`:
 ```bash
