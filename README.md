@@ -43,6 +43,7 @@ $ repo init -u https://android-git.linaro.org/git/platform/manifest.git -b andro
 $ cd .repo
 $ git clone https://android-git.linaro.org/git/platform/manifest.git -b linaro-nougat-tv local_manifests
 $ cd local_manifests
+$ git reset --hard 0b45f54084b35f5d776422b6af102c4f6c5f1916
 $ rm optee.xml
 $ wget https://raw.githubusercontent.com/linaro-swg/optee_android_manifest/hikey-n-4.9-240/optee.xml
 $ cd ../../
