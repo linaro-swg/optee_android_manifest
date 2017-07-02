@@ -43,7 +43,6 @@ $ repo init -u https://android-git.linaro.org/git/platform/manifest.git -b andro
 $ cd .repo
 $ git clone https://android-git.linaro.org/git/platform/manifest.git -b linaro-nougat-tv local_manifests
 $ cd local_manifests
-$ git reset --hard 0b45f54084b35f5d776422b6af102c4f6c5f1916
 $ rm optee.xml
 $ wget https://raw.githubusercontent.com/linaro-swg/optee_android_manifest/hikey-n-4.9-240/optee.xml
 $ cd ../../
@@ -64,7 +63,6 @@ $ ./android-patchsets/NOUGAT-RLCR-PATCHSET
 $ ./android-patchsets/hikey-optee-n
 $ ./android-patchsets/hikey-optee-4.9
 $ ./android-patchsets/hikey-n-workarounds
-$ ./android-patchsets/optee-240-workarounds
 $ ./android-patchsets/swg-mods
 $ ./android-patchsets/get-hikey-blobs
 ```
@@ -112,12 +110,12 @@ setprop sys.usb.configfs 1
 
 To build AOSP:
 ```bash
-make TARGET_BUILD_UEFI=true TARGET_BUILD_KERNEL=true #TARGET_BOOTIMAGE_USE_FAT=true
+make TARGET_BUILD_KERNEL=true TARGET_BUILD_UEFI=true CFG_SECURE_DATA_PATH=y #TARGET_BOOTIMAGE_USE_FAT=true
 ```
 
 For a 4GB board, use:
 ```bash
-make TARGET_USERDATAIMAGE_4GB=true TARGET_BUILD_UEFI=true TARGET_BUILD_KERNEL=true #TARGET_BOOTIMAGE_USE_FAT=true
+make TARGET_USERDATAIMAGE_4GB=true TARGET_BUILD_KERNEL=true TARGET_BUILD_UEFI=true CFG_SECURE_DATA_PATH=y #TARGET_BOOTIMAGE_USE_FAT=true
 ```
 
 **WARNING: If you run `repo sync` again at any time in the future to update
