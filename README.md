@@ -30,26 +30,26 @@ $ sudo apt-get install bc ncurses-dev realpath python-crypto \
 
 ### 3.1. In an empty directory, clone the tree:
 ```bash
-$ repo init -u https://github.com/linaro-swg/optee_android_manifest/blob/hikey-n-4.9-230/manifest-230.xml
-# repo init -u https://android-git.linaro.org/git/platform/manifest.git -b android-7.1.1_r22 -g "default,-non-default,-device,hikey,fugu"
+$ repo init -u https://android-git.linaro.org/git/platform/manifest.git -b android-7.1.1_r22 -g "default,-non-default,-device,hikey,fugu"
+# repo init -u https://github.com/linaro-swg/optee_android_manifest/blob/hikey-n-4.9-230/manifest-230.xml
 # repo init -u /home/ubuntu/aosp-mirror/platform/manifest.git -b android-7.1.1_r22 -g "default,-non-default,-device,hikey,fugu" -p linux --depth=1
 ```
 **WARNING**: Do NOT use --depth=1 option!
-### 3.2. Sync
+### 3.2. Add the OP-TEE overlay:
+```bash
+$ cd .repo
+$ git clone https://github.com/linaro-swg/optee_android_manifest.git -b hikey-n-4.9 local_manifests
+$ cd ..
+```
+### 3.3. Sync
 ```bash
 $ repo sync
 ```
 **WARNING**: Do NOT use -c option!
-### 3.3. Fixup some files
-In `android-patchsets/hikey-n-workarounds`, change the line that says `apply --linaro device/linaro/hikey 17601/1` to `apply --linaro device/linaro/hikey 17601/3`.
-In `kernel/linaro/hisilicon/arch/arm64/configs/hikey_defconfig`, add the 2 lines below:
-```
-CONFIG_TEE=y
-CONFIG_OPTEE=y
-```
 ### 3.4. Apply the required patches (**please respect order!**)
 ``` bash
 $ ./android-patchsets/hikey-n-workarounds
+$ ./android-patchsets/hikey-optee-4.9
 $ ./android-patchsets/hikey-optee-n
 $ ./android-patchsets/optee-230-workarounds
 $ ./android-patchsets/swg-mods
