@@ -35,7 +35,8 @@ $ repo init -u https://android-git.linaro.org/git/platform/manifest.git -b andro
 # repo init -u /home/ubuntu/aosp-mirror/platform/manifest.git -b android-7.1.2_r33 -g "default,-non-default,-device,hikey,fugu" -p linux --depth=1
 ```
 
-**WARNING**: Do NOT use --depth=1 option!
+**WARNING**: To avoid errors, it's recommended NOT to use --depth=1 option,
+unless you know what you're doing!
 
 ### 3.2. Add the OP-TEE overlay:
 
