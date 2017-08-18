@@ -92,14 +92,17 @@ $ pushd device/linaro/hikey/bootloader
 $ make TARGET_TEE_IS_OPTEE=true #make sure build is successful
 $ popd
 $ cp out/dist/fip.bin device/linaro/hikey/installer/hikey/
+#$ cp out/dist/l-loader.bin device/linaro/hikey/installer/hikey/
 ```
 
-If you get errors while `fip.bin` is building, try deleting the
-old build artifacts below and rebuild:
+If you get errors while `fip.bin` is building, or
+if `fip.bin` is NOT working as expected,
+try deleting the old build artifacts below and rebuild:
 ```
-$ rm out/dist/fip.bin
-$ rm -f out/target/product/hikey/optee/arm-plat-hikey
+$ rm -f device/linaro/bootloader/edk2/Build/HiKey/RELEASE_GCC49/FV/fip.bin
+$ rm -f out/dist/fip.bin
 $ rm -f optee/optee_os/out
+$ rm -f out/target/product/hikey/optee/arm-plat-hikey
 ```
 
 ### 3.7. Run the rest of the AOSP build, For an 8GB board, use:
