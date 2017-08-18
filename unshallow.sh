@@ -1,6 +1,8 @@
 #!/bin/bash
 
-echo "unshallow android-patchsets"
+echo "unshallow frameworks/base for hikey-n-workarounds"
+cd ~/work/swg/svp/hikey-n-4.9/frameworks/base
+git fetch aosp --unshallow
 cd ~/work/swg/svp/hikey-n-4.9/android-patchsets
 git fetch linaro-android --unshallow
 echo "unshallow dlh"
