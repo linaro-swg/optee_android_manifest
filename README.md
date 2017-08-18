@@ -44,7 +44,7 @@ $ cd .repo
 $ git clone https://android-git.linaro.org/git/platform/manifest.git -b linaro-nougat-tv local_manifests
 $ cd local_manifests
 $ rm optee.xml
-$ wget https://raw.githubusercontent.com/linaro-swg/optee_android_manifest/hikey-n-4.9-240/optee.xml
+$ wget https://raw.githubusercontent.com/linaro-swg/optee_android_manifest/hikey-n-4.9-master/optee.xml
 $ cd ../../
 ```
 
