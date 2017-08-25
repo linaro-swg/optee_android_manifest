@@ -32,10 +32,12 @@ $ sudo apt-get install bc ncurses-dev realpath python-crypto \
 
 ```bash
 $ repo init -u https://android-git.linaro.org/git/platform/manifest.git -b android-7.1.2_r33 -g "default,-non-default,-device,hikey,fugu"
+
+# Please do NOT run below command! Internal reference only!
 # repo init -u /home/ubuntu/aosp-mirror/platform/manifest.git -b android-7.1.2_r33 -g "default,-non-default,-device,hikey,fugu" -p linux --depth=1
 ```
 
-**WARNING**: To avoid errors, it's recommended NOT to use --depth=1 option,
+**WARNING**: To avoid errors, it's recommended NOT to use `--depth=1` option,
 unless you know what you're doing!
 
 ### 3.2. Add the OP-TEE overlay:
@@ -44,7 +46,7 @@ unless you know what you're doing!
 $ cd .repo
 $ git clone https://android-git.linaro.org/git/platform/manifest.git -b linaro-nougat-tv local_manifests
 $ cd local_manifests
-$ rm optee.xml
+$ rm -f optee.xml
 $ wget https://raw.githubusercontent.com/linaro-swg/optee_android_manifest/hikey-n-4.9-master/optee.xml
 $ cd ../../
 ```
@@ -75,8 +77,8 @@ have reapply them again before rebuilding!**
 ### 3.5. Configure the environment for AOSP
 
 ```bash
-source ./build/envsetup.sh
-lunch hikey-userdebug
+$ source ./build/envsetup.sh
+$ lunch hikey-userdebug
 ```
 
 ### 3.6. Build the booloader firmware (fip.bin) [OPTIONAL]
@@ -92,14 +94,15 @@ $ pushd device/linaro/hikey/bootloader
 $ make TARGET_TEE_IS_OPTEE=true #make sure build is successful
 $ popd
 $ cp out/dist/fip.bin device/linaro/hikey/installer/hikey/
-#$ cp out/dist/l-loader.bin device/linaro/hikey/installer/hikey/
+$ cp out/dist/l-loader.bin device/linaro/hikey/installer/hikey/
 ```
 
 If you get errors while `fip.bin` is building, or
 if `fip.bin` is NOT working as expected,
-try deleting the old build artifacts below and rebuild:
+try deleting the old build artifacts below and rebuild as above:
 ```
 $ rm -f device/linaro/bootloader/edk2/Build/HiKey/RELEASE_GCC49/FV/fip.bin
+$ rm -f out/dist/l-loader.bin
 $ rm -f out/dist/fip.bin
 $ rm -f optee/optee_os/out
 $ rm -f out/target/product/hikey/optee/arm-plat-hikey
@@ -114,12 +117,12 @@ setprop sys.usb.configfs 1
 
 To build AOSP:
 ```bash
-make TARGET_BUILD_KERNEL=true TARGET_BUILD_UEFI=true TARGET_TEE_IS_OPTEE=true CFG_SECURE_DATA_PATH=n TARGET_BOOTIMAGE_USE_FAT=true
+$ make TARGET_BUILD_KERNEL=true TARGET_BUILD_UEFI=true TARGET_TEE_IS_OPTEE=true CFG_SECURE_DATA_PATH=n TARGET_BOOTIMAGE_USE_FAT=true
 ```
 
 For a 4GB board, use:
 ```bash
-make TARGET_USERDATAIMAGE_4GB=true TARGET_BUILD_KERNEL=true TARGET_BUILD_UEFI=true TARGET_TEE_IS_OPTEE=true CFG_SECURE_DATA_PATH=n TARGET_BOOTIMAGE_USE_FAT=true
+$ make TARGET_USERDATAIMAGE_4GB=true TARGET_BUILD_KERNEL=true TARGET_BUILD_UEFI=true TARGET_TEE_IS_OPTEE=true CFG_SECURE_DATA_PATH=n TARGET_BOOTIMAGE_USE_FAT=true
 ```
 
 **WARNING: If you run `repo sync` again at any time in the future to update
@@ -134,9 +137,9 @@ The instructions for flashing the image can be found in detail under
 2. Invoke
 
 ```bash
-cp -a out/target/product/hikey/*.img device/linaro/hikey/installer/hikey/
+$ cp -a out/target/product/hikey/*.img device/linaro/hikey/installer/hikey/
 ./device/linaro/hikey/installer/hikey/flash-all.sh /dev/ttyUSBn
-sudo fastboot format userdata
+$ sudo fastboot format userdata
 ```
 
 where the ttyUSBn device is the one that appears after rebooting with
@@ -166,9 +169,9 @@ can be run immediately.
 Boot the device. On serial console:
 
 ```bash
-su setprop sys.usb.configfs 1
-stop adbd
-start adbd
+$ su setprop sys.usb.configfs 1
+$ stop adbd
+$ start adbd
 ```
 
 [1]: https://source.android.com/source/devices.html
