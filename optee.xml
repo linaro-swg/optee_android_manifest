@@ -2,6 +2,6 @@
 <manifest>
  <remote name="github" fetch="https://github.com/" />
 
- <project path="external/optee_hello_world" name="linaro-swg/hello_world" revision="master" remote="github" />
+ <project path="external/optee_examples" name="linaro-swg/optee_examples" revision="master" remote="github" />
 
 </manifest>
