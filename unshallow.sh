@@ -17,8 +17,8 @@ git fetch github --unshallow
 echo "unshallow client"
 cd ~/work/swg/svp/hikey-n-4.9/external/optee_client
 git fetch github --unshallow
-echo "unshallow hello world"
-cd ~/work/swg/svp/hikey-n-4.9/external/optee_hello_world
+echo "unshallow optee_examples"
+cd ~/work/swg/svp/hikey-n-4.9/external/optee_examples
 git fetch github --unshallow
 echo "unshallow optee_os"
 cd ~/work/swg/svp/hikey-n-4.9/optee/optee_os
