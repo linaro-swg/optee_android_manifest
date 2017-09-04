@@ -22,8 +22,14 @@ AOSP build that includes OP-TEE for the hikey board.
   additional packages are needed.
 
 ```bash
-$ sudo apt-get install bc ncurses-dev realpath python-crypto \
-     android-tools-fsutils dosfstools python-wand
+$ sudo apt-get install android-tools-adb android-tools-fastboot autoconf \
+	automake bc bison build-essential cscope curl device-tree-compiler flex \
+	ftp-upload gdisk iasl libattr1-dev libc6:i386 libcap-dev libfdt-dev \
+	libftdi-dev libglib2.0-dev libhidapi-dev libncurses5-dev \
+	libpixman-1-dev libssl-dev libstdc++6:i386 libtool libz1:i386 make \
+	mtools netcat python-crypto python-serial python-wand unzip uuid-dev \
+	xdg-utils xterm xz-utils zlib1g-dev \
+	ncurses-dev realpath android-tools-fsutils dosfstools libxml2-utils
 ```
 
 ## 3. Build steps
