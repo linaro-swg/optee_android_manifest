@@ -73,7 +73,7 @@ $ ./android-patchsets/hikey-optee-n
 $ ./android-patchsets/hikey-optee-4.9
 $ ./android-patchsets/hikey-n-workarounds
 $ ./android-patchsets/optee-master-workarounds
-$ ./android-patchsets/swg-mods
+$ ./android-patchsets/swg-mods-n
 $ ./android-patchsets/get-hikey-blobs
 ```
 
