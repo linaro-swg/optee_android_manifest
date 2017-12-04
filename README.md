@@ -37,10 +37,10 @@ sudo apt-get install android-tools-adb android-tools-fastboot autoconf \
 ### 3.1. In an empty directory, clone the tree:
 
 ```bash
-repo init -u https://android-git.linaro.org/git/platform/manifest.git -b android-7.1.2_r33 -g "default,-non-default,-device,hikey,fugu"
+repo init -u https://android-git.linaro.org/git/platform/manifest.git -b android-8.0.0_r32 -g "default,-non-default,-device,hikey"
 
 # Please do NOT run below command! Internal reference only!
-# repo init -u /home/ubuntu/aosp-mirror/platform/manifest.git -b android-7.1.2_r33 -g "default,-non-default,-device,hikey,fugu" -p linux --depth=1
+# repo init -u /home/ubuntu/aosp-mirror/platform/manifest.git -b android-8.0.0_r32 -g "default,-non-default,-device,hikey" -p linux --depth=1
 ```
 
 **WARNING**: To avoid errors, it's recommended NOT to use `--depth=1` option,
@@ -50,10 +50,10 @@ unless you know what you're doing!
 
 ```bash
 cd .repo
-git clone https://android-git.linaro.org/git/platform/manifest.git -b linaro-nougat-tv local_manifests
+git clone https://android-git.linaro.org/git/platform/manifest.git -b linaro-oreo local_manifests
 cd local_manifests
-rm -f optee.xml
-wget https://raw.githubusercontent.com/linaro-swg/optee_android_manifest/hikey-n-4.9-master/optee.xml
+rm -f swg.xml
+wget https://raw.githubusercontent.com/linaro-swg/optee_android_manifest/lcr-ref-hikey-o/swg.xml
 cd ../../
 ```
 
@@ -72,13 +72,14 @@ repo manifest -r -o pinned-manifest.xml
 applied successfully before applying the next one!
 
 ``` bash
-./android-patchsets/hikey-n-workarounds
+./android-patchsets/hikey-o-workarounds
 ./android-patchsets/get-hikey-blobs
-./android-patchsets/NOUGAT-RLCR-PATCHSET
-./android-patchsets/hikey-optee-n
+./android-patchsets/O-RLCR-PATCHSET
+./android-patchsets/hikey-optee-o
 ./android-patchsets/hikey-optee-4.9
+./android-patchsets/OREO-BOOTTIME-OPTIMIZATIONS-HIKEY
 ./android-patchsets/optee-master-workarounds
-./android-patchsets/swg-mods-n
+./android-patchsets/swg-mods-o
 ```
 
 **WARNING: If you run `repo sync` again at any time in the future to update
@@ -129,16 +130,20 @@ setprop sys.usb.configfs 1
 To build AOSP:
 ```bash
 make TARGET_BUILD_KERNEL=true TARGET_BOOTIMAGE_USE_FAT=true \
-TARGET_TEE_IS_OPTEE=true TARGET_BUILD_UEFI=true CFG_SECURE_DATA_PATH=y \
-CFG_SECSTOR_TA_MGMT_PTA=y NOWERROR=1
+CFG_SECURE_DATA_PATH=y CFG_SECSTOR_TA_MGMT_PTA=y TARGET_TEE_IS_OPTEE=true \
+TARGET_BUILD_UEFI=true NOWERROR=1
 ```
 
 For a 4GB board, use:
 ```bash
 make TARGET_BUILD_KERNEL=true TARGET_BOOTIMAGE_USE_FAT=true \
-TARGET_TEE_IS_OPTEE=true TARGET_BUILD_UEFI=true CFG_SECURE_DATA_PATH=y \
-CFG_SECSTOR_TA_MGMT_PTA=y NOWERROR=1 TARGET_USERDATAIMAGE_4GB=true
+CFG_SECURE_DATA_PATH=y CFG_SECSTOR_TA_MGMT_PTA=y TARGET_TEE_IS_OPTEE=true \
+TARGET_BUILD_UEFI=true NOWERROR=1 TARGET_USERDATAIMAGE_4GB=true
 ```
+
+**NOTE:** You can add the `TARGET_SYSTEMIMAGES_USE_SQUASHFS=true` option to
+make `system.img` size smaller, but this will make `/system` read-only, so
+you won't be able to push files to it.
 
 **WARNING: If you run `repo sync` again at any time in the future to update
 all the repos, by default all the patches from 3.4 above would be discarded,
