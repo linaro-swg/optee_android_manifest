@@ -11,7 +11,7 @@
   <project name="OP-TEE/optee_client" path="external/optee_client" remote="github" revision="96816800c7bc5a7eaa817acf187fef30da804198" upstream="master"/>
   <project name="OP-TEE/optee_os" path="optee/optee_os" remote="github" revision="2a1bec152c2d161269186bc86280b2de2c6bbd04" upstream="master"/>
   <project name="OP-TEE/optee_test" path="external/optee_test" remote="github" revision="0c86bc3dda4ce7fc789e1ecaa349ff8fb653b079" upstream="master"/>
-  <project name="android-patchsets" remote="linaro-android" revision="1ebd449c3ffc705c22ceb13dc8b38421e9283ac2" upstream="master"/>
+  <project name="android-patchsets" remote="linaro-android" revision="58fa7a0531a3b76ef3dd20cd3454cc5892d9df78" upstream="master"/>
   <project groups="device,fugu,broadcom_pdk,pdk" name="device/asus/fugu" revision="5db03cd21db0868bc9209975af08422b80076175" upstream="refs/tags/android-7.1.2_r33"/>
   <project clone-depth="1" groups="device,fugu,broadcom_pdk,pdk" name="device/asus/fugu-kernel" revision="24344f32c5320cbcedbcaead200da2fc9ef9bff0" upstream="refs/tags/android-7.1.2_r33"/>
   <project groups="pdk-cw-fs,pdk" name="device/common" revision="d49a18a17d624b41bcf79ad972ebfdb93f4c2045" upstream="refs/tags/android-7.1.2_r33"/>
