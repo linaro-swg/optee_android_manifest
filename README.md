@@ -69,13 +69,13 @@ repo manifest -r -o pinned-manifest.xml
 ### 3.4. Apply the required patches (**please respect order!**)
 
 ``` bash
+./android-patchsets/hikey-n-workarounds
+./android-patchsets/get-hikey-blobs
 ./android-patchsets/NOUGAT-RLCR-PATCHSET
 ./android-patchsets/hikey-optee-n
 ./android-patchsets/hikey-optee-4.9
-./android-patchsets/hikey-n-workarounds
 ./android-patchsets/optee-master-workarounds
 ./android-patchsets/swg-mods-n
-./android-patchsets/get-hikey-blobs
 ```
 
 **WARNING: If you run `repo sync` again at any time in the future to update
@@ -125,12 +125,16 @@ setprop sys.usb.configfs 1
 
 To build AOSP:
 ```bash
-make TARGET_BUILD_KERNEL=true TARGET_BUILD_UEFI=true TARGET_TEE_IS_OPTEE=true CFG_SECURE_DATA_PATH=y TARGET_BOOTIMAGE_USE_FAT=true
+make TARGET_BUILD_KERNEL=true TARGET_BOOTIMAGE_USE_FAT=true \
+TARGET_TEE_IS_OPTEE=true TARGET_BUILD_UEFI=true CFG_SECURE_DATA_PATH=y \
+NOWERROR=1
 ```
 
 For a 4GB board, use:
 ```bash
-make TARGET_USERDATAIMAGE_4GB=true TARGET_BUILD_KERNEL=true TARGET_BUILD_UEFI=true TARGET_TEE_IS_OPTEE=true CFG_SECURE_DATA_PATH=y TARGET_BOOTIMAGE_USE_FAT=true
+make TARGET_BUILD_KERNEL=true TARGET_BOOTIMAGE_USE_FAT=true \
+TARGET_TEE_IS_OPTEE=true TARGET_BUILD_UEFI=true CFG_SECURE_DATA_PATH=y \
+NOWERROR=1 TARGET_USERDATAIMAGE_4GB=true
 ```
 
 **WARNING: If you run `repo sync` again at any time in the future to update
