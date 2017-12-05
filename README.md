@@ -68,6 +68,9 @@ repo manifest -r -o pinned-manifest.xml
 
 ### 3.4. Apply the required patches (**please respect order!**)
 
+**NOTE:** Apply the patches below **1 by 1** and make sure each patch is
+applied successfully before applying the next one!
+
 ``` bash
 ./android-patchsets/hikey-n-workarounds
 ./android-patchsets/get-hikey-blobs
