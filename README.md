@@ -61,6 +61,7 @@ cd ../../
 
 ```bash
 repo sync
+repo manifest -r -o pinned-manifest.xml
 ```
 
 **WARNING**: Do NOT use -c option!
