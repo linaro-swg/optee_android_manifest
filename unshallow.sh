@@ -29,7 +29,7 @@ git fetch linaro-android --unshallow
 
 echo "unshallow dlh"
 cd ${ROOT}/device/linaro/hikey
-git fetch linaro-android --unshallow
+git fetch aosp --unshallow
 
 echo "unshallow kernel"
 cd ${ROOT}/kernel/linaro/hisilicon
@@ -45,7 +45,7 @@ git fetch github --unshallow
 
 echo "unshallow optee_examples"
 cd ${ROOT}/external/optee_examples
-git fetch github --unshallow
+git fetch github-optee --unshallow
 
 echo "unshallow optee_os"
 cd ${ROOT}/optee/optee_os
