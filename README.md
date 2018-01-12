@@ -40,7 +40,7 @@ sudo apt-get install android-tools-adb android-tools-fastboot autoconf \
 repo init -u https://android-git.linaro.org/git/platform/manifest.git -b android-8.1.0_r7 -g "default,-non-default,-device,hikey"
 
 # Please do NOT run below command! Internal reference only!
-# repo init -u /home/ubuntu/aosp-mirror/platform/manifest.git -b android-8.0.0_r32 -g "default,-non-default,-device,hikey" -p linux --depth=1
+# repo init -u /home/ubuntu/aosp-mirror/platform/manifest.git -b android-8.1.0_r7 -g "default,-non-default,-device,hikey" -p linux --depth=1
 ```
 
 **WARNING**: To avoid errors, it's recommended NOT to use `--depth=1` option,
