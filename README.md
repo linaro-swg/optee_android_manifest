@@ -64,7 +64,7 @@ repo sync
 repo manifest -r -o pinned-manifest.xml
 ```
 
-**WARNING**: Do NOT use -c option!
+**WARNING**: Do **NOT** use -c option!
 
 ### 3.4. Apply the required patches (**please respect order!**)
 
@@ -92,6 +92,7 @@ have reapply them again before rebuilding!**
 source ./build/envsetup.sh
 lunch hikey-userdebug
 ```
+**WARNING**: Do **NOT** use `sudo`!
 
 ### 3.6. Build the booloader firmware (fip.bin) [OPTIONAL]
 
@@ -108,6 +109,8 @@ popd
 cp out/dist/fip.bin device/linaro/hikey/installer/hikey/
 cp out/dist/l-loader.bin device/linaro/hikey/installer/hikey/
 ```
+
+**WARNING**: Do **NOT** use `sudo`!
 
 If you get errors while `fip.bin` is building, or
 if `fip.bin` is NOT working as expected,
@@ -141,13 +144,15 @@ CFG_SECURE_DATA_PATH=y CFG_SECSTOR_TA_MGMT_PTA=y TARGET_TEE_IS_OPTEE=true \
 TARGET_BUILD_UEFI=true TARGET_USERDATAIMAGE_4GB=true
 ```
 
-**NOTE:** You can add the `TARGET_SYSTEMIMAGES_USE_SQUASHFS=true` option to
-make `system.img` size smaller, but this will make `/system` read-only, so
-you won't be able to push files to it.
+**WARNING**: Do **NOT** use `sudo`!
 
 **WARNING: If you run `repo sync` again at any time in the future to update
 all the repos, by default all the patches from 3.4 above would be discarded,
 so you'll have reapply them again before rebuilding!**
+
+**NOTE:** You can add the `TARGET_SYSTEMIMAGES_USE_SQUASHFS=true` option to
+make `system.img` size smaller, but this will make `/system` read-only, so
+you won't be able to push files to it.
 
 ## 4. Flashing the image
 
