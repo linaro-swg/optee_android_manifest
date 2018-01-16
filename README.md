@@ -64,7 +64,7 @@ repo sync
 repo manifest -r -o pinned-manifest.xml
 ```
 
-**WARNING**: Do NOT use -c option!
+**WARNING**: Do **NOT** use -c option!
 
 ### 3.4. Apply the required patches (**please respect order!**)
 
@@ -91,6 +91,7 @@ have reapply them again before rebuilding!**
 source ./build/envsetup.sh
 lunch hikey-userdebug
 ```
+**WARNING**: Do **NOT** use `sudo`!
 
 ### 3.6. Build the booloader firmware (fip.bin) [OPTIONAL]
 
@@ -107,6 +108,8 @@ popd
 cp out/dist/fip.bin device/linaro/hikey/installer/hikey/
 cp out/dist/l-loader.bin device/linaro/hikey/installer/hikey/
 ```
+
+**WARNING**: Do **NOT** use `sudo`!
 
 If you get errors while `fip.bin` is building, or
 if `fip.bin` is NOT working as expected,
@@ -139,6 +142,8 @@ make TARGET_BUILD_KERNEL=true TARGET_BOOTIMAGE_USE_FAT=true \
 TARGET_TEE_IS_OPTEE=true TARGET_BUILD_UEFI=true CFG_SECURE_DATA_PATH=y \
 CFG_SECSTOR_TA_MGMT_PTA=y TARGET_USERDATAIMAGE_4GB=true
 ```
+
+**WARNING**: Do **NOT** use `sudo`!
 
 **WARNING: If you run `repo sync` again at any time in the future to update
 all the repos, by default all the patches from 3.4 above would be discarded,
