@@ -19,6 +19,14 @@ echo "unshallow system/core for O-RLCR-PATCHSET"
 cd ${ROOT}/system/core
 git fetch aosp --unshallow
 
+echo "unshallow system/sepolicy for O-RLCR-PATCHSET"
+cd ${ROOT}/system/sepolicy
+git fetch aosp --unshallow
+
+echo "unshallow frameworks/native for O-RLCR-PATCHSET"
+cd ${ROOT}/frameworks/native
+git fetch aosp --unshallow
+
 echo "unshallow frameworks/opt/net/ethernet for OREO-BOOTTIME-OPTIMIZATIONS-HIKEY"
 cd ${ROOT}/frameworks/opt/net/ethernet
 git fetch aosp --unshallow

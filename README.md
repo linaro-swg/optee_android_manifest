@@ -62,6 +62,9 @@ cd ../../
 ```bash
 repo sync
 repo manifest -r -o pinned-manifest.xml
+
+# Please do NOT run below command! Internal reference only!
+#./unshallow.sh
 ```
 
 **WARNING**: Do **NOT** use -c option!
