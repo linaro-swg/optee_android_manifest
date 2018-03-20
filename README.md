@@ -21,7 +21,7 @@ AOSP build that includes OP-TEE for the hikey board.
   After following the AOSP setup instructions, the following
   additional packages are needed.
 
-```bash
+```
 sudo apt-get install android-tools-adb android-tools-fastboot autoconf \
 	automake bc bison build-essential cscope curl device-tree-compiler flex \
 	ftp-upload gdisk iasl libattr1-dev libc6:i386 libcap-dev libfdt-dev \
@@ -32,11 +32,18 @@ sudo apt-get install android-tools-adb android-tools-fastboot autoconf \
 	ncurses-dev realpath android-tools-fsutils dosfstools libxml2-utils
 ```
 
+## NOTE: Currently there are some issues with running xtest. We're aware of the problem and working on fixes. In the meantime, instead of steps 3.1-3.3, run below command and then continue on with step 3.4
+
+```
+wget https://raw.githubusercontent.com/linaro-swg/optee_android_manifest/lcr-ref-hikey-o/pinned-manifest_180223.xml
+repo sync -m pinned-manifest_180223.xml
+```
+
 ## 3. Build steps
 
 ### 3.1. In an empty directory, clone the tree:
 
-```bash
+```
 repo init -u https://android-git.linaro.org/git/platform/manifest.git -b android-8.1.0_r14 -g "default,-non-default,-device,hikey"
 
 # Please do NOT run below command! Internal reference only!
@@ -48,7 +55,7 @@ unless you know what you're doing!
 
 ### 3.2. Add the OP-TEE overlay:
 
-```bash
+```
 cd .repo
 git clone https://android-git.linaro.org/git/platform/manifest.git -b linaro-oreo local_manifests
 cd local_manifests
@@ -59,7 +66,7 @@ cd ../../
 
 ### 3.3. Sync
 
-```bash
+```
 repo sync
 repo manifest -r -o pinned-manifest.xml
 
@@ -91,7 +98,7 @@ have reapply them again before rebuilding!**
 
 ### 3.5. Configure the environment for AOSP
 
-```bash
+```
 source ./build/envsetup.sh
 lunch hikey-userdebug
 ```
@@ -105,7 +112,7 @@ step is **NO** longer required!
 
 **NOTE**: IF you just want to build `fip.bin` without rebuilding
 the rest of AOSP:
-```bash
+```
 pushd device/linaro/hikey/bootloader
 make TARGET_TEE_IS_OPTEE=true #make sure build is successful
 popd
@@ -129,19 +136,19 @@ rm -f out/target/product/hikey/optee/arm-plat-hikey
 ### 3.7. Run the rest of the AOSP build, For an 8GB board, use:
 
 To enable adb over usb, in `device/linaro/hikey/init.common.usb.rc`:
-```bash
+```
 setprop sys.usb.configfs 1
 ```
 
 To build AOSP:
-```bash
+```
 make TARGET_BUILD_KERNEL=true TARGET_BOOTIMAGE_USE_FAT=true \
 CFG_SECURE_DATA_PATH=y CFG_SECSTOR_TA_MGMT_PTA=y TARGET_TEE_IS_OPTEE=true \
 TARGET_BUILD_UEFI=true
 ```
 
 For a 4GB board, use:
-```bash
+```
 make TARGET_BUILD_KERNEL=true TARGET_BOOTIMAGE_USE_FAT=true \
 CFG_SECURE_DATA_PATH=y CFG_SECSTOR_TA_MGMT_PTA=y TARGET_TEE_IS_OPTEE=true \
 TARGET_BUILD_UEFI=true TARGET_USERDATAIMAGE_4GB=true
@@ -164,7 +171,7 @@ The instructions for flashing the image can be found in detail under
 1. Jumper links 1-2 and 3-4, leaving 5-6 open, and reset the board.
 2. Invoke
 
-```bash
+```
 cp -a out/target/product/hikey/*.img device/linaro/hikey/installer/hikey/
 ./device/linaro/hikey/installer/hikey/flash-all.sh /dev/ttyUSBn
 sudo fastboot format userdata
@@ -196,7 +203,7 @@ can be run immediately.
 
 Boot the device. On serial console:
 
-```bash
+```
 su setprop sys.usb.configfs 1
 stop adbd
 start adbd
