@@ -68,7 +68,7 @@ cd ../../
 
 ```
 repo sync
-repo manifest -r -o pinned-manifest.xml
+repo manifest -r -o pinned-manifest-"$(date +%Y-%m-%d_%H:%M:%S)".xml
 
 # Please do NOT run below command! Internal reference only!
 #./unshallow.sh
