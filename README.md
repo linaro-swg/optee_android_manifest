@@ -32,13 +32,6 @@ sudo apt-get install android-tools-adb android-tools-fastboot autoconf \
 	ncurses-dev realpath android-tools-fsutils dosfstools libxml2-utils
 ```
 
-## NOTE: Currently there are some issues with running xtest. We're aware of the problem and working on fixes. In the meantime, instead of steps 3.1-3.3, run below command and then continue on with step 3.4
-
-```
-wget https://raw.githubusercontent.com/linaro-swg/optee_android_manifest/lcr-ref-hikey-o/pinned-manifest_180223.xml
-repo sync -m pinned-manifest_180223.xml
-```
-
 ## 3. Build steps
 
 ### 3.1. In an empty directory, clone the tree:
@@ -52,6 +45,15 @@ repo init -u https://android-git.linaro.org/git/platform/manifest.git -b android
 
 **WARNING**: To avoid errors, it's recommended NOT to use `--depth=1` option,
 unless you know what you're doing!
+
+## NOTE: Currently there are some issues with running xtest. We're aware of the problem and working on fixes. In the meantime, instead of steps 3.2-3.3, run below command and then continue on with step 3.4
+
+```
+cd .repo/manifests/
+wget https://raw.githubusercontent.com/linaro-swg/optee_android_manifest/lcr-ref-hikey-o/pinned-manifest_180223.xml
+cd ../../
+repo sync -m pinned-manifest_180223.xml
+```
 
 ### 3.2. Add the OP-TEE overlay:
 
