@@ -46,16 +46,29 @@ repo init -u https://android-git.linaro.org/git/platform/manifest.git -b android
 **WARNING**: To avoid errors, it's recommended NOT to use `--depth=1` option,
 unless you know what you're doing!
 
-## NOTE: Currently there are some issues with running xtest. We're aware of the problem and working on fixes. In the meantime, instead of steps 3.2-3.3, run below command and then continue on with step 3.4
+## For relatively stable builds, use steps 3.2a-3.3a.
+
+### 3.2a. Add the OP-TEE overlay:
 
 ```
 cd .repo/manifests/
-wget https://raw.githubusercontent.com/linaro-swg/optee_android_manifest/lcr-ref-hikey-o/pinned-manifest_180223.xml
+wget https://raw.githubusercontent.com/linaro-swg/optee_android_manifest/lcr-ref-hikey-o/pinned-manifest_YYMMDD.xml
 cd ../../
-repo sync -m pinned-manifest_180223.xml
 ```
 
-### 3.2. Add the OP-TEE overlay:
+**NOTE**: Replace `YYMMDD` with a date corresponding to any of the `pinned-manifest_*.xml` files listed above. If there are build errors, try a file with an older date.
+
+### 3.3a Sync
+
+```
+repo sync -m pinned-manifest_YYMMDD.xml
+```
+
+**WARNING**: Do **NOT** use -c option when sync-ing!
+
+## For relatively recent builds, use steps 3.2b-3.3b.
+
+### 3.2b. Add the OP-TEE overlay:
 
 ```
 cd .repo
@@ -66,7 +79,7 @@ wget https://raw.githubusercontent.com/linaro-swg/optee_android_manifest/lcr-ref
 cd ../../
 ```
 
-### 3.3. Sync
+### 3.3b. Sync
 
 ```
 repo sync
@@ -76,14 +89,14 @@ repo manifest -r -o pinned-manifest-"$(date +%Y-%m-%d_%H:%M:%S)".xml
 #./unshallow.sh
 ```
 
-**WARNING**: Do **NOT** use -c option!
+**WARNING**: Do **NOT** use -c option when sync-ing!
 
 ### 3.4. Apply the required patches (**please respect order!**)
 
 **NOTE:** Apply the patches below **1 by 1** and make sure each patch is
 applied successfully before applying the next one!
 
-``` bash
+```
 ./android-patchsets/hikey-o-workarounds
 ./android-patchsets/get-hikey-blobs
 ./android-patchsets/O-RLCR-PATCHSET
