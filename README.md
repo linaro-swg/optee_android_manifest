@@ -52,16 +52,16 @@ unless you know what you're doing!
 
 ```
 cd .repo/manifests/
-wget https://raw.githubusercontent.com/linaro-swg/optee_android_manifest/lcr-ref-hikey-o/pinned-manifest_YYMMDD.xml
+wget https://raw.githubusercontent.com/linaro-swg/optee_android_manifest/lcr-ref-hikey-o/pinned-manifest_YYYYMMDD.xml
 cd ../../
 ```
 
-**NOTE**: Replace `YYMMDD` with a date corresponding to any of the `pinned-manifest_*.xml` files listed above. If there are build errors, try a file with an older date.
+**NOTE**: Replace `YYYYMMDD` with a date corresponding to any of the `pinned-manifest_*.xml` files listed above. If there are build errors, try a file with an older date.
 
 ### 3.3a Sync
 
 ```
-repo sync -m pinned-manifest_YYMMDD.xml
+repo sync -m pinned-manifest_YYYYMMDD.xml
 ```
 
 **WARNING**: Do **NOT** use -c option when sync-ing!
@@ -83,9 +83,10 @@ cd ../../
 
 ```
 repo sync
-repo manifest -r -o pinned-manifest-"$(date +%Y-%m-%d_%H:%M:%S)".xml
+repo manifest -r -o pinned-manifest-"$(date +%Y%m%d)".xml
 
 # Please do NOT run below command! Internal reference only!
+#repo manifest -r -o pinned-manifest-"$(date +%Y-%m-%d_%H:%M:%S)".xml
 #./unshallow.sh
 ```
 
