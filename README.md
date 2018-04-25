@@ -72,6 +72,7 @@ repo sync -m pinned-manifest_YYYYMMDD.xml
 
 ```
 cd .repo
+rm -f manifests/pinned-manifest*.xml
 git clone https://android-git.linaro.org/git/platform/manifest.git -b linaro-oreo local_manifests
 cd local_manifests
 rm -f swg.xml
