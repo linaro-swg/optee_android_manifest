@@ -8,11 +8,12 @@
   <remote fetch="http://android-git.linaro.org/git/" name="linaro-android" review="android-review.linaro.org"/>
   <remote fetch="http://git.linaro.org/" name="linaro-other"/>
   <remote fetch="git://git.omapzoom.org" name="omap-mirror" review="http://review.omapzoom.org"/>
-  
+
   <default remote="aosp" revision="refs/tags/android-8.1.0_r22" sync-j="4"/>
-  
+
   <project name="OP-TEE/optee_client" path="external/optee_client" remote="github" revision="3f16662284a69fdec97b1712064be94d1fed7ae7" upstream="refs/tags/3.1.0-rc1"/>
-  <project name="OP-TEE/optee_os" path="optee/optee_os" remote="github" revision="2a4f2cd1c4a7e80f3082761aa337d7a864436ee9" upstream="refs/tags/3.1.0-rc1"/>
+  <project name="OP-TEE/optee_os" path="optee/optee_os" remote="github" revision="8d91fe09d1f115495f09c5791fea8431e57ecab5"/>
+  <!-- project name="OP-TEE/optee_os" path="optee/optee_os" remote="github" revision="2a4f2cd1c4a7e80f3082761aa337d7a864436ee9" upstream="refs/tags/3.1.0-rc1"/-->
   <project name="OP-TEE/optee_test" path="external/optee_test" remote="github" revision="cb583fd74f435d7bcef410acfdb699927c86b95a" upstream="refs/tags/3.1.0-rc1"/>
   <project name="android-build-configs" remote="linaro-android" revision="3686dd2d8dd2b2b248dfbc1510e77bf33ec01b76" upstream="master"/>
   <project name="android-patchsets" remote="linaro-android" revision="721191e1766a37979c5fa333eeaae545866eae91" upstream="master"/>
@@ -614,6 +615,6 @@
   <project groups="pdk,tradefed" name="platform/tools/tradefederation" path="tools/tradefederation/core" revision="48ef4856e499e344aafe1daedd971b2e1cbf849f" upstream="refs/tags/android-8.1.0_r22"/>
   <project groups="pdk,tradefed" name="platform/tools/tradefederation/contrib" path="tools/tradefederation/contrib" revision="8dd3029197cdaa6d9e867d4c645b489a6f9f52b6" upstream="refs/tags/android-8.1.0_r22"/>
   <project groups="pdk" name="toolchain/binutils" revision="a4125cf8aeab9dfeac00f1bda80645987897152f" upstream="refs/tags/android-8.1.0_r22"/>
-  
+
   <repo-hooks enabled-list="pre-upload" in-project="platform/tools/repohooks"/>
 </manifest>
