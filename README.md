@@ -100,7 +100,6 @@ applied successfully before applying the next one!
 
 ```
 ./android-patchsets/hikey-o-workarounds
-./android-patchsets/get-hikey-blobs
 ./android-patchsets/O-RLCR-PATCHSET
 ./android-patchsets/hikey-optee-o
 ./android-patchsets/hikey-optee-4.9
