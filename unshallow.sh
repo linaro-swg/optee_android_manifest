@@ -27,6 +27,22 @@ echo "unshallow frameworks/native for O-RLCR-PATCHSET"
 cd ${ROOT}/frameworks/native
 git fetch aosp --unshallow
 
+echo "unshallow system/connectivity/wificond O-RLCR-PATCHSET"
+cd ${ROOT}/system/connectivity/wificond
+git fetch aosp --unshallow
+
+echo "unshallow bootable/recovery O-RLCR-PATCHSET"
+cd ${ROOT}/bootable/recovery
+git fetch aosp --unshallow
+
+echo "unshallow external/libdrm O-RLCR-PATCHSET"
+cd ${ROOT}/external/libdrm
+git fetch aosp --unshallow
+
+echo "unshallow libcore for O-RLCR-PATCHSET"
+cd ${ROOT}/libcore
+git fetch aosp --unshallow
+
 echo "unshallow frameworks/opt/net/ethernet for OREO-BOOTTIME-OPTIMIZATIONS-HIKEY"
 cd ${ROOT}/frameworks/opt/net/ethernet
 git fetch aosp --unshallow
