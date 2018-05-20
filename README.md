@@ -43,8 +43,7 @@ repo init -u https://android-git.linaro.org/git/platform/manifest.git -b android
 # repo init -u /home/ubuntu/aosp-mirror/platform/manifest.git -b android-8.1.0_r29 -g "default,-non-default,-device,hikey" -p linux --depth=1
 ```
 
-**WARNING**: To avoid errors, it's recommended NOT to use `--depth=1` option,
-unless you know what you're doing!
+**!!! BIG WARNING !!!**: Do **NOT** to use `--depth=1` option, else patches in 3.4 will **FAIL** to apply!!! If you must use `--depth=1`, then you must find out which repos the patches apply to and `--unshallow` all of them! The number of repos are not few, and can increase over time.
 
 ## For relatively stable builds, use steps 3.2a-3.3a.
 
