@@ -188,7 +188,7 @@ The instructions for flashing the image can be found in detail under
 
 ```
 cp -a out/target/product/hikey/*.img device/linaro/hikey/installer/hikey/
-./device/linaro/hikey/installer/hikey/flash-all.sh /dev/ttyUSBn
+sudo ./device/linaro/hikey/installer/hikey/flash-all.sh /dev/ttyUSBn
 sudo fastboot format userdata
 ```
 
