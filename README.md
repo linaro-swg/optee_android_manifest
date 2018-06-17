@@ -34,113 +34,28 @@ sudo apt-get install android-tools-adb android-tools-fastboot autoconf \
 
 ## 3. Build steps
 
-### 3.1. In an empty directory, clone the tree:
-
 ```
-repo init -u https://android-git.linaro.org/git/platform/manifest.git -b android-8.1.0_r29 -g "default,-non-default,-device,hikey"
-
-# Please do NOT run below command! Internal reference only!
-# repo init -u /home/ubuntu/aosp-mirror/platform/manifest.git -b android-8.1.0_r29 -g "default,-non-default,-device,hikey" -p linux --depth=1
+git clone https://github.com/linaro-swg/optee_android_manifest -b lcr-ref-hikey
+cd lcr-ref-hikey
+./sync-o.sh
+./build.sh #or `./build.sh -4g` for a 4GB board!
 ```
 
-**!!! BIG WARNING !!!**: Do **NOT** to use `--depth=1` option, else patches in 3.4 will **FAIL** to apply!!! If you must use `--depth=1`, then you must find out which repos the patches apply to and `--unshallow` all of them! The number of repos are not few, and can increase over time.
+**NOTE:** You can add `-squashfs` to `build.sh` option to make
+`system.img` size smaller, but this will make `/system` read-only, so
+you won't be able to push files to it.
 
-## For relatively stable builds, use steps 3.2a-3.3a.
-
-### 3.2a. Add the OP-TEE overlay:
-
+For relatively stable builds, use below instead of `./sync-o.sh`.
 ```
-cd .repo/manifests/
-wget https://raw.githubusercontent.com/linaro-swg/optee_android_manifest/lcr-ref-hikey-o/pinned-manifest_YYYYMMDD.xml
-cd ../../
-```
+./sync.sh -v o -bm <name of a pinned manifest file in archive/> -d 2>&1 |tee logs/sync-o.log
 
-**NOTE**: Replace `YYYYMMDD` with the date corresponding to the
-`pinned-manifest_*.xml` files listed above. If there are build errors,
-try an older manifest in the `archive/`, or use steps 3.2b-3.3b.
-
-### 3.3a Sync
-
-```
-repo sync -m pinned-manifest_YYYYMMDD.xml
+# e.g.
+./sync.sh -v o -bm pinned-manifest_20180808-0808.xml -d 2>&1 |tee logs/sync-o.log
 ```
 
-**WARNING**: Do **NOT** use -c option when sync-ing!
-
-## For relatively recent builds, use steps 3.2b-3.3b.
-
-### 3.2b. Add the OP-TEE overlay:
-
-```
-cd .repo
-rm -f manifests/pinned-manifest*.xml
-git clone https://android-git.linaro.org/git/platform/manifest.git -b linaro-oreo local_manifests
-cd local_manifests
-rm -f swg.xml
-wget https://raw.githubusercontent.com/linaro-swg/optee_android_manifest/lcr-ref-hikey-o/swg.xml
-cd ../../
-```
-
-### 3.3b. Sync
-
-```
-repo sync
-repo manifest -r -o pinned-manifest-"$(date +%Y%m%d)".xml
-
-# Please do NOT run below command! Internal reference only!
-#repo manifest -r -o pinned-manifest-"$(date +%Y-%m-%d_%H:%M:%S)".xml
-#./unshallow.sh
-```
-
-**WARNING**: Do **NOT** use -c option when sync-ing!
-
-### 3.4. Apply the required patches (**please respect order!**)
-
-**NOTE:** Apply the patches below **1 by 1** and make sure each patch is
-applied successfully before applying the next one!
-
-```
-./android-patchsets/hikey-o-workarounds
-./android-patchsets/O-RLCR-PATCHSET
-./android-patchsets/hikey-optee-o
-./android-patchsets/hikey-optee-4.9
-./android-patchsets/OREO-BOOTTIME-OPTIMIZATIONS-HIKEY
-./android-patchsets/optee-master-workarounds
-./android-patchsets/swg-mods-o
-```
-
-**WARNING: If you run `repo sync` again at any time in the future to update
-all the repos, by default all the patches above would be discarded, so you'll
-have reapply them again before rebuilding!**
-
-### 3.5. Download the build script
-
-```
-wget https://raw.githubusercontent.com/linaro-swg/optee_android_manifest/lcr-ref-hikey-o/build_aosp.sh
-chmod +x build_aosp.sh
-```
-
-### 3.7. Build AOSP
-
-For an 8GB board, use:
-```
-./build_aosp.sh
-```
-
-For a 4GB board, use:
-```
-./build_aosp.sh -4g
-```
-
-**WARNING**: Do **NOT** use `sudo`!
-
-**WARNING: If you run `repo sync` again at any time in the future to update
-all the repos, by default all the patches from 3.4 above would be discarded,
-so you'll have reapply them again before rebuilding!**
-
-**NOTE:** You can add the `-squashfs` option to make `system.img` size
-smaller, but this will make `/system` read-only, so you won't be able to
-push files to it.
+For newer versions, use `./sync-p.sh` or `./sync-master.sh` instead of
+`./sync-o.sh`, but these are **NOT TESTED and NOT SUPPORTED** atm so build
+at your own risk!
 
 ## 4. Flashing the image
 

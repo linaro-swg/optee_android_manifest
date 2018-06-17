@@ -1,0 +1,48 @@
+#!/bin/bash
+
+set -e
+
+CPUS=${CPUS:-$(grep processor /proc/cpuinfo |wc -l)}
+#CPUS=${CPUS:-$(getconf _NPROCESSORS_ONLN)}
+dbg=false
+
+# sync*.sh get config, build*.sh doesn't!
+function get_config(){
+	if [ -d abc ]; then
+		echo "android-build-configs (abc) exists"
+		echo "git pull abc"
+		pushd abc
+		git pull
+		popd
+	else
+		echo "Get android-build-configs (abc)"
+		git clone https://android-git.linaro.org/git/android-build-configs.git abc
+	fi
+}
+
+function export_config(){
+    # http://wiki.bash-hackers.org/syntax/pe#use_a_default_value
+    local android_board=${1:-hikey}
+    local android_ver=${2:-master}
+
+    echo "Exporting configs from abc/lcr-reference-${android_board}-${android_ver}"
+
+    while read line; do
+        if ! echo ${line} |grep -q '^#'; then
+	    echo "export ${line}"
+            eval "export ${line}"
+        fi
+    done < abc/lcr-reference-${android_board}-${android_ver}
+}
+
+function get_manifest_groups(){
+    pushd .repo/manifests
+    groups=$(git config --get manifest.groups)
+    if [ -z "${groups}" ]; then
+        groups_opt=""
+    else
+        groups_opt="-g ${groups}"
+    fi
+    popd
+    echo "${groups_opt}"
+}

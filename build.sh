@@ -1,29 +1,18 @@
 #!/bin/bash
 
-set -e
-
-INIT=true
-#CPUS=${CPUS:-$(grep processor /proc/cpuinfo |wc -l)}
-CPUS=1
 ROOT_DIR=$(cd $(dirname $0); pwd)
+source ${ROOT_DIR}/scripts-common/helpers
 
 variant="userdebug"
 
 export SHOW_COMMANDS=showcommands
 #export ALLOW_MISSING_DEPENDENCIES=true
-#https://android.googlesource.com/platform/build/+/master/Changes.md#PATH_Tools
-#TEMPORARY_DISABLE_PATH_RESTRICTIONS=true
 
-function patch(){
-    echo "Applying patches"
-    ./android-patchsets/hikey-o-workarounds
-    ./android-patchsets/O-RLCR-PATCHSET
-    ./android-patchsets/hikey-optee-o
-    ./android-patchsets/hikey-optee-4.9
-    ./android-patchsets/OREO-BOOTTIME-OPTIMIZATIONS-HIKEY
-    ./android-patchsets/optee-master-workarounds
-    ./android-patchsets/swg-mods-o
-}
+#https://android.googlesource.com/platform/build/+/master/Changes.md#PATH_Tools
+#export TEMPORARY_DISABLE_PATH_RESTRICTIONS=true
+export USE_CCACHE=1
+
+USE_SQUASHFS=false
 
 function build(){
     #export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
@@ -31,35 +20,40 @@ function build(){
     product="${1}"
     if [ -z "${product}" ]; then
 	echo "Please specify target board"
-        return
+	return
     fi
+    source build/envsetup.sh
+    lunch ${product}-${variant}
 
-    #patch
-    if [ "$INIT" = "true" ]; then
-	source build/envsetup.sh
-	lunch ${product}-${variant}
-    fi
-
-    echo "Start to build:" >>time.log
-    date +%Y-%m-%d_%H:%M >>time.log
-    echo "(time LANG=C make ${TARGETS[@]} -j${CPUS}) 2>&1 |tee build-${product}.log"
-    (time LANG=C make ${TARGETS[@]} -j${CPUS} ) 2>&1 |tee build-${product}.log
-    date +%Y-%m-%d_%H:%M >>time.log
+    echo "Start to build:" >>logs/time.log
+    date +%Y%m%d-%H%M >>logs/time.log
+    echo "(time LANG=C make ${TARGETS[@]} -j${CPUS}) 2>&1 |tee logs/build-${product}.log"
+    (time LANG=C make ${TARGETS[@]} -j${CPUS} ) 2>&1 |tee logs/build-${product}.log
+    date +%Y%m%d-%H%M >>logs/time.log
 }
 
 function build_hikey(){
-    cd ${ROOT_DIR}
-    export USE_CCACHE=1
+    cd ${ROOT_DIR} #is this necessary?
     export TARGET_BUILD_KERNEL=true
     export TARGET_BOOTIMAGE_USE_FAT=true
     # settings for optee
     export TARGET_TEE_IS_OPTEE=true
     export TARGET_BUILD_UEFI=true
+    #we need to set an OP-TEE's CFG_* flag ONLY IF it's used in an
+    #Android.mk somewhere!
     export CFG_SECURE_DATA_PATH=y
     export CFG_SECSTOR_TA_MGMT_PTA=y
-    export CFG_TA_MBEDTLS_SELF_TEST=y
     export CFG_TA_DYNLINK=y
     build hikey
+    echo "HiKey build done!"
+    if $CTS; then
+	if $dbg; then
+		echo "CPUS=${CPUS}"
+	fi
+	echo "Building CTS.."
+	make -j${CPUS} cts
+	echo "CTS build done!"
+    fi
 }
 
 clean_build() {
@@ -67,6 +61,8 @@ clean_build() {
     make clobber
 }
 
+##########################################################
+##########################################################
 while [ "$1" != "" ]; do
 	case $1 in
 		-j)     # set build parallellism
@@ -74,33 +70,33 @@ while [ "$1" != "" ]; do
 			echo "Num threads: $1"
 			CPUS=$1
 			;;
-		--do-init)
-			echo "Do init"
-			INIT=true
-			;;
-		--no-init)
-			echo "Skip init"
-			INIT=false
-			;;
 		-4g)
 			echo "Set 4GB board"
 			export TARGET_USERDATAIMAGE_4GB=true
 			;;
 		-squashfs)
 			echo "Use squashfs for system img"
-			export TARGET_SYSTEMIMAGES_USE_SQUASHFS=true
+			USE_SQUASHFS=true
+			;;
+		-cts)
+			echo "Build CTS"
+			CTS=true
 			;;
 		-b | --build-target)
 			shift
-			echo "Adding Build target: $1"
+			echo "Adding build target: $1"
 			TARGETS=(${TARGETS[@]} $1)
 			;;
                 *)	# default adds to target list without shift
-                        echo "Adding Build target: $1"
+                        echo "Adding build target by default: $1"
                         TARGETS=(${TARGETS[@]} $1)
                         ;;
 	esac
 	shift
 done
 
-build_hikey
+export_config hikey o
+echo "Overwrite TARGET_SYSTEMIMAGES_USE_SQUASHFS=true in android-build-configs (abc)!"
+echo "export TARGET_SYSTEMIMAGES_USE_SQUASHFS=$USE_SQUASHFS"
+export TARGET_SYSTEMIMAGES_USE_SQUASHFS=$USE_SQUASHFS
+build ${TARGET_PRODUCT}
