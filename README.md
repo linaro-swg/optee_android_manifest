@@ -41,6 +41,9 @@ cd lcr-ref-hikey
 ./build.sh #or `./build.sh -4g` for a 4GB board!
 ```
 
+**WARNNING:** `--force-sync` is used which means you might **lose your
+work** so save accordingly!
+
 **NOTE:** You can add `-squashfs` to `build.sh` option to make
 `system.img` size smaller, but this will make `/system` read-only, so
 you won't be able to push files to it.
