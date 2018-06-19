@@ -36,9 +36,15 @@ sudo apt-get install android-tools-adb android-tools-fastboot autoconf \
 
 ```
 git clone https://github.com/linaro-swg/optee_android_manifest -b lcr-ref-hikey
-cd lcr-ref-hikey
+cd optee_android_manifest
+
 ./sync-o.sh
+# Wait until you see "SUCCESS!" before building.
+# If not, error has occurred.
+
 ./build.sh #or `./build.sh -4g` for a 4GB board!
+# Wait until you see "SUCCESS!" before flashing.
+# If not, error has occurred.
 ```
 
 **WARNNING:** `--force-sync` is used which means you might **lose your

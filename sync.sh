@@ -109,6 +109,8 @@ for i in ${PATCHSETS}; do
 	func_apply_patch $i
 done
 
+echo ""
+echo ""
 echo "applying patchset: optee-master-workarounds"
 func_apply_patch optee-master-workarounds
 
@@ -120,6 +122,10 @@ if [ "$version" = "o" ] || [ "$version" = "n" ]; then
 else
 	echo "no swg-mods patchsets applied"
 fi
+
+echo ""
+echo ""
+echo "SUCCESS!"
 
 #./build.sh
 #./build.sh -j ${CPUS}

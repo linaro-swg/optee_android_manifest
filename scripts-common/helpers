@@ -6,7 +6,8 @@ CPUS=${CPUS:-$(grep processor /proc/cpuinfo |wc -l)}
 #CPUS=${CPUS:-$(getconf _NPROCESSORS_ONLN)}
 dbg=false
 
-# sync*.sh get config, build*.sh doesn't!
+# sync*.sh get_config, build*.sh doesn't!
+# build*.sh only export_config
 function get_config(){
 	if [ -d abc ]; then
 		echo "android-build-configs (abc) exists"
