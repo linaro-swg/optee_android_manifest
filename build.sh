@@ -11,9 +11,12 @@ variant="userdebug"
 #export TEMPORARY_DISABLE_PATH_RESTRICTIONS=true
 export USE_CCACHE=1
 
+TARGET_USERDATAIMAGE_4GB=false
 USE_SQUASHFS=false
 VTS=false
 CTS=false
+unset TARGETS
+unset SHOW_COMMANDS
 
 function build(){
     #export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
