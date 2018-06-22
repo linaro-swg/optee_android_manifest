@@ -5,7 +5,6 @@ source ${ROOT_DIR}/scripts-common/helpers
 
 variant="userdebug"
 
-export SHOW_COMMANDS=showcommands
 #export ALLOW_MISSING_DEPENDENCIES=true
 
 #https://android.googlesource.com/platform/build/+/master/Changes.md#PATH_Tools
@@ -27,8 +26,8 @@ function build(){
 
     echo "Start to build:" >>logs/time.log
     date +%Y%m%d-%H%M >>logs/time.log
-    echo "(time LANG=C make ${TARGETS[@]} -j${CPUS}) 2>&1 |tee logs/build-${product}.log"
-    (time LANG=C make ${TARGETS[@]} -j${CPUS} ) 2>&1 |tee logs/build-${product}.log
+    echo "(time LANG=C make ${TARGETS[@]} -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${product}.log"
+    (time LANG=C make ${TARGETS[@]} -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${product}.log
     date +%Y%m%d-%H%M >>logs/time.log
 }
 
@@ -51,14 +50,15 @@ function build_hikey(){
 		echo "CPUS=${CPUS}"
 	fi
 	echo "Building CTS.."
-	make -j${CPUS} cts
+	make -j${CPUS} ${SHOW_COMMANDS} cts
 	echo "CTS build done!"
     fi
 }
 
 clean_build() {
     echo -e "\nINFO: Removing entire out dir. . .\n"
-    make clobber
+    echo "make -j${CPUS} ${SHOW_COMMANDS} clobber"
+    make -j${CPUS} ${SHOW_COMMANDS} clobber
 }
 
 ##########################################################
@@ -86,6 +86,11 @@ while [ "$1" != "" ]; do
 			shift
 			echo "Adding build target: $1"
 			TARGETS=(${TARGETS[@]} $1)
+			;;
+		-d)
+			echo "Print debug"
+			dbg=true
+			SHOW_COMMANDS=showcommands
 			;;
                 *)	# default adds to target list without shift
                         echo "Adding build target by default: $1"
