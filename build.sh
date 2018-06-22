@@ -12,6 +12,8 @@ variant="userdebug"
 export USE_CCACHE=1
 
 USE_SQUASHFS=false
+VTS=false
+CTS=false
 
 function build(){
     #export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
@@ -28,6 +30,24 @@ function build(){
     date +%Y%m%d-%H%M >>logs/time.log
     echo "(time LANG=C make ${TARGETS[@]} -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${product}.log"
     (time LANG=C make ${TARGETS[@]} -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${product}.log
+    echo "Build done!"
+
+    if $VTS; then
+	echo "Start VTS build:" >>logs/time.log
+	date +%Y%m%d-%H%M >>logs/time.log
+	echo "(time LANG=C make vts -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${product}.log"
+	(time LANG=C make vts -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${product}.log
+	echo "VTS build done!"
+    fi
+
+    if $CTS; then
+	echo "Start CTS build:" >>logs/time.log
+	date +%Y%m%d-%H%M >>logs/time.log
+	echo "(time LANG=C make cts -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${product}.log"
+	(time LANG=C make cts -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${product}.log
+	echo "CTS build done!"
+    fi
+
     date +%Y%m%d-%H%M >>logs/time.log
 }
 
@@ -45,14 +65,6 @@ function build_hikey(){
     export CFG_TA_DYNLINK=y
     build hikey
     echo "HiKey build done!"
-    if $CTS; then
-	if $dbg; then
-		echo "CPUS=${CPUS}"
-	fi
-	echo "Building CTS.."
-	make -j${CPUS} ${SHOW_COMMANDS} cts
-	echo "CTS build done!"
-    fi
 }
 
 clean_build() {
@@ -77,6 +89,10 @@ while [ "$1" != "" ]; do
 		-squashfs)
 			echo "Use squashfs for system img"
 			USE_SQUASHFS=true
+			;;
+		-vts)
+			echo "Build VTS"
+			VTS=true
 			;;
 		-cts)
 			echo "Build CTS"
