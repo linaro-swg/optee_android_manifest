@@ -50,6 +50,10 @@ cd optee_android_manifest
 **WARNNING:** `--force-sync` is used which means you might **lose your
 work** so save accordingly!
 
+**EXTREME WARNING:** Do **NOT** use `git clean` with `-x` or `-X` or
+`-e` option in `optee_android_manifest`, else risk **losing all
+files**!!!
+
 **NOTE:** You can add `-squashfs` to `build.sh` option to make
 `system.img` size smaller, but this will make `/system` read-only, so
 you won't be able to push files to it.
