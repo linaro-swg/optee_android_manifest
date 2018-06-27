@@ -124,6 +124,4 @@ echo "Overwrite TARGET_SYSTEMIMAGES_USE_SQUASHFS=true in android-build-configs (
 echo "export TARGET_SYSTEMIMAGES_USE_SQUASHFS=$USE_SQUASHFS"
 export TARGET_SYSTEMIMAGES_USE_SQUASHFS=$USE_SQUASHFS
 build ${TARGET_PRODUCT}
-echo ""
-echo ""
-echo "SUCCESS!"
+echo "Please make sure there are no errors before flashing!"

@@ -39,12 +39,10 @@ git clone https://github.com/linaro-swg/optee_android_manifest -b lcr-ref-hikey
 cd optee_android_manifest
 
 ./sync-o.sh
-# Wait until you see "SUCCESS!" before building.
-# If not, error has occurred.
+# Please make sure there are no errors before building!
 
 ./build.sh #or `./build.sh -4g` for a 4GB board!
-# Wait until you see "SUCCESS!" before flashing.
-# If not, error has occurred.
+# Please make sure there are no errors before flashing!
 ```
 
 **WARNNING:** `--force-sync` is used which means you might **lose your

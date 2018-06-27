@@ -125,7 +125,8 @@ fi
 
 echo ""
 echo ""
-echo "SUCCESS!"
+echo "Sync done!"
+echo "Please make sure there are no errors before building!"
 
 #./build.sh
 #./build.sh -j ${CPUS}
