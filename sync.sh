@@ -109,14 +109,18 @@ for i in ${PATCHSETS}; do
 	func_apply_patch $i
 done
 
-echo ""
-echo ""
-echo "applying patchset: optee-master-workarounds"
-func_apply_patch optee-master-workarounds
+# if master then optee-master-workarounds will be applied automatically
+# above so no need to do it manually here
+if [ "$version" != "master" ]; then
+	echo ""
+	echo ""
+	echo "applying patchset: optee-master-workarounds"
+	func_apply_patch optee-master-workarounds
+fi
 
+echo ""
+echo ""
 if [ "$version" = "o" ] || [ "$version" = "n" ]; then
-	echo ""
-	echo ""
 	echo "applying patchset: swg-mods-${version}"
 	func_apply_patch swg-mods-${version}
 else
