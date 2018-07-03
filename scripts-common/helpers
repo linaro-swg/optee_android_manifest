@@ -22,18 +22,14 @@ function get_config(){
 }
 
 function export_config(){
-    # http://wiki.bash-hackers.org/syntax/pe#use_a_default_value
-    local android_board=${1:-hikey}
-    local android_ver=${2:-master}
-
-    echo "Exporting configs from abc/lcr-reference-${android_board}-${android_ver}"
+    echo "Exporting configs from abc/lcr-reference-${board}-${version}"
 
     while read line; do
         if ! echo ${line} |grep -q '^#'; then
 	    echo "export ${line}"
             eval "export ${line}"
         fi
-    done < abc/lcr-reference-${android_board}-${android_ver}
+    done < abc/lcr-reference-${board}-${version}
 }
 
 function get_manifest_groups(){

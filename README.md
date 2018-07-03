@@ -41,7 +41,7 @@ cd optee_android_manifest
 ./sync-o.sh
 # Please make sure there are no errors before building!
 
-./build.sh #or `./build.sh -4g` for a 4GB board!
+./build-o.sh #or `./build-o.sh -4g` for a 4GB board!
 # Please make sure there are no errors before flashing!
 ```
 
@@ -58,15 +58,15 @@ you won't be able to push files to it.
 
 For relatively stable builds, use below instead of `./sync-o.sh`.
 ```
-./sync.sh -v o -bm <name of a pinned manifest file in archive/> -d 2>&1 |tee logs/sync-o.log
+./sync.sh -v o -bm <name of a pinned manifest file in archive/> 2>&1 |tee logs/sync-o.log
 
 # e.g.
-./sync.sh -v o -bm pinned-manifest_20180808-0808.xml -d 2>&1 |tee logs/sync-o.log
+./sync.sh -v o -bm pinned-manifest_20180808-0808.xml 2>&1 |tee logs/sync-o.log
 ```
 
-For newer versions, use `./sync-p.sh` or `./sync-master.sh` instead of
-`./sync-o.sh`, but these are **NOT TESTED and NOT SUPPORTED** atm so build
-at your own risk!
+For newer versions, use `./{sync,build}-p.sh` or `./{sync,build}-master.sh`
+instead of `./{sync,build}-o.sh`, but these are **NOT TESTED and NOT
+SUPPORTED** atm so build at your own risk!
 
 ## 4. Flashing the image
 

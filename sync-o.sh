@@ -1,6 +1,4 @@
 #!/bin/bash
 
 mkdir -p logs
-./sync.sh -v o -d 2>&1 |tee logs/sync-o.log
-#./sync.sh -v o -bm pinned-manifest_YYYYMMDD-HHMM -d 2>&1 |tee logs/sync-o.log
-#./sync.sh -v o -j 24 -d 2>&1 |tee logs/sync-o.log
+./sync.sh -v o 2>&1 |tee logs/sync-o.log

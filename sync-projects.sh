@@ -28,7 +28,7 @@ while [ "$1" != "" ]; do
 			echo "Num threads: $1"
 			CPUS=$1
 			;;
-		-d)
+		-d)	# overwrite dbg in helpers
 			echo "Print debug"
 			dbg=true
 			;;

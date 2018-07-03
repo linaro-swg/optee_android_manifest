@@ -18,36 +18,34 @@ CTS=false
 unset TARGETS
 unset SHOW_COMMANDS
 
+version="master"
+board="hikey"
+
 function build(){
     #export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
     #export PATH=${JAVA_HOME}/bin:$PATH
-    product="${1}"
-    if [ -z "${product}" ]; then
-	echo "Please specify target board"
-	return
-    fi
     source build/envsetup.sh
-    lunch ${product}-${variant}
+    lunch ${board}-${variant}
 
     echo "Start to build:" >>logs/time.log
     date +%Y%m%d-%H%M >>logs/time.log
-    echo "(time LANG=C make ${TARGETS[@]} -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${product}.log"
-    (time LANG=C make ${TARGETS[@]} -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${product}.log
+    echo "(time LANG=C make ${TARGETS[@]} -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${board}.log"
+    (time LANG=C make ${TARGETS[@]} -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${board}.log
     echo "Build done!"
 
     if $VTS; then
 	echo "Start VTS build:" >>logs/time.log
 	date +%Y%m%d-%H%M >>logs/time.log
-	echo "(time LANG=C make vts -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${product}.log"
-	(time LANG=C make vts -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${product}.log
+	echo "(time LANG=C make vts -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${board}.log"
+	(time LANG=C make vts -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${board}.log
 	echo "VTS build done!"
     fi
 
     if $CTS; then
 	echo "Start CTS build:" >>logs/time.log
 	date +%Y%m%d-%H%M >>logs/time.log
-	echo "(time LANG=C make cts -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${product}.log"
-	(time LANG=C make cts -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${product}.log
+	echo "(time LANG=C make cts -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${board}.log"
+	(time LANG=C make cts -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${board}.log
 	echo "CTS build done!"
     fi
 
@@ -66,7 +64,8 @@ function build_hikey(){
     export CFG_SECURE_DATA_PATH=y
     export CFG_SECSTOR_TA_MGMT_PTA=y
     export CFG_TA_DYNLINK=y
-    build hikey
+    board=hikey
+    build
     echo "HiKey build done!"
 }
 
@@ -101,15 +100,29 @@ while [ "$1" != "" ]; do
 			echo "Build CTS"
 			CTS=true
 			;;
+		-v)     # overwrite version above
+			# default is master
+			# eg o or p
+			shift
+			echo "version=$1"
+			version=$1
+			;;
+		-t)     # overwrite board above
+			# default is hikey
+			# no other eg atm
+			shift
+			echo "board=$1"
+			board=$1
+			;;
+		-d)	# overwrite dbg in helpers
+			echo "Print debug"
+			dbg=true
+			SHOW_COMMANDS=showcommands
+			;;
 		-b | --build-target)
 			shift
 			echo "Adding build target: $1"
 			TARGETS=(${TARGETS[@]} $1)
-			;;
-		-d)
-			echo "Print debug"
-			dbg=true
-			SHOW_COMMANDS=showcommands
 			;;
                 *)	# default adds to target list without shift
                         echo "Adding build target by default: $1"
@@ -119,9 +132,9 @@ while [ "$1" != "" ]; do
 	shift
 done
 
-export_config hikey o
+export_config
 echo "Overwrite TARGET_SYSTEMIMAGES_USE_SQUASHFS=true in android-build-configs (abc)!"
 echo "export TARGET_SYSTEMIMAGES_USE_SQUASHFS=$USE_SQUASHFS"
 export TARGET_SYSTEMIMAGES_USE_SQUASHFS=$USE_SQUASHFS
-build ${TARGET_PRODUCT}
+build ${board}
 echo "Please make sure there are no errors before flashing!"

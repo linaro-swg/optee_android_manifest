@@ -53,7 +53,7 @@ while [ "$1" != "" ]; do
 			echo "export MIRROR=$1"
 			export MIRROR=$1
 			;;
-		-d)
+		-d)	# overwrite dbg in helpers
 			echo "Print debug"
 			dbg=true
 			;;
@@ -132,6 +132,5 @@ echo ""
 echo "Sync done!"
 echo "Please make sure there are no errors before building!"
 
-#./build.sh
-#./build.sh -j ${CPUS}
+#./build.sh -j ${CPUS} -v ${version} -t {board}
 exit

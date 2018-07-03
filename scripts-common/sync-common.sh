@@ -91,7 +91,7 @@ main(){
     # update myself first
     git pull
     get_config
-    export_config ${board} ${version}
+    export_config
 
     # if MIRROR is local then repo sync
     if [[ "X${MIRROR}" = X/* ]]; then
