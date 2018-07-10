@@ -120,7 +120,7 @@ fi
 
 echo ""
 echo ""
-if [ "$version" = "o" ] || [ "$version" = "n" ]; then
+if [ "$version" = "o" ] || [ "$version" = "n" ] || [ "$version" = "master" ]; then
 	echo "applying patchset: swg-mods-${version}"
 	func_apply_patch swg-mods-${version}
 else
