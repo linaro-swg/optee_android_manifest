@@ -83,7 +83,6 @@ ${BASE}/sync-projects.sh -j ${CPUS} -d \
                           android-patchsets \
                           android-build-configs \
                           device/linaro/hikey \
-                          kernel/linaro/hisilicon/ \
                           frameworks/av \
                           frameworks/base \
                           frameworks/native \
@@ -101,6 +100,16 @@ ${BASE}/sync-projects.sh -j ${CPUS} -d \
                         external/optee_client \
                         external/optee_examples \
                         optee/optee_os
+
+if [ "$version" = "master" ]; then
+	echo "unshallow 4.14 kernel"
+	${BASE}/sync-projects.sh -j ${CPUS} -d kernel/linaro/hisilicon-4.14
+elif [ "$version" = "p" ] || [ "$version" = "o" ] || [ "$version" = "n" ]; then
+	echo "unshallow 4.9 kernel"
+	${BASE}/sync-projects.sh -j ${CPUS} -d kernel/linaro/hisilicon
+else
+	echo "unknown kernel version!"
+fi
 
 for i in ${PATCHSETS}; do
 	echo ""
