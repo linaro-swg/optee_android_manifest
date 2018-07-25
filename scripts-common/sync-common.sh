@@ -53,11 +53,12 @@ func_sync_linaro(){
     popd
 
     cp -auvf swg.xml .repo/local_manifests/
-    if [ ! -d android-patchsets ]; then
-        mkdir -p android-patchsets
-    fi
+
     # can have my own local patch file in this repo
-    #cp -auvf SWG-PATCHSET android-patchsets/
+    #if [ ! -d android-patchsets ]; then
+    #    mkdir -p android-patchsets
+    #fi
+    #cp -auvf SWG-PATCHSETS android-patchsets/
     #hikey_mali_binary_new
 }
 
