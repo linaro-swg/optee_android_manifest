@@ -52,7 +52,7 @@ func_sync_linaro(){
     fi
     popd
 
-    cp -auvf swg.xml .repo/local_manifests/
+    cp -auvf swg-${version}.xml .repo/local_manifests/
 
     # can have my own local patch file in this repo
     #if [ ! -d android-patchsets ]; then
