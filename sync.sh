@@ -96,6 +96,7 @@ ${BASE}/sync-projects.sh -j ${CPUS} -d \
                         system/connectivity/wificond \
                         bootable/recovery \
                         libcore \
+                        test/vts \
                         external/optee_test \
                         external/optee_client \
                         external/optee_examples \
