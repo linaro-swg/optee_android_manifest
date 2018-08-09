@@ -5,8 +5,8 @@ BASE=$(cd $(dirname $0);pwd)
 source ${BASE}/scripts-common/sync-common.sh
 
 # overwrite remote MIRROR in sync-common.sh if local mirror exists
-if [ -d /home/ubuntu/aosp-mirror/platform/manifest.git ]; then
-    MIRROR="/home/ubuntu/aosp-mirror/platform/manifest.git"
+if [ -d /opt/aosp/.mirror/platform/manifest.git ]; then
+    MIRROR="/opt/aosp/.mirror/platform/manifest.git"
 else
     echo "No local mirrors"
 fi
@@ -15,6 +15,10 @@ fi
 ##########################################################
 while [ "$1" != "" ]; do
 	case $1 in
+		-zfs) #overwrite zfs_clone in sync-common.sh
+			echo "src dir is a zfs clone"
+			zfs_clone=true
+			;;
 		-nl|--nolinaro) # overwrite sync_linaro in sync-common.sh
 			echo "Skip local manifests sync"
 			sync_linaro=false
