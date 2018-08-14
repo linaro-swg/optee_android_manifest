@@ -107,10 +107,10 @@ ${BASE}/sync-projects.sh -j ${CPUS} -d \
                         external/optee_examples \
                         optee/optee_os
 
-if [ "$version" = "master" ]; then
+if [ "$version" = "master" ] || [ "$version" = "p" ]; then
 	echo "unshallow 4.14 kernel"
 	${BASE}/sync-projects.sh -j ${CPUS} -d kernel/linaro/hisilicon-4.14
-elif [ "$version" = "p" ] || [ "$version" = "o" ] || [ "$version" = "n" ]; then
+elif [ "$version" = "o" ] || [ "$version" = "n" ]; then
 	echo "unshallow 4.9 kernel"
 	${BASE}/sync-projects.sh -j ${CPUS} -d kernel/linaro/hisilicon
 else
