@@ -129,7 +129,7 @@ function func_apply_patch(){
     fi
 
     if [[ "${patch_name}" = "optee"* ]] && [[ $1 =~ [0-9]+ ]]; then
-	echo "Skipping versioned optee patches since we're using master!"
+	echo "Skip ${patch_name} since we're using master!"
 	return
     fi
 
