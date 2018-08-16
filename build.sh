@@ -136,5 +136,10 @@ export_config
 echo "Overwrite TARGET_SYSTEMIMAGES_USE_SQUASHFS=true in android-build-configs (abc)!"
 echo "export TARGET_SYSTEMIMAGES_USE_SQUASHFS=$USE_SQUASHFS"
 export TARGET_SYSTEMIMAGES_USE_SQUASHFS=$USE_SQUASHFS
+echo "Set TARGET_BOOTIMAGE_USE_FAT to false for now due to fat16copy error"
+#alternatively try mcopy
+#see https://github.com/vchong/device-linaro-hikey/commit/fcfe2d6ac00539f2d4cf77295503c0d285ee8170
+echo "export TARGET_BOOTIMAGE_USE_FAT=false"
+export TARGET_BOOTIMAGE_USE_FAT=false
 build ${board}
 echo "Please make sure there are no errors before flashing!"
