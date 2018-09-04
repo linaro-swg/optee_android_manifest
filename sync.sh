@@ -76,7 +76,7 @@ done
 #	exit 1
 #fi
 
-if [ "${base_manifest}" != "default.xml" ] && [[ "{$base_manifest}" != "pinned-manifest"* ]]; then
+if [ "${base_manifest}" != "default.xml" ] && [[ "${base_manifest}" != "pinned-manifest"* ]]; then
 	echo "Please specify a valid pinned-manifest_YYYYMMDD-HHMM.xml from archive/!"
 	exit 1
 fi
