@@ -61,7 +61,7 @@ For relatively stable builds, use below instead of `./sync-o.sh`.
 ./sync.sh -v o -bm <name of a pinned manifest file in archive/> 2>&1 |tee logs/sync-o.log
 
 # e.g.
-./sync.sh -v o -bm pinned-manifest_20180808-0808.xml 2>&1 |tee logs/sync-o.log
+./sync.sh -v o -bm pinned-manifest-stable_yvr18.xml 2>&1 |tee logs/sync-o.log
 ```
 
 For newer versions, use `./{sync,build}-p.sh` or `./{sync,build}-master.sh`
