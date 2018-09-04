@@ -94,6 +94,7 @@ ${BASE}/sync-projects.sh -j ${CPUS} -d \
                           system/sepolicy \
                           system/core \
                           system/netd \
+                          system/bt \
                           packages/inputmethods/LatinIME \
                           hardware/interfaces \
                         external/libdrm \
