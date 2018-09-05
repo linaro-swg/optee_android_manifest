@@ -38,10 +38,10 @@ sudo apt-get install android-tools-adb android-tools-fastboot autoconf \
 git clone https://github.com/linaro-swg/optee_android_manifest -b lcr-ref-hikey
 cd optee_android_manifest
 
-./sync-o.sh
+./sync-p.sh
 # Please make sure there are no errors before building!
 
-./build-o.sh #or `./build-o.sh -4g` for a 4GB board!
+./build-p.sh #or `./build-p.sh -4g` for a 4GB board!
 # Please make sure there are no errors before flashing!
 ```
 
@@ -56,19 +56,19 @@ files**!!!
 `system.img` size smaller, but this will make `/system` read-only, so
 you won't be able to push files to it.
 
-For relatively stable builds, use below instead of `./sync-o.sh`.
+For relatively stable builds, use below instead of `./sync-p.sh`.
 ```
 mkdir logs
-./sync.sh -v o -bm <name of a pinned manifest file in archive/> 2>&1 |tee logs/sync-o.log
+./sync.sh -v p -bm <name of a pinned manifest file in archive/> 2>&1 |tee logs/sync-p.log
 
 # e.g.
 mkdir logs
-./sync.sh -v o -bm pinned-manifest-stable_yvr18.xml 2>&1 |tee logs/sync-o.log
+./sync.sh -v p -bm pinned-manifest-stable_yvr18.xml 2>&1 |tee logs/sync-p.log
 ```
 
-For newer versions, use `./{sync,build}-p.sh` or `./{sync,build}-master.sh`
-instead of `./{sync,build}-o.sh`, but these are **NOT TESTED and NOT
-SUPPORTED** atm so build at your own risk!
+For other versions, use `./{sync,build}-o.sh` or `./{sync,build}-master.sh`
+instead of `./{sync,build}-p.sh`, but these are **NOT MAINTAINED** so
+build at your own risk!
 
 ## 4. Flashing the image
 
