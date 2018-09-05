@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+ <remote name="github" fetch="https://github.com/" />
+
+ <remove-project name="OP-TEE/optee_test" />
+ <remove-project name="OP-TEE/optee_client" />
+ <remove-project name="OP-TEE/optee_os" />
+ <remove-project name="device/linaro/hikey"/>
+ <remove-project name="platform/hardware/interfaces"/>
+ <!--
+ <remove-project name="platform/test/vts"/>
+ <remove-project name="android-patchsets"/>
+ -->
+ <remove-project name="kernel/hikey-linaro" />
+ <remove-project name="platform/frameworks/base" />
+ <remove-project name="platform/system/bt" />
+
+ <project path="external/optee_test" name="vchong/optee_test" revision="yvr18" remote="github" />
+ <project path="external/optee_client" name="vchong/optee_client" revision="yvr18" remote="github" />
+ <project path="optee/optee_os" name="vchong/optee_os" revision="yvr18" remote="github" />
+ <!--
+ <project path="optee/optee_os" name="vchong/optee_os" revision="kmgl" remote="github" />
+ -->
+
+ <project path="device/linaro/kmgk" name="vchong/kmgk" revision="kmgk" remote="github" />
+
+ <project path="device/linaro/hikey" name="vchong/device-linaro-hikey" revision="yvr18" remote="github" />
+ <project path="hardware/interfaces" name="vchong/hardware_interfaces" revision="yvr18" remote="github" />
+ <!--
+ <project path="test/vts" name="vchong/vts" revision="kmgk" remote="github" />
+ <project path="android-patchsets" name="vchong/android-patchsets" revision="kmgk" remote="github" />
+ <project path="device/linaro/sks" name="vchong/device-linaro-sks" revision="retrust" remote="github" />
+ -->
+ <project path="kernel/linaro/hisilicon-4.14" name="vchong/linux" revision="yvr18-4.14" remote="github" />
+ <project path="frameworks/base" name="vchong/platform_frameworks_base" revision="yvr18" remote="github" />
+ <project path="system/bt" name="vchong/system_bt" revision="yvr18" remote="github" />
+
+</manifest>

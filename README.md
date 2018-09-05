@@ -58,9 +58,11 @@ you won't be able to push files to it.
 
 For relatively stable builds, use below instead of `./sync-o.sh`.
 ```
+mkdir logs
 ./sync.sh -v o -bm <name of a pinned manifest file in archive/> 2>&1 |tee logs/sync-o.log
 
 # e.g.
+mkdir logs
 ./sync.sh -v o -bm pinned-manifest-stable_yvr18.xml 2>&1 |tee logs/sync-o.log
 ```
 
