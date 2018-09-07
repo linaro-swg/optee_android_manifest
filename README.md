@@ -46,11 +46,12 @@ cd optee_android_manifest
 ```
 
 **WARNNING:** `--force-sync` is used which means you might **lose your
-work** so save accordingly!
+work** so save often, save frequent, and save accordingly, especially
+before running `sync-p.sh` again!
 
 **EXTREME WARNING:** Do **NOT** use `git clean` with `-x` or `-X` or
-`-e` option in `optee_android_manifest`, else risk **losing all
-files**!!!
+`-e` option in `optee_android_manifest`/, else risk **losing all
+files** in the directory!!!
 
 **NOTE:** You can add `-squashfs` to `build.sh` option to make
 `system.img` size smaller, but this will make `/system` read-only, so
@@ -85,7 +86,7 @@ sudo ./device/linaro/hikey/installer/hikey/flash-all.sh /dev/ttyUSBn
 where the ttyUSBn device is the one that appears after rebooting with
 the 3-4 jumper installed.  Note that the device only remains in this
 recovery mode for about 90 seconds.  If you take too long to run the
-flash commands, it will need to be reset again.
+`flash-all.sh` script, it will need to be reset again.
 
 ## 5. Partial flashing
 
@@ -94,15 +95,12 @@ images.  After modifying and rebuilding Android, it is only necessary
 to flash *boot*, *system*, *cache*, and *userdata*.  If you aren't
 modifying the kernel, *boot* is not necessary, either.
 
-This directory contains a prebuilt trusted firmware image `fip.bin`.
-If you wish to build the trusted os from source, follow the steps in the
-**Build the bootloader firmware (fip.bin)** section above.
-
 ## 6. Running xtest
 
 Please do NOT try to run `tee-supplicant` as it has already been started
 automatically as a service! Once booted to the command prompt, `xtest`
-can be run immediately.
+can be run immediately after switching to root, i.e. after running
+`su`.
 
 ## 7. Enable adb over usb
 
