@@ -37,10 +37,10 @@ sudo apt-get install android-tools-adb android-tools-fastboot autoconf \
 ### 3.1. In an empty directory, clone the tree:
 
 ```
-repo init -u https://android-git.linaro.org/git/platform/manifest.git -b android-8.1.0_r29 -g "default,-non-default,-device,hikey"
+repo init -u https://android-git.linaro.org/git/platform/manifest.git -b android-8.1.0_r29 -g "default,-notdefault,-device,hikey"
 
 # Please do NOT run below command! Internal reference only!
-# repo init -u /home/ubuntu/aosp-mirror/platform/manifest.git -b android-8.1.0_r29 -g "default,-non-default,-device,hikey" -p linux --depth=1
+# repo init -u /home/ubuntu/aosp-mirror/platform/manifest.git -b android-8.1.0_r29 -g "default,-notdefault,-device,hikey" -p linux --depth=1
 ```
 
 **!!! BIG WARNING !!!**: Do **NOT** to use `--depth=1` option, else patches in 3.4 will **FAIL** to apply!!! If you must use `--depth=1`, then you must find out which repos the patches apply to and `--unshallow` all of them! The number of repos are not few, and can increase over time.
