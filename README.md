@@ -1,3 +1,5 @@
+# NOTE: For building with scripts, please head over to https://github.com/linaro-swg/optee_android_manifest/tree/lcr-ref-hikey!
+
 # AOSP+OP-TEE manifest
 
 This repository contains a local manifest that can be used to build an
