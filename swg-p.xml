@@ -5,30 +5,9 @@
  <remove-project name="OP-TEE/optee_test" />
  <remove-project name="OP-TEE/optee_client" />
  <remove-project name="OP-TEE/optee_os" />
- <!--
- <remove-project name="device/linaro/hikey"/>
- <remove-project name="platform/hardware/interfaces"/>
- <remove-project name="platform/test/vts"/>
- <remove-project name="kernel/hikey-linaro" />
- <remove-project name="android-patchsets"/>
- -->
 
  <project path="external/optee_test" name="OP-TEE/optee_test" revision="master" remote="github" />
  <project path="external/optee_client" name="OP-TEE/optee_client" revision="master" remote="github" />
  <project path="optee/optee_os" name="OP-TEE/optee_os" revision="master" remote="github" />
- <!--
- <project path="optee/optee_os" name="vchong/optee_os" revision="kmgl" remote="github" />
- -->
-
- <project path="device/linaro/kmgk" name="vchong/kmgk" revision="kmgk" remote="github" />
-
- <!--
- <project path="device/linaro/hikey" name="vchong/device-linaro-hikey" revision="kmgl" remote="github" />
- <project path="hardware/interfaces" name="vchong/hardware_interfaces" revision="kmgk" remote="github" />
- <project path="test/vts" name="vchong/vts" revision="kmgk" remote="github" />
- <project path="android-patchsets" name="vchong/android-patchsets" revision="kmgk" remote="github" />
- <project path="device/linaro/sks" name="vchong/device-linaro-sks" revision="retrust" remote="github" />
- <project path="kernel/linaro/hisilicon" name="vchong/linux" revision="android-hikey-linaro-4.9_no-tee-shm" remote="github" />
- -->
 
 </manifest>
