@@ -138,19 +138,6 @@ fi
 
 echo ""
 echo ""
-if [ "$version" = "master" ] || [ "$version" = "p" ] || [ "$version" = "o" ] || [ "$version" = "n" ]; then
-	if [ -f android-patchsets/swg-mods-${version} ]; then
-		echo "applying patchset: swg-mods-${version}"
-		func_apply_patch swg-mods-${version}
-	else
-		echo "swg-mods-${version} does not exist"
-	fi
-else
-	echo "no swg-mods patchsets applied"
-fi
-
-echo ""
-echo ""
 if [ "$version" = "master" ] || [ "$version" = "p" ] || [ "$version" = "o" ]; then
 	if [ -f swg-kmgk-${version} ]; then
 		echo "applying patchset: swg-kmgk-${version}"

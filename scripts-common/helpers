@@ -22,14 +22,14 @@ function get_config(){
 }
 
 function export_config(){
-    echo "Exporting configs from abc/lcr-reference-${board}-${version}"
+    echo "Exporting configs from abc/${board}-optee-${version}"
 
     while read line; do
         if ! echo ${line} |grep -q '^#'; then
 	    echo "export ${line}"
             eval "export ${line}"
         fi
-    done < abc/lcr-reference-${board}-${version}
+    done < abc/${board}-optee-${version}
 }
 
 function get_manifest_groups(){
