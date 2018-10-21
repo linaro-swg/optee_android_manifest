@@ -1,115 +1,114 @@
-# AOSP+OP-TEE manifest
+# OP-TEE Based Keymaster/Gatekeeper HIDL HAL Modules - Release 3.3.0
 
-This repository contains a local manifest that can be used to build an
-AOSP build that includes OP-TEE for the hikey board.
-
-## 1. References
-
-* [AOSP Hikey build instructions][1]
-
-## 2. Prerequisites
-
-* Should already be able to build AOSP.  Distro should have necessary
-  packages installed, and the repo tool should be installed.  Note
-  that AOSP needs to be built with Java.  Also make sure that
-  the `mtools` package is installed, which is needed to make the hikey
-  boot image.
-
-* In addition, you will need the pre-requisites necessary to build
-  optee-os.
-
-  After following the AOSP setup instructions, the following
-  additional packages are needed.
+## Build (this assumes all dependencies for building AOSP are met!) 
 
 ```
-sudo apt-get install android-tools-adb android-tools-fastboot autoconf \
-	automake bc bison build-essential cscope curl device-tree-compiler flex \
-	ftp-upload gdisk iasl libattr1-dev libc6:i386 libcap-dev libfdt-dev \
-	libftdi-dev libglib2.0-dev libhidapi-dev libncurses5-dev \
-	libpixman-1-dev libssl-dev libstdc++6:i386 libtool libz1:i386 make \
-	mtools netcat python-crypto python-serial python-wand unzip uuid-dev \
-	xdg-utils xterm xz-utils zlib1g-dev python-mako openjdk-8-jdk \
-	ncurses-dev realpath android-tools-fsutils dosfstools libxml2-utils
-```
-
-## 3. Build steps
-
-```
-git clone https://github.com/linaro-swg/optee_android_manifest -b lcr-ref-hikey
+git clone https://github.com/linaro-swg/optee_android_manifest -b 3.3.0
 cd optee_android_manifest
-
-./sync-p.sh
-# Please make sure there are no errors before building!
-
-./build-p.sh #or `./build-p.sh -4g` for a 4GB board!
-# Please make sure there are no errors before flashing!
+./sync.sh -v p -bm pinned-manifest-stable_kmgk_3.3.0.xml 
+./build-p.sh
 ```
 
-**WARNNING:** `--force-sync` is used which means you might **lose your
-work** so save often, save frequent, and save accordingly, especially
-before running `sync-p.sh` again!
+## Flash
 
-**EXTREME WARNING:** Do **NOT** use `git clean` with `-x` or `-X` or
-`-e` option in `optee_android_manifest`/, else risk **losing all
-files** in the directory!!!
-
-**NOTE:** You can add `-squashfs` to `build.sh` option to make
-`system.img` size smaller, but this will make `/system` read-only, so
-you won't be able to push files to it.
-
-For relatively stable builds, use below instead of `./sync-p.sh`.
-```
-mkdir logs
-./sync.sh -v p -bm <name of a pinned manifest file in archive/> 2>&1 |tee logs/sync-p.log
-
-# e.g.
-mkdir logs
-./sync.sh -v p -bm pinned-manifest-stable_yvr18.xml 2>&1 |tee logs/sync-p.log
-```
-
-For other versions, use `./{sync,build}-o.sh` or `./{sync,build}-master.sh`
-instead of `./{sync,build}-p.sh`, but these are **NOT MAINTAINED** so
-build at your own risk!
-
-## 4. Flashing the image
-
-The instructions for flashing the image can be found in detail under
-`device/linaro/hikey/install/README` in the tree.
-1. Jumper links 1-2 and 3-4, leaving 5-6 open, and reset the board.
-2. Invoke
+* Put board in recovery mode by connecting jumpers 1-2 and 3-4
+* Run command
 
 ```
 cp -a out/target/product/hikey/*.img device/linaro/hikey/installer/hikey/
-sudo ./device/linaro/hikey/installer/hikey/flash-all.sh /dev/ttyUSBn
+sudo ./device/linaro/hikey/installer/hikey/flash-all.sh /dev/ttyUSB<x>
+# x = device number that appears after rebooting with the 3-4 jumper connected
+# e.g.
+sudo ./device/linaro/hikey/installer/hikey/flash-all.sh /dev/ttyUSB0
 ```
 
-where the ttyUSBn device is the one that appears after rebooting with
-the 3-4 jumper installed.  Note that the device only remains in this
-recovery mode for about 90 seconds.  If you take too long to run the
-`flash-all.sh` script, it will need to be reset again.
+* Power off board
+* Remove jumper 3-4
+* Power on board
+ 
+## Test (from terminal, NOT console)
 
-## 5. Partial flashing
-
-The last handful of lines in the `flash-all.sh` script flash various
-images.  After modifying and rebuilding Android, it is only necessary
-to flash *boot*, *system*, *cache*, and *userdata*.  If you aren't
-modifying the kernel, *boot* is not necessary, either.
-
-## 6. Running xtest
-
-Please do NOT try to run `tee-supplicant` as it has already been started
-automatically as a service! Once booted to the command prompt, `xtest`
-can be run immediately after switching to root, i.e. after running
-`su`.
-
-## 7. Enable adb over usb
-
-Boot the device. On serial console:
+* Test outputs quite verbose logs and can take up to an hour to complete
 
 ```
-su setprop sys.usb.configfs 1
-stop adbd
-start adbd
+adb root
+adb remount
+
+# temporary workaround to disable non-OP-TEE related error messages from
+# cluttering up the console
+adb shell rm -f /vendor/etc/init/android.hardware.graphics.composer@2.1-service.rc
+adb reboot
+# wait until board reboots to prompt
+adb root
+adb remount
+
+# run VTS Gtest unit for Gatekeeper and Keymaster
+adb shell /data/nativetest64/VtsHalGatekeeperV1_0TargetTest/VtsHalGatekeeperV1_0TargetTest
+adb shell /data/nativetest64/VtsHalKeymasterV3_0TargetTest/VtsHalKeymasterV3_0TargetTest
+
+# help
+adb shell /data/nativetest64/VtsHalGatekeeperV1_0TargetTest/VtsHalGatekeeperV1_0TargetTest --help
+adb shell /data/nativetest64/VtsHalKeymasterV3_0TargetTest/VtsHalKeymasterV3_0TargetTest --help
+
 ```
 
-[1]: https://source.android.com/source/devices.html
+## Pre-built binaries
+
+[Download][1]
+
+## Sample test output
+
+```
+[==========] Running 9 tests from 1 test case.
+[----------] Global test environment set-up.
+[----------] 9 tests from GatekeeperHidlTest
+[ RUN      ] GatekeeperHidlTest.EnrollSuccess
+[       OK ] GatekeeperHidlTest.EnrollSuccess (22 ms)
+[ RUN      ] GatekeeperHidlTest.EnrollNoPassword
+[       OK ] GatekeeperHidlTest.EnrollNoPassword (3 ms)
+[ RUN      ] GatekeeperHidlTest.VerifySuccess
+[       OK ] GatekeeperHidlTest.VerifySuccess (85 ms)
+[ RUN      ] GatekeeperHidlTest.TrustedReenroll
+[       OK ] GatekeeperHidlTest.TrustedReenroll (163 ms)
+[ RUN      ] GatekeeperHidlTest.UntrustedReenroll
+[       OK ] GatekeeperHidlTest.UntrustedReenroll (162 ms)
+[ RUN      ] GatekeeperHidlTest.VerifyNoData
+[       OK ] GatekeeperHidlTest.VerifyNoData (23 ms)
+[ RUN      ] GatekeeperHidlTest.DeleteUserTest
+[       OK ] GatekeeperHidlTest.DeleteUserTest (83 ms)
+[ RUN      ] GatekeeperHidlTest.DeleteInvalidUserTest
+[       OK ] GatekeeperHidlTest.DeleteInvalidUserTest (81 ms)
+[ RUN      ] GatekeeperHidlTest.DeleteAllUsersTest
+[       OK ] GatekeeperHidlTest.DeleteAllUsersTest (238 ms)
+[----------] 9 tests from GatekeeperHidlTest (862 ms total)
+
+[----------] Global test environment tear-down
+[==========] 9 tests from 1 test case ran. (862 ms total)
+[  PASSED  ] 9 tests.
+``` 
+
+```
+[==========] Running 108 tests from 12 test cases.
+[----------] Global test environment set-up.
+[----------] 1 test from KeymasterVersionTest
+[ RUN      ] KeymasterVersionTest.SensibleFeatures
+[       OK ] KeymasterVersionTest.SensibleFeatures (0 ms)
+[----------] 1 test from KeymasterVersionTest (0 ms total)
+
+<snip>
+
+[----------] 3 tests from KeyDeletionTest
+[ RUN      ] KeyDeletionTest.DeleteKey
+[       OK ] KeyDeletionTest.DeleteKey (23518 ms)
+[ RUN      ] KeyDeletionTest.DeleteInvalidKey
+[       OK ] KeyDeletionTest.DeleteInvalidKey (5472 ms)
+[ RUN      ] KeyDeletionTest.DeleteAllKeys
+[       OK ] KeyDeletionTest.DeleteAllKeys (0 ms)
+[----------] 3 tests from KeyDeletionTest (28991 ms total)
+
+[----------] Global test environment tear-down
+[==========] 108 tests from 12 test cases ran. (3522945 ms total)
+[  PASSED  ] 108 tests.
+```
+
+[1]: http://people.linaro.org/~victor.chong/prebuilt/pie/330
