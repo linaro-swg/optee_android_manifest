@@ -85,6 +85,7 @@ main
 
 #if not stable manifest
 if [[ "${base_manifest}" != "pinned-manifest-stable"* ]]; then
+
 ${BASE}/sync-projects.sh -j ${CPUS} -d \
                           android-patchsets \
                           android-build-configs \
@@ -149,6 +150,7 @@ if [ "$version" = "master" ] || [ "$version" = "p" ] || [ "$version" = "o" ]; th
 else
 	echo "no swg-kmgk patchsets applied"
 fi
+
 fi
 #end if not stable manifest
 

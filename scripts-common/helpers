@@ -22,18 +22,20 @@ function get_config(){
 }
 
 function export_config(){
-    echo "Remove ${board}-optee-${version}-pullreqs from abc/${board}-optee-${version} before exporting configs"
-    sed -e "s/${board}-optee-${version}-pullreqs //g" abc/${board}-optee-${version} > abc/foo
-    mv abc/foo abc/${board}-optee-${version}
+    local file=${board}-optee-${version}
 
-    echo "Exporting configs from abc/${board}-optee-${version}"
+    echo "Remove ${file}-pullreqs from abc/${file} before exporting configs"
+    sed -e "s/${file}-pullreqs //g" abc/${file} > abc/foo
+    mv abc/foo abc/${file}
+
+    echo "Exporting configs from abc/${file}"
 
     while read line; do
         if ! echo ${line} |grep -q '^#'; then
 	    echo "export ${line}"
             eval "export ${line}"
         fi
-    done < abc/${board}-optee-${version}
+    done < abc/${file}
 }
 
 function get_manifest_groups(){

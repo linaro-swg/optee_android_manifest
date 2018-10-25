@@ -53,7 +53,11 @@ func_sync_linaro(){
     fi
     popd
 
-    cp -auvf swg-${version}.xml .repo/local_manifests/
+    if [ "$board" = "hikey" ]; then
+	cp -auvf swg-${version}.xml .repo/local_manifests/
+    else
+	cp -auvf swg-${version}-${board}.xml .repo/local_manifests/
+    fi
 
     # can have my own local patch file in this repo
     #if [ ! -d android-patchsets ]; then
@@ -106,8 +110,8 @@ main(){
     sync_init
 
     if $sync_linaro; then
-        echo "Sync local manifest"
-        func_sync_linaro
+	echo "Sync local manifest"
+	func_sync_linaro
     else
 	if [ "${base_manifest}" = "default.xml" ]; then
 		echo "Skip local manifest sync"
