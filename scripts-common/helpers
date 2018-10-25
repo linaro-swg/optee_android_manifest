@@ -22,7 +22,7 @@ function get_config(){
 }
 
 function export_config(){
-    echo "Remove hikey-optee-${version}-pullreqs from abc/${board}-optee-${version} before exporting configs"
+    echo "Remove ${board}-optee-${version}-pullreqs from abc/${board}-optee-${version} before exporting configs"
     sed -e "s/${board}-optee-${version}-pullreqs //g" abc/${board}-optee-${version} > abc/foo
     mv abc/foo abc/${board}-optee-${version}
 
