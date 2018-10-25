@@ -26,7 +26,7 @@ sync(){
 
 	echo "Save revisions to pinned manifest"
 	mkdir -p archive
-	repo manifest -r -o archive/pinned-manifest_"$(date +%Y%m%d-%H%M)".xml
+	repo manifest -r -o archive/pinned-manifest_${board}_${version}_"$(date +%Y%m%d-%H%M)".xml
     else
 	echo "repo sync -j${CPUS} -m ${base_manifest}"
 	repo sync -j${CPUS} -m ${base_manifest}
