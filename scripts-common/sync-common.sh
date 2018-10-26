@@ -64,10 +64,10 @@ func_sync_linaro(){
     #    mkdir -p android-patchsets
     #fi
     #cp -auvf SWG-PATCHSETS android-patchsets/
-    #hikey_mali_binary_new
+    #${board}_mali_binary
 }
 
-hikey_mali_binary(){
+hikey_mali_binary_old(){
     local b_name="hikey-20160113-vendor.tar.bz2"
     if [ -f ./${b_name} ]; then
         return
@@ -76,7 +76,7 @@ hikey_mali_binary(){
     tar xavf ${b_name}
 }
 
-hikey_mali_binary_new(){
+hikey_mali_binary(){
 	wget --no-check-certificate https://dl.google.com/dl/android/aosp/linaro-hikey-20170523-4b9ebaff.tgz
 	for i in linaro-hikey-*.tgz; do
 		tar xf $i
@@ -89,6 +89,21 @@ hikey_mali_binary_new(){
 		echo -e "\nI ACCEPT" |./$i
 	done
 	rm -rf junk linaro-hikey-*.tgz extract-linaro-hikey.sh
+}
+
+hikey960_mali_binary(){
+	wget --no-check-certificate https://dl.google.com/dl/android/aosp/hisilicon-hikey960-OPR-3c243263.tgz
+	for i in hisilicon-hikey960-*.tgz; do
+		tar xf $i
+	done
+	mkdir junk
+	echo 'cat "$@"' >junk/more
+	chmod +x junk/more
+	export PATH=`pwd`/junk:$PATH
+	for i in extract-hisilicon-hikey960.sh; do
+		echo -e "\nI ACCEPT" |./$i
+	done
+	rm -rf junk hisilicon-hikey960-*.tgz extract-hisilicon-hikey960.sh
 }
 
 main(){
