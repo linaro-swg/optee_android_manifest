@@ -58,13 +58,6 @@ func_sync_linaro(){
     else
 	cp -auvf swg-${version}-${board}.xml .repo/local_manifests/
     fi
-
-    # can have my own local patch file in this repo
-    #if [ ! -d android-patchsets ]; then
-    #    mkdir -p android-patchsets
-    #fi
-    #cp -auvf SWG-PATCHSETS android-patchsets/
-    #${board}_mali_binary
 }
 
 hikey_mali_binary_old(){
@@ -139,6 +132,13 @@ main(){
 
     # sync repos
     sync
+
+    # can have my own local patch file in this repo
+    #if [ ! -d android-patchsets ]; then
+    #    mkdir -p android-patchsets
+    #fi
+    #cp -auvf SWG-PATCHSETS android-patchsets/
+    #${board}_mali_binary
 }
 
 function func_apply_patch(){
