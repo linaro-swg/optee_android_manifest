@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
  <remote name="github" fetch="https://github.com/" />
+ <remote name="linaro" fetch="https://git.linaro.org/" />
 
  <remove-project name="OP-TEE/optee_test" />
  <remove-project name="OP-TEE/optee_client" />
@@ -17,5 +18,13 @@
  <project path="device/linaro/hikey" name="device/linaro/hikey" revision="master" />
  <project path="device/linaro/hikey-kernel" name="device/linaro/hikey-kernel" revision="master" />
  -->
+
+
+ <project path="optee/arm-trusted-firmware" name="ARM-software/arm-trusted-firmware.git" remote="github" revision="integration" />
+ <project path="optee/edk2" name="96boards-hikey/edk2.git" remote="github" revision="testing/hikey960_v2.5" />
+ <project path="optee/OpenPlatformPkg" name="96boards-hikey/OpenPlatformPkg.git" remote="github" revision="testing/hikey960_v1.3.4" />
+ <project path="optee/l-loader" name="96boards-hikey/l-loader.git" remote="github" revision="testing/hikey960_v1.2" />
+ <project path="optee/tools-images-hikey960" name="96boards-hikey/tools-images-hikey960.git" remote="github" revision="master" />
+ <project path="optee/uefi-tools" remote="linaro" name="uefi/uefi-tools.git" revision="master" />
 
 </manifest>
