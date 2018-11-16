@@ -10,14 +10,14 @@ dbg=false
 # build*.sh only export_config
 function get_config(){
 	if [ -d abc ]; then
-		echo "My android-build-configs (abc) exists"
+		echo "android-build-configs (abc) exists"
 		echo "git pull abc"
 		pushd abc
 		git pull
 		popd
 	else
-		echo "Get my android-build-configs (abc)"
-		git clone https://github.com/vchong/android-build-configs abc
+		echo "Get android-build-configs (abc)"
+		git clone https://android-git.linaro.org/git/android-build-configs.git abc
 	fi
 }
 
