@@ -10,4 +10,6 @@
  <project path="external/optee_client" name="OP-TEE/optee_client" revision="master" remote="github" />
  <project path="optee/optee_os" name="OP-TEE/optee_os" revision="master" remote="github" />
 
+ <project path="device/linaro/kmgk" name="linaro-swg/kmgk" revision="master" remote="github" />
+
 </manifest>

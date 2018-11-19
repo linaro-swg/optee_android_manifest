@@ -14,6 +14,9 @@
  <project path="external/optee_test" name="OP-TEE/optee_test" revision="master" remote="github" />
  <project path="external/optee_client" name="OP-TEE/optee_client" revision="master" remote="github" />
  <project path="optee/optee_os" name="OP-TEE/optee_os" revision="master" remote="github" />
+
+ <project path="device/linaro/kmgk" name="linaro-swg/kmgk" revision="master" remote="github" />
+
  <!--
  <project path="device/linaro/hikey" name="device/linaro/hikey" revision="master" />
  <project path="device/linaro/hikey-kernel" name="device/linaro/hikey-kernel" revision="master" />
