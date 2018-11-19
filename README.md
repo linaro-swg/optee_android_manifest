@@ -38,10 +38,14 @@ sudo apt-get install android-tools-adb android-tools-fastboot autoconf \
 git clone https://github.com/linaro-swg/optee_android_manifest -b lcr-ref-hikey
 cd optee_android_manifest
 
+# for HiKey620
 ./sync-p.sh
-# Please make sure there are no errors before building!
-
 ./build-p.sh #or `./build-p.sh -4g` for a 4GB board!
+
+# for HiKey960
+./sync-p-hikey960.sh
+./build-p-hikey960.sh
+
 # Please make sure there are no errors before flashing!
 ```
 
@@ -60,27 +64,33 @@ you won't be able to push files to it.
 For relatively stable builds, use below instead of `./sync-p.sh`.
 ```
 mkdir logs
-./sync.sh -v p -bm <name of a pinned manifest file in archive/> 2>&1 |tee logs/sync-p.log
+./sync.sh -v p -t <hikey|hikey960> -bm <name of a pinned manifest file in archive/> 2>&1 |tee logs/sync-p.log
 
 # e.g.
 mkdir logs
-./sync.sh -v p -bm pinned-manifest-stable_yvr18.xml 2>&1 |tee logs/sync-p.log
+./sync.sh -v p -t hikey -bm pinned-manifest-stable_yvr18.xml 2>&1 |tee logs/sync-p.log
 ```
 
 For other versions, use `./{sync,build}-o.sh` or `./{sync,build}-master.sh`
 instead of `./{sync,build}-p.sh`, but these are **NOT MAINTAINED** so
-build at your own risk!
+build at your own risk! Note that this applies to **HiKey620 ONLY**!
+For HiKey960, only P is currently supported!
 
 ## 4. Flashing the image
 
 The instructions for flashing the image can be found in detail under
-`device/linaro/hikey/install/README` in the tree.
-1. Jumper links 1-2 and 3-4, leaving 5-6 open, and reset the board.
-2. Invoke
+`device/linaro/hikey{960}/install/README` in the tree.
+1. Set jumpers/switches 1-2 and 3-4, and unset 5-6.
+2. Reset the board. After that, invoke:
 
 ```
+# for HiKey620
 cp -a out/target/product/hikey/*.img device/linaro/hikey/installer/hikey/
 sudo ./device/linaro/hikey/installer/hikey/flash-all.sh /dev/ttyUSBn
+
+# for HiKey960
+cp -a out/target/product/hikey960/*.img device/linaro/hikey/installer/hikey960/
+sudo ./device/linaro/hikey/installer/hikey960/flash-all.sh /dev/ttyUSBn
 ```
 
 where the ttyUSBn device is the one that appears after rebooting with
@@ -111,5 +121,9 @@ su setprop sys.usb.configfs 1
 stop adbd
 start adbd
 ```
+
+## 8. Known issues
+
+- adb currently doesn't work on HiKey960
 
 [1]: https://source.android.com/source/devices.html
