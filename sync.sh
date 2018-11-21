@@ -136,20 +136,6 @@ for i in ${PATCHSETS}; do
 	func_apply_patch $i
 done
 
-echo ""
-echo ""
-if [ "$version" = "master" ] || [ "$version" = "p" ] || [ "$version" = "o" ]; then
-	if [ -f swg-kmgk-${version} ]; then
-		echo "applying patchset: swg-kmgk-${version}"
-		cp swg-kmgk-${version} android-patchsets/
-		func_apply_patch swg-kmgk-${version}
-	else
-		echo "swg-kmgk-${version} does not exist"
-	fi
-else
-	echo "no swg-kmgk patchsets applied"
-fi
-
 fi
 #end if not stable manifest
 
