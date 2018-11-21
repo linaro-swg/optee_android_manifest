@@ -115,7 +115,7 @@ ${BASE}/sync-projects.sh -j ${CPUS} -d \
 if [ "$version" = "master" ] || [ "$version" = "p" ]; then
 	echo "unshallow 4.14 kernel"
 	${BASE}/sync-projects.sh -j ${CPUS} -d kernel/linaro/hisilicon-4.14
-elif [ "$version" = "o" ] || [ "$version" = "n" ]; then
+elif [ "$version" = "o" ]; then
 	echo "unshallow 4.9 kernel"
 	${BASE}/sync-projects.sh -j ${CPUS} -d kernel/linaro/hisilicon
 else
@@ -138,7 +138,7 @@ done
 
 # if master or P then optee-master-workarounds will be applied
 # automatically above so no need to do it manually here
-if [ "$version" = "o" ] || [ "$version" = "n" ]; then
+if [ "$version" = "o" ]; then
 	echo ""
 	echo ""
 	echo "applying patchset: optee-master-workarounds"
