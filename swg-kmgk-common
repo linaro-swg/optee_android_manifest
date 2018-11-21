@@ -1,0 +1,71 @@
+#!/bin/bash
+
+. $(dirname $0)/functions
+
+curl_am_optee_vchong(){
+    local repository=$1
+    local patch_id=$2
+    local patch_project="$3"
+    local patch_url="https://github.com/vchong/${repository}/commit/${patch_id}.patch"
+    curl_am ${patch_url} ${patch_project}
+}
+
+curl_am_optee_optee(){
+    local repository=$1
+    local patch_id=$2
+    local patch_project="$3"
+    local patch_url="https://github.com/OP-TEE/${repository}/commit/${patch_id}.patch"
+    curl_am ${patch_url} ${patch_project}
+}
+
+PATCHES=0
+if [ -n "$1" ]; then
+        AOSP="$1"
+else
+        AOSP="`pwd`"
+fi
+
+if ! [ -d "$AOSP" ] && ! [ -d "$AOSP/bionic" ] && [ -d "$AOSP"/build ]; then
+        echo "This script must be run from the AOSP source directory"
+        echo "or with the AOSP source directory as its first parameter."
+        exit 1
+fi
+
+#######################################################
+## Common patches for SWG KMGK                    #####
+#######################################################
+## uefi-tools: disable debug build for now
+#curl_am_optee_vchong device-linaro-hikey 060bcd1a959189013c66081cf43d4c97fcbbd888 device/linaro/hikey
+
+## build default kmgk svc too
+#curl_am_optee_vchong device-linaro-hikey 29723107072a56a70d48c840037660a3b6693223 device/linaro/hikey
+
+# kmgk: add dbg prints
+curl_am_optee_vchong kmgk 36780a94 device/linaro/kmgk
+
+# ltc: asn1: der: add support of additional types
+curl_am_optee_optee optee_os 394c2d4e optee/optee_os
+
+# libtomcrypt: rsa: oaep: Use SHA-1 by default for MGF1
+curl_am_optee_optee optee_os 0cd6a35b optee/optee_os
+
+# core: crypto: add support MD5 hashes in RSA sign/verify
+curl_am_optee_optee optee_os 199d0b73 optee/optee_os
+
+# core: crypto: detect elliptic curve size
+curl_am_optee_optee optee_os 6dd386fc optee/optee_os
+
+# libutee: remove restrictions for TEE_ALG_RSA_NOPAD
+curl_am_optee_optee optee_os 962d0040 optee/optee_os
+
+#core: crypto: change supported HMAC key size ranges
+curl_am_optee_optee optee_os ab43191a optee/optee_os
+
+# hikey: increase core heap size to 192 kB
+curl_am_optee_optee optee_os 86381e23 optee/optee_os
+
+# core: crypto: add free rsa/ecc keypair calls
+curl_am_optee_optee optee_os 010505ab optee/optee_os
+
+# core: pta: introduce pTA to access LTC ASN.1 parser
+curl_am_optee_optee optee_os 36538542 optee/optee_os
