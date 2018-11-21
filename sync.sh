@@ -136,15 +136,6 @@ for i in ${PATCHSETS}; do
 	func_apply_patch $i
 done
 
-# if master or P then optee-master-workarounds will be applied
-# automatically above so no need to do it manually here
-if [ "$version" = "o" ]; then
-	echo ""
-	echo ""
-	echo "applying patchset: optee-master-workarounds"
-	func_apply_patch optee-master-workarounds
-fi
-
 echo ""
 echo ""
 if [ "$version" = "master" ] || [ "$version" = "p" ] || [ "$version" = "o" ]; then
