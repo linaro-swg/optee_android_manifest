@@ -46,7 +46,7 @@ func_sync_linaro(){
     if [ -d ./local_manifests ]; then
         cd ./local_manifests;
 	echo "git pull local manifest"
-        git pull
+        git pull origin ${LOCAL_MANIFEST_BRANCH}
     else
 	echo "git clone ${LOCAL_MANIFEST} -b ${LOCAL_MANIFEST_BRANCH} local_manifest"
         git clone ${LOCAL_MANIFEST} -b ${LOCAL_MANIFEST_BRANCH} local_manifests
