@@ -105,14 +105,18 @@ images.  After modifying and rebuilding Android, it is only necessary
 to flash *boot*, *system*, *cache*, and *userdata*.  If you aren't
 modifying the kernel, *boot* is not necessary, either.
 
-## 6. Running xtest
+## 6. Prebuilts (coming soon!)
+
+Available at http://snapshots.linaro.org/android
+
+## 7. Running xtest
 
 Please do NOT try to run `tee-supplicant` as it has already been started
 automatically as a service! Once booted to the command prompt, `xtest`
 can be run immediately after switching to root, i.e. after running
 `su`.
 
-## 7. Enable adb over usb
+## 8. Enable adb over usb
 
 Boot the device. On serial console:
 
@@ -122,7 +126,7 @@ stop adbd
 start adbd
 ```
 
-## 8. Known issues
+## 9. Known issues
 
 - adb currently doesn't work on HiKey960
 
