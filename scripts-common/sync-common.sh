@@ -20,6 +20,13 @@ sync_init(){
 }
 
 sync(){
+    echo "hack: clean dlh of build artifacts before sync"
+    if [ -d device/linaro/hikey ]; then
+	pushd device/linaro/hikey
+	git checkout .
+	popd
+    fi
+
     if [ "${base_manifest}" = "default.xml" ]; then
 	echo "repo sync -j${CPUS} -c --force-sync"
 	repo sync -j${CPUS} -c --force-sync
