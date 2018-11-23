@@ -53,11 +53,11 @@ func_sync_linaro(){
     fi
     popd
 
-    if [ "$board" = "hikey" ]; then
-	cp -auvf swg-${version}.xml .repo/local_manifests/
-    else
-	cp -auvf swg-${version}-${board}.xml .repo/local_manifests/
-    fi
+#    if [ "$board" = "hikey" ]; then
+#	cp -auvf swg-${version}.xml .repo/local_manifests/
+#    else
+#	cp -auvf swg-${version}-${board}.xml .repo/local_manifests/
+#    fi
 }
 
 hikey_mali_binary_old(){
