@@ -86,6 +86,7 @@ main
 #if not stable manifest
 if [[ "${base_manifest}" != "pinned-manifest-stable"* ]]; then
 
+if [[ "${base_manifest}" != "pinned-manifest"* ]]; then
 ${BASE}/sync-projects.sh -j ${CPUS} -d \
                           android-patchsets \
                           android-build-configs \
@@ -128,6 +129,9 @@ if [ "$board" = "hikey960" ]; then
 		optee/uefi-tools \
 		optee/edk2
 fi
+
+fi
+#end if not pinned manifest
 
 for i in ${PATCHSETS}; do
 	echo ""
