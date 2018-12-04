@@ -31,8 +31,11 @@ function export_config(){
     echo "Exporting configs from abc/${file}"
 
     while read line; do
+        if echo "${line}"|tr -d '[:blank:]'|grep -q '^$'; then
+            continue
+        fi
         if ! echo ${line} |grep -q '^#'; then
-	    echo "export ${line}"
+            echo "export ${line}"
             eval "export ${line}"
         fi
     done < abc/${file}
