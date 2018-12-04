@@ -15,8 +15,15 @@ version="master"
 board="hikey"
 
 sync_init(){
-    echo "repo init -u ${MIRROR} -b ${MANIFEST_BRANCH} --no-repo-verify --repo-url=${repo_url} --depth=1 -g ${REPO_GROUPS} -p linux"
-    repo init -u ${MIRROR} -b ${MANIFEST_BRANCH} --no-repo-verify --repo-url=${repo_url} --depth=1 -g ${REPO_GROUPS} -p linux
+    if [[ "${base_manifest}" = "pinned-manifest"* ]]; then
+        echo "using pinned manifest - init with full depth"
+        echo "repo init -u ${MIRROR} -b ${MANIFEST_BRANCH} --no-repo-verify --repo-url=${repo_url} -g ${REPO_GROUPS} -p linux"
+        repo init -u ${MIRROR} -b ${MANIFEST_BRANCH} --no-repo-verify --repo-url=${repo_url} -g ${REPO_GROUPS} -p linux
+    else
+        echo "not using pinned manifest - init with depth 1"
+        echo "repo init -u ${MIRROR} -b ${MANIFEST_BRANCH} --no-repo-verify --repo-url=${repo_url} --depth=1 -g ${REPO_GROUPS} -p linux"
+        repo init -u ${MIRROR} -b ${MANIFEST_BRANCH} --no-repo-verify --repo-url=${repo_url} --depth=1 -g ${REPO_GROUPS} -p linux
+    fi
 }
 
 sync(){
