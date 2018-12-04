@@ -30,7 +30,9 @@ sync(){
     echo "hack: clean dlh of build artifacts before sync"
     if [ -d device/linaro/hikey ]; then
 	pushd device/linaro/hikey
-	git checkout .
+	if git status | grep -q fip.bin; then
+		git checkout .
+	fi
 	popd
     fi
 
