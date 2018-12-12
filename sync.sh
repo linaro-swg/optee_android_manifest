@@ -99,6 +99,7 @@ ${BASE}/sync-projects.sh -j ${CPUS} -d \
                           system/core \
                           system/netd \
                           system/bt \
+			  system/libvintf \
                           packages/inputmethods/LatinIME \
                           hardware/interfaces \
                         external/libdrm \
