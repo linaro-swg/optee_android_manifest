@@ -99,8 +99,9 @@ ${BASE}/sync-projects.sh -j ${CPUS} -d \
                           system/core \
                           system/netd \
                           system/bt \
-			  system/libvintf \
+                          system/libvintf \
                           packages/inputmethods/LatinIME \
+                          prebuilts/clang/host/linux-x86 \
                           hardware/interfaces \
                         external/libdrm \
                         frameworks/opt/net/ethernet \
