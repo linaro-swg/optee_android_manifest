@@ -26,15 +26,20 @@ sync_init(){
     fi
 }
 
-sync(){
-    echo "hack: clean dlh of build artifacts before sync"
-    if [ -d device/linaro/hikey ]; then
-	pushd device/linaro/hikey
-	if git status | grep -q fip.bin; then
-		git checkout .
-	fi
-	popd
+clean_changes(){
+    echo "hack: clean $1 of build changes before sync"
+    if [ -d $1 ]; then
+        pushd $1
+        if git status | grep -q $2; then
+                git checkout .
+        fi
+        popd
     fi
+}
+
+sync(){
+    clean_changes device/linaro/hikey fip.bin
+    clean_changes android-patchsets swg-mods-${version}
 
     if [ "${base_manifest}" = "default.xml" ]; then
 	echo "repo sync -j${CPUS} -c --force-sync"
