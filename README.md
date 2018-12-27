@@ -128,6 +128,12 @@ start adbd
 
 ## 9. Known issues
 
-- adb currently doesn't work on HiKey960
+Adb over usb currently doesn't work on HiKey960. As a workaround, use
+adb over tcpip. See https://bugs.96boards.org/show_bug.cgi?id=502 for
+details on how to connect. There are still some limitations however.
+E.g. running `adb shell` or a second `adb` instance will break the
+current adb tcpip connection. This might be due to unstable wifi. E.g.
+there are periodic error messages like:
+`wlcore: WARNING corrupted packet in RX: status: 0x1 len: 76`
 
 [1]: https://source.android.com/source/devices.html
