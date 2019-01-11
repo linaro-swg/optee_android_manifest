@@ -154,11 +154,14 @@ main(){
     # sync repos
     sync
 
-    # can have my own local patch file in this repo
-    #if [ ! -d android-patchsets ]; then
-    #    mkdir -p android-patchsets
-    #fi
-    #cp -auvf SWG-PATCHSETS android-patchsets/
+    # cp local patch file if exist
+    if [ ! -d android-patchsets ]; then
+        mkdir -p android-patchsets
+    fi
+    if [ -f "SWG-PATCHSETS-BEFORE" ] || [ -f "SWG-PATCHSETS-AFTER" ]; then
+        echo "cp SWG-PATCHSETS-* to android-patchsets/"
+        cp -auvf SWG-PATCHSETS-* android-patchsets/
+    fi
     #${board}_mali_binary
 }
 

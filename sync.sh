@@ -135,6 +135,12 @@ fi
 fi
 #end if not pinned manifest
 
+# apply local patches before
+if [ -f "SWG-PATCHSETS-BEFORE" ]; then
+	echo "applying patchset: SWG-PATCHSETS-BEFORE"
+	func_apply_patch SWG-PATCHSETS-BEFORE
+fi
+
 echo "CI builds have debugs disabled. Enable them here."
 for i in $(find android-patchsets/ -name swg-mods*); do
 	sed -i '/^#apply.* 17632/s/^#//' $i
@@ -148,6 +154,12 @@ for i in ${PATCHSETS}; do
 	echo "applying patchset: $i"
 	func_apply_patch $i
 done
+
+# apply local patches after
+if [ -f "SWG-PATCHSETS-AFTER" ]; then
+	echo "applying patchset: SWG-PATCHSETS-AFTER"
+	func_apply_patch SWG-PATCHSETS-AFTER
+fi
 
 fi
 #end if not stable manifest
