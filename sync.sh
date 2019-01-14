@@ -141,12 +141,14 @@ if [ -f "SWG-PATCHSETS-BEFORE" ]; then
 	func_apply_patch SWG-PATCHSETS-BEFORE
 fi
 
-echo "CI builds have debugs disabled. Enable them here."
-for i in $(find android-patchsets/ -name swg-mods*); do
-	sed -i '/^#apply.* 17632/s/^#//' $i
-	sed -i '/^#apply.* 18457/s/^#//' $i
-	sed -i '/^#apply.* 18328/s/^#//' $i
-done
+if [ "$dbg" = true ]; then
+	echo "CI builds have debugs disabled. Enable them here."
+	for i in $(find android-patchsets/ -name swg-mods*); do
+		sed -i '/^#apply.* 17632/s/^#//' $i
+		sed -i '/^#apply.* 18457/s/^#//' $i
+		sed -i '/^#apply.* 18328/s/^#//' $i
+	done
+fi
 
 for i in ${PATCHSETS}; do
 	echo ""
