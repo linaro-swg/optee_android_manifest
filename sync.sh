@@ -141,6 +141,15 @@ if [ -f "SWG-PATCHSETS-BEFORE" ]; then
 	func_apply_patch SWG-PATCHSETS-BEFORE
 fi
 
+# hack: do NOT enable verity as it seems to cause halt boot
+# and show uefi menu locally
+if [ "$version" = "p" ]; then
+	echo "disable verity patch"
+	for i in $(find android-patchsets/ -name hikey*-p-workarounds); do
+		sed -i '/^cherry.* e0bf197e/s/^cherry/#cherry/' $i
+	done
+fi
+
 if [ "$dbg" = true ]; then
 	echo "CI builds have debugs disabled. Enable them here."
 	for i in $(find android-patchsets/ -name swg-mods*); do
