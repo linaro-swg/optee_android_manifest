@@ -160,6 +160,7 @@ main(){
     fi
     if [ -f "SWG-PATCHSETS-BEFORE" ] || [ -f "SWG-PATCHSETS-AFTER" ]; then
         echo "cp SWG-PATCHSETS-* to android-patchsets/"
+        rm -f android-patchsets/SWG-PATCHSETS-*
         cp -auvf SWG-PATCHSETS-* android-patchsets/
     fi
     #${board}_mali_binary
