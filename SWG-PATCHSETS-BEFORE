@@ -24,9 +24,6 @@ if ! [ -d "$AOSP" ] && ! [ -d "$AOSP/bionic" ] && [ -d "$AOSP"/build ]; then
         exit 1
 fi
 
-#hikey*-optee-p: work around 4.14 kernel on hdmi..
-apply --linaro --local android-patchsets --remote android-patchsets 20151/1
-
 #template
 #apply --linaro --local android-patchsets --remote android-patchsets 12345/1
 
