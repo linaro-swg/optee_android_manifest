@@ -140,6 +140,10 @@ while [ "$1" != "" ]; do
 			echo "Build VTS"
 			VTS=true
 			;;
+		-wv)	#overwrite wv in helpers
+			echo "wv build"
+			wv=true
+			;;
                 *)	# default adds to target list without shift
                         echo "Adding build target by default: $1"
                         TARGETS=(${TARGETS[@]} $1)
