@@ -11,13 +11,36 @@ dbg=false
 function get_config(){
 	if [ -d abc ]; then
 		echo "android-build-configs (abc) exists"
-		echo "git pull abc"
+		echo "git pull origin master for android-build-configs (abc)"
 		pushd abc
-		git pull
+		git pull origin master
 		popd
 	else
 		echo "Get android-build-configs (abc)"
 		git clone https://android-git.linaro.org/git/android-build-configs.git abc
+	fi
+
+	if [[ "${base_manifest}" = "pinned-manifest"* ]]; then
+		echo "need to get the exact same build config file in the pinned manifest"
+		abc_line=$(grep android-build-configs archive/${base_manifest}|tr -d '"')
+		abc_commit=''
+		for field in ${abc_line}; do
+			if echo ${field}|grep 'revision=' ; then
+				abc_commit=$(echo ${field}|sed 's/revision=//')
+			fi
+		done
+		if [ -z "${abc_commit}" ]; then
+			echo "Failed to find the commit information for android-build-configs repository in archive/${base_manifest}"
+			echo "Please check first, and try it again"
+			exit 1
+		else
+			echo "Checking out commit ${abc_commit} from android-build-configs (abc)"
+			pushd abc
+			git checkout ${abc_commit}
+			popd
+		fi
+	else
+		echo "Using master branch of android-build-configs (abc)"
 	fi
 }
 
