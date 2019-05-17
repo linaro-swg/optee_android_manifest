@@ -124,7 +124,7 @@ main(){
     mkdir -p logs
 
     # update myself first
-    git pull
+    #git pull #this interferes with testing changes in myself
     get_config
     export_config
 
