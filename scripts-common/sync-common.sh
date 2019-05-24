@@ -5,6 +5,8 @@ BASE=`pwd`
 source ${BASE}/scripts-common/helpers
 
 MIRROR="https://android.googlesource.com/platform/manifest"
+REF=""
+REFERENCE=""
 
 repo_url="git://android.git.linaro.org/tools/repo"
 base_manifest="default.xml"
@@ -15,14 +17,19 @@ version="master"
 board="hikey"
 
 sync_init(){
+    if [ X"$REF" != X"" ]; then
+	REFERENCE="--reference ${REF}"
+	echo "REFERENCE = ${REFERENCE}"
+    fi
+
     if [[ "${base_manifest}" = "pinned-manifest"* ]]; then
         echo "using pinned manifest - init with full depth"
-        echo "repo init -u ${MIRROR} -b ${MANIFEST_BRANCH} --no-repo-verify --repo-url=${repo_url} -g ${REPO_GROUPS} -p linux"
-        repo init -u ${MIRROR} -b ${MANIFEST_BRANCH} --no-repo-verify --repo-url=${repo_url} -g ${REPO_GROUPS} -p linux
+        echo "repo init -u ${MIRROR} ${REFERENCE} -b ${MANIFEST_BRANCH} --no-repo-verify --repo-url=${repo_url} -g ${REPO_GROUPS} -p linux"
+        repo init -u ${MIRROR} ${REFERENCE} -b ${MANIFEST_BRANCH} --no-repo-verify --repo-url=${repo_url} -g ${REPO_GROUPS} -p linux
     else
         echo "not using pinned manifest - init with depth 1"
-        echo "repo init -u ${MIRROR} -b ${MANIFEST_BRANCH} --no-repo-verify --repo-url=${repo_url} --depth=1 -g ${REPO_GROUPS} -p linux"
-        repo init -u ${MIRROR} -b ${MANIFEST_BRANCH} --no-repo-verify --repo-url=${repo_url} --depth=1 -g ${REPO_GROUPS} -p linux
+        echo "repo init -u ${MIRROR} ${REFERENCE} -b ${MANIFEST_BRANCH} --no-repo-verify --repo-url=${repo_url} --depth=1 -g ${REPO_GROUPS} -p linux"
+        repo init -u ${MIRROR} ${REFERENCE} -b ${MANIFEST_BRANCH} --no-repo-verify --repo-url=${repo_url} --depth=1 -g ${REPO_GROUPS} -p linux
     fi
 }
 

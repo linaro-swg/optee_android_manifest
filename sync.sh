@@ -42,6 +42,12 @@ while [ "$1" != "" ]; do
 			echo "version=$1"
 			version=$1
 			;;
+		--ref)	# sync referencing an existing source tree (forest)
+			# overwrite REF in sync-common.sh
+			shift
+			echo "set --reference $1"
+			REF=$1
+			;;
 		-t)     # overwrite board in sync-common.sh
 			# default is hikey
 			# no other eg atm
