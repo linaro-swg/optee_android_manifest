@@ -47,9 +47,10 @@ function get_config(){
 function export_config(){
     local file=${board}-optee-${version}
 
-    echo "Remove ${file}-pullreqs from abc/${file} before exporting configs"
-    sed -e "s/${file}-pullreqs //g" abc/${file} > abc/foo
-    mv abc/foo abc/${file}
+    # not necessary
+    #echo "Remove ${file}-pullreqs from abc/${file} before exporting configs"
+    #sed -e "s/${file}-pullreqs //g" abc/${file} > abc/foo
+    #mv abc/foo abc/${file}
 
     echo "Exporting configs from abc/${file}"
 
