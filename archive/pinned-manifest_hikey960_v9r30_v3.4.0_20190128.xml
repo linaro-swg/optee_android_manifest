@@ -5,6 +5,7 @@
   <remote fetch="https://git.linaro.org/" name="lin"/>
   <remote fetch="https://android-git.linaro.org/git/" name="linaro-android" review="android-review.linaro.org"/>
   <remote fetch="https://git.linaro.org/" name="linaro-other"/>
+  <remote fetch="https://git.trustedfirmware.org" name="tfo"/>
   
   <default remote="aosp" revision="refs/tags/android-9.0.0_r30" sync-j="4"/>
   
@@ -12,7 +13,7 @@
   <project groups="device,hikey960" name="96boards-hikey/edk2.git" path="optee/edk2" remote="github-optee" revision="776deafa053da51bfc999f6bc8552744fcd0f33e" upstream="testing/hikey960_v2.5"/>
   <project groups="device,hikey960" name="96boards-hikey/l-loader.git" path="optee/l-loader" remote="github-optee" revision="49db0a01f8cc4f2a7e0dea01d843d72092635870" upstream="testing/hikey960_v1.2"/>
   <project groups="device,hikey960" name="96boards-hikey/tools-images-hikey960.git" path="optee/tools-images-hikey960" remote="github-optee" revision="052b33813564e123da9aef8fcbacbd14d020f035" upstream="master"/>
-  <project groups="device,hikey960" name="ARM-software/arm-trusted-firmware.git" path="optee/arm-trusted-firmware" remote="github-optee" revision="7ca572d93c88bf8a86fccf30b2725315f092aef4" upstream="integration"/>
+  <project groups="device,hikey960" name="TF-A/trusted-firmware-a.git" path="optee/arm-trusted-firmware" remote="tfo" revision="7ca572d93c88bf8a86fccf30b2725315f092aef4" upstream="master"/>
   <project groups="device,hikey" name="OP-TEE/optee_client" path="external/optee_client" remote="github-optee" revision="refs/tags/3.4.0" upstream="master"/>
   <project groups="device,hikey" name="OP-TEE/optee_os" path="optee/optee_os" remote="github-optee" revision="refs/tags/3.4.0" upstream="master"/>
   <project groups="device,hikey" name="OP-TEE/optee_test" path="external/optee_test" remote="github-optee" revision="refs/tags/3.4.0" upstream="master"/>
