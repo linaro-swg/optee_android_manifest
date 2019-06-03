@@ -79,33 +79,32 @@ clean_build() {
 ##########################################################
 while [ "$1" != "" ]; do
 	case $1 in
-		-j)     # set build parallellism
-			shift
-			echo "Num threads: $1"
-			CPUS=$1
-			;;
 		-4g)
 			echo "Set 4GB board"
 			export TARGET_USERDATAIMAGE_4GB=true
 			;;
-		-squashfs)
-			echo "Use squashfs for system img"
-			USE_SQUASHFS=true
-			;;
-		-vts)
-			echo "Build VTS"
-			VTS=true
+		-b | --build-target)
+			shift
+			echo "Adding build target: $1"
+			TARGETS=(${TARGETS[@]} $1)
 			;;
 		-cts)
 			echo "Build CTS"
 			CTS=true
 			;;
-		-v)     # overwrite version above
-			# default is master
-			# eg o or p
+		-d)	# overwrite dbg in helpers
+			echo "Print debug"
+			dbg=true
+			SHOW_COMMANDS=showcommands
+			;;
+		-j)     # set build parallellism
 			shift
-			echo "version=$1"
-			version=$1
+			echo "Num threads: $1"
+			CPUS=$1
+			;;
+		-squashfs)
+			echo "Use squashfs for system img"
+			USE_SQUASHFS=true
 			;;
 		-t)     # overwrite board above
 			# default is hikey
@@ -114,15 +113,16 @@ while [ "$1" != "" ]; do
 			echo "board=$1"
 			board=$1
 			;;
-		-d)	# overwrite dbg in helpers
-			echo "Print debug"
-			dbg=true
-			SHOW_COMMANDS=showcommands
-			;;
-		-b | --build-target)
+		-v)     # overwrite version above
+			# default is master
+			# eg o or p
 			shift
-			echo "Adding build target: $1"
-			TARGETS=(${TARGETS[@]} $1)
+			echo "version=$1"
+			version=$1
+			;;
+		-vts)
+			echo "Build VTS"
+			VTS=true
 			;;
                 *)	# default adds to target list without shift
                         echo "Adding build target by default: $1"

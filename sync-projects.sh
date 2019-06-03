@@ -23,14 +23,14 @@ sync(){
 ##########################################################
 while [ "$1" != "" ]; do
 	case $1 in
+		-d)	# overwrite dbg in helpers
+			echo "Print debug"
+			dbg=true
+			;;
 		-j)	# set build parallellism
 			shift
 			echo "Num threads: $1"
 			CPUS=$1
-			;;
-		-d)	# overwrite dbg in helpers
-			echo "Print debug"
-			dbg=true
 			;;
 		*)	# default adds to target list without shift
 			echo "Adding repo target: $1"

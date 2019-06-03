@@ -15,32 +15,27 @@ fi
 ##########################################################
 while [ "$1" != "" ]; do
 	case $1 in
-		-zfs) #overwrite zfs_clone in sync-common.sh
-			echo "src dir is a zfs clone"
-			zfs_clone=true
-			;;
-		-nl|--nolinaro) # overwrite sync_linaro in sync-common.sh
-			echo "Skip local manifests sync"
-			sync_linaro=false
-			;;
-		-bm|--base-manifest) # overwrite base_manifest in sync-common.sh
+		-bm | --base-manifest)
+			# overwrite base_manifest in sync-common.sh
 			shift
 			base_manifest=$1
 			echo "Use pinned manifest: $1"
 			sync_linaro=false
 			echo "Force sync_linaro=false"
 			;;
+		-d)	# overwrite dbg in helpers
+			echo "Print debug"
+			dbg=true
+			;;
 		-j)	# set build parallellism
 			shift
 			echo "Num threads: $1"
 			CPUS=$1
 			;;
-		-v)     # overwrite version in sync-common.sh
-			# default is master
-			# eg o or p
-			shift
-			echo "version=$1"
-			version=$1
+		-nl | --nolinaro)
+			# overwrite sync_linaro in sync-common.sh
+			echo "Skip local manifests sync"
+			sync_linaro=false
 			;;
 		--ref)	# sync referencing an existing source tree (forest)
 			# overwrite REF in sync-common.sh
@@ -63,9 +58,16 @@ while [ "$1" != "" ]; do
 			echo "export MIRROR=$1"
 			export MIRROR=$1
 			;;
-		-d)	# overwrite dbg in helpers
-			echo "Print debug"
-			dbg=true
+		-v)     # overwrite version in sync-common.sh
+			# default is master
+			# eg o or p
+			shift
+			echo "version=$1"
+			version=$1
+			;;
+		-zfs)	#overwrite zfs_clone in sync-common.sh
+			echo "src dir is a zfs clone"
+			zfs_clone=true
 			;;
 		*)
 			echo "Unknown option: $1"
