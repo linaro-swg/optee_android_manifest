@@ -28,6 +28,7 @@ while [ "$1" != "" ]; do
 			dbg=true
 			;;
 		-j)	# set build parallellism
+			# overwrite CPUS in helpers
 			shift
 			echo "Num threads: $1"
 			CPUS=$1

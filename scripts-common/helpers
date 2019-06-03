@@ -4,6 +4,7 @@ set -e
 
 CPUS=${CPUS:-$(grep processor /proc/cpuinfo |wc -l)}
 #CPUS=${CPUS:-$(getconf _NPROCESSORS_ONLN)}
+#CPUS=$(nproc)
 dbg=false
 
 # sync*.sh get_config, build*.sh doesn't!
