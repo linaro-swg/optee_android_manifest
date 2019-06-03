@@ -54,15 +54,19 @@ sync(){
     clean_changes device/linaro/hikey fip.bin
 
     if [ "${base_manifest}" = "default.xml" ]; then
-	echo "repo sync -j${CPUS} -c --force-sync"
-	repo sync -j${CPUS} -c --force-sync
+	echo "repo sync -j${CPUS} -c --force-sync ${TGTS[@]}"
+	repo sync -j${CPUS} -c --force-sync ${TGTS[@]}
+
+	if [ X"$TGTS" != X"" ]; then
+		return
+	fi
 
 	echo "Save revisions to pinned manifest"
 	mkdir -p archive
 	repo manifest -r -o archive/pinned-manifest_${board}_${version}_"$(date +%Y%m%d-%H%M)".xml
     else
-	echo "repo sync -j${CPUS} -m ${base_manifest}"
-	repo sync -j${CPUS} -m ${base_manifest}
+	echo "repo sync -j${CPUS} -m ${base_manifest} ${TGTS[@]}"
+	repo sync -j${CPUS} -m ${base_manifest} ${TGTS[@]}
     fi
 }
 
@@ -165,6 +169,10 @@ main(){
 
     # sync repos
     sync
+
+    if [ X"$TGTS" != X"" ]; then
+	return
+    fi
 
     # cp local patch file if exist
     if [ ! -d android-patchsets ]; then

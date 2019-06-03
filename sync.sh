@@ -4,6 +4,8 @@ BASE=$(cd $(dirname $0);pwd)
 
 source ${BASE}/scripts-common/sync-common.sh
 
+unset TGTS
+
 # overwrite remote MIRROR in sync-common.sh if local mirror exists
 if [ -d /opt/aosp/.mirror/platform/manifest.git ]; then
     MIRROR="/opt/aosp/.mirror/platform/manifest.git"
@@ -44,6 +46,10 @@ while [ "$1" != "" ]; do
 			echo "set --reference $1"
 			REF=$1
 			;;
+		-s | -sync-target)
+			echo "Adding sync target: $1"
+			TGTS=(${TGTS[@]} $1)
+			;;
 		-t)     # overwrite board in sync-common.sh
 			# default is hikey
 			# no other eg atm
@@ -74,8 +80,9 @@ while [ "$1" != "" ]; do
 			echo "src dir is a zfs clone"
 			zfs_clone=true
 			;;
-		*)
-			echo "Unknown option: $1"
+		*)	# default adds to target list without shift
+			echo "Adding sync target by default: $1"
+			TGTS=(${TGTS[@]} $1)
 			;;
 	esac
 	shift
@@ -94,7 +101,15 @@ if [ "${base_manifest}" != "default.xml" ] && [[ "${base_manifest}" != "pinned-m
 	exit 1
 fi
 
+if [ X"$TGTS" != X"" ]; then
+	echo "sync targets: ${TGTS[@]}"
+fi
+
 main
+
+if [ X"$TGTS" != X"" ]; then
+	exit
+fi
 
 #if not stable manifest
 if [[ "${base_manifest}" != "pinned-manifest-stable"* ]]; then
