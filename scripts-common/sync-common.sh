@@ -45,8 +45,9 @@ clean_changes(){
 }
 
 sync(){
-    clean_changes device/linaro/hikey fip.bin
+    clean_changes abc ${board}-optee-${version}
     clean_changes android-patchsets swg-mods-${version}
+    clean_changes device/linaro/hikey fip.bin
 
     if [ "${base_manifest}" = "default.xml" ]; then
 	echo "repo sync -j${CPUS} -c --force-sync"
