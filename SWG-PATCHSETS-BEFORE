@@ -1,0 +1,34 @@
+#!/bin/bash
+
+. $(dirname $0)/functions
+
+curl_am_optee(){
+    local repository=$1
+    local patch_id=$2
+    local patch_project="$3"
+    local user=$4
+    local patch_url="https://github.com/${user}/${repository}/commit/${patch_id}.patch"
+    curl_am ${patch_url} ${patch_project}
+}
+
+PATCHES=0
+if [ -n "$1" ]; then
+        AOSP="$1"
+else
+        AOSP="`pwd`"
+fi
+
+if ! [ -d "$AOSP" ] && ! [ -d "$AOSP/bionic" ] && [ -d "$AOSP"/build ]; then
+        echo "This script must be run from the AOSP source directory"
+        echo "or with the AOSP source directory as its first parameter."
+        exit 1
+fi
+
+#template
+#apply --linaro device/linaro/hikey 12345/1
+#apply --linaro --local android-patchsets --remote android-patchsets 12345/1
+#curl_am_optee device-linaro-hikey 1fbbbbfc95c98075750cb73e02e380cf35f29e42 device/linaro/hikey vchong
+
+if [ -d "${AOSP}/external/optee_examples" ]; then
+    :
+fi
