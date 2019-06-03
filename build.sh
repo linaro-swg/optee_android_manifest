@@ -32,6 +32,7 @@ function build(){
     echo "(time LANG=C make ${TARGETS[@]} -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${board}.log"
     (time LANG=C make ${TARGETS[@]} -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${board}.log
     echo "Build done!"
+    date +%Y%m%d-%H%M >>logs/time.log
 
     if $VTS; then
 	echo "Start VTS build:" >>logs/time.log
@@ -39,6 +40,7 @@ function build(){
 	echo "(time LANG=C make vts -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${board}.log"
 	(time LANG=C make vts -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${board}.log
 	echo "VTS build done!"
+	date +%Y%m%d-%H%M >>logs/time.log
     fi
 
     if $CTS; then
@@ -47,9 +49,8 @@ function build(){
 	echo "(time LANG=C make cts -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${board}.log"
 	(time LANG=C make cts -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${board}.log
 	echo "CTS build done!"
+	date +%Y%m%d-%H%M >>logs/time.log
     fi
-
-    date +%Y%m%d-%H%M >>logs/time.log
 }
 
 function build_hikey(){
