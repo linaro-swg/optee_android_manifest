@@ -99,6 +99,7 @@ if [[ "${base_manifest}" != "pinned-manifest"* ]]; then
 ${BASE}/sync-projects.sh -j ${CPUS} -d \
                           android-patchsets \
                           android-build-configs \
+                          build/make \
                           device/linaro/hikey \
                           device/linaro/bootloader/edk2 \
                           frameworks/av \
