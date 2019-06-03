@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+ <remote name="github" fetch="https://github.com/" />
+
+ <remove-project name="kernel/hikey-linaro" />
+ <remove-project name="device/linaro/hikey"/>
+ <remove-project name="OP-TEE/optee_test" />
+ <remove-project name="OP-TEE/optee_client" />
+ <remove-project name="OP-TEE/optee_os" />
+ <remove-project name="platform/frameworks/base" />
+ <remove-project name="platform/system/bt" />
+ <remove-project name="platform/external/libdrm" />
+
+ <project path="kernel/linaro/hisilicon-4.14" name="linaro-swg/linux" revision="optee_4.14_kmgk_3.3.0" remote="github" />
+ <project path="device/linaro/hikey" name="linaro-swg/device-linaro-hikey" revision="optee_kmgk_3.3.0" remote="github" />
+ <project path="external/optee_test" name="OP-TEE/optee_test" revision="refs/tags/3.3.0" remote="github" />
+ <project path="external/optee_client" name="OP-TEE/optee_client" revision="refs/tags/3.3.0" remote="github" />
+ <project path="optee/optee_os" name="OP-TEE/optee_os" revision="kmgk_pta_3.3.0" remote="github" />
+ <project path="device/linaro/kmgk" name="linaro-swg/kmgk" revision="optee_kmgk_3.3.0" remote="github" />
+ <project path="frameworks/base" name="linaro-swg/frameworks-base" revision="optee_kmgk_3.3.0" remote="github" />
+ <project path="system/bt" name="linaro-swg/system-bt" revision="optee_kmgk_3.3.0" remote="github" />
+ <project path="external/libdrm" name="linaro-swg/external-libdrm" revision="optee_kmgk_3.3.0" remote="github" />
+
+</manifest>
