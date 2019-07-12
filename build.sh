@@ -161,5 +161,6 @@ export TARGET_SYSTEMIMAGES_USE_SQUASHFS=$USE_SQUASHFS
 #see https://github.com/vchong/device-linaro-hikey/commit/fcfe2d6ac00539f2d4cf77295503c0d285ee8170
 echo "export TARGET_BOOTIMAGE_USE_FAT=true"
 export TARGET_BOOTIMAGE_USE_FAT=true
+echo ""
 build ${board}
 echo "Please make sure there are no errors before flashing!"
