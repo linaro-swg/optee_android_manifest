@@ -186,6 +186,7 @@ if [ "$dbg" = true ]; then
 		sed -i '/^#apply.* 17632/s/^#//' $i
 		sed -i '/^#apply.* 18457/s/^#//' $i
 		sed -i '/^#apply.* 18328/s/^#//' $i
+		sed -i '/^#apply.* 20096/s/^#//' $i
 	done
 fi
 
