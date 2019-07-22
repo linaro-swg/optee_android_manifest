@@ -12,9 +12,26 @@ repo_url="git://android.git.linaro.org/tools/repo"
 base_manifest="default.xml"
 sync_linaro=true
 zfs_clone=false
+install_pkg=false
 
 version="master"
 board="hikey"
+
+install_packages(){
+    # Some of the packges might be not necessary anymore for
+    # android build, but not going to figure them out here.
+    sudo apt-get update
+    packages="acpica-tools bc bison build-essential ccache curl flex genisoimage"
+    packages="${packages} git git-core g++-multilib gnupg gperf lib32ncurses5-dev lib32z-dev"
+    packages="${packages} libc6-dev-i386 libdrm-intel1 libgl1-mesa-dev liblz4-tool libssl-dev"
+    packages="${packages} libx11-dev libxml2-utils linaro-image-tools lzop mtools openjdk-8-jdk"
+    packages="${packages} patch python-crypto python-mako python-parted python-pip python-requests"
+    packages="${packages} python-wand python-yaml rsync time u-boot-tools unzip uuid-dev"
+    packages="${packages} vim-common wget x11proto-core-dev xsltproc zip zlib1g-dev"
+    ## packages needed by OP-TEE
+    packages="${packages} python-pyelftools python3-pyelftools"
+    sudo apt-get install -y ${packages}
+}
 
 sync_init(){
     if [ X"$REF" != X"" ]; then

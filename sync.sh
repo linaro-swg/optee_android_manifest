@@ -29,6 +29,11 @@ while [ "$1" != "" ]; do
 			echo "Print debug"
 			dbg=true
 			;;
+		-ip | --install-packages)
+			# overwrite install_pkg in sync-common.sh
+			echo "Install deps"
+			install_pkg=true
+			;;
 		-j)	# set build parallellism
 			# overwrite CPUS in helpers
 			shift
@@ -205,6 +210,13 @@ fi
 
 fi
 #end if not stable manifest
+
+if [ "$install_pkg" = true ]; then
+	echo ""
+	echo ""
+	echo "Installing dep pkgs before build"
+	install_packages
+fi
 
 echo ""
 echo ""
