@@ -25,6 +25,16 @@ board="hikey"
 function build(){
     #export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
     #export PATH=${JAVA_HOME}/bin:$PATH
+
+    if [ -n "${HOOK_PRE_ANDROID_BUILD}" ] && [ "$MMMA" = false ]; then
+	echo "Start ${HOOK_PRE_ANDROID_BUILD}:" >>logs/time.log
+	date +%Y%m%d-%H%M >>logs/time.log
+	echo "(time ./android-build-configs/hooks/${HOOK_PRE_ANDROID_BUILD}) 2>&1 |tee logs/build-${board}.log"
+	(time ./android-build-configs/hooks/${HOOK_PRE_ANDROID_BUILD}) 2>&1 |tee logs/build-${board}.log
+	echo "Build done!"
+	date +%Y%m%d-%H%M >>logs/time.log
+    fi
+
     source build/envsetup.sh
     lunch ${board}-${variant}
 
@@ -44,6 +54,15 @@ function build(){
     (time LANG=C make ${TARGETS[@]} -j${CPUS} ${SHOW_COMMANDS}) 2>&1 |tee logs/build-${board}.log
     echo "Build done!"
     date +%Y%m%d-%H%M >>logs/time.log
+
+    if [ -n "${HOOK_POST_ANDROID_BUILD}" ]; then
+	echo "Start ${HOOK_POST_ANDROID_BUILD}:" >>logs/time.log
+	date +%Y%m%d-%H%M >>logs/time.log
+	echo "(time ./android-build-configs/hooks/${HOOK_POST_ANDROID_BUILD}) 2>&1 |tee logs/build-${board}.log"
+	(time ./android-build-configs/hooks/${HOOK_POST_ANDROID_BUILD}) 2>&1 |tee logs/build-${board}.log
+	echo "Build done!"
+	date +%Y%m%d-%H%M >>logs/time.log
+    fi
 
     if $VTS; then
 	echo "Start VTS build:" >>logs/time.log
