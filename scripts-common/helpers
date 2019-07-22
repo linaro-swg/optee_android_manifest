@@ -2,9 +2,17 @@
 
 set -e
 
-CPUS=${CPUS:-$(grep processor /proc/cpuinfo |wc -l)}
-#CPUS=${CPUS:-$(getconf _NPROCESSORS_ONLN)}
-#CPUS=$(nproc)
+# this is to rate-limit builds in CI not here
+#if [ -n "${MAKE_JOBS}" ]; then
+if false; then
+    echo "set CPUS based on MAKE_JOBS"
+    CPUS=${MAKE_JOBS}
+else
+    CPUS=${CPUS:-$(grep processor /proc/cpuinfo |wc -l)}
+    #CPUS=${CPUS:-$(getconf _NPROCESSORS_ONLN)}
+    #CPUS=${CPUS:-$(nproc)}
+fi
+
 dbg=false
 wv=false
 
