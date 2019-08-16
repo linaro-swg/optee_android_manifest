@@ -165,9 +165,6 @@ if [ "$version" = "master" ] || [ "$version" = "p" ]; then
 		echo "unshallow kernel 4.14"
 		${BASE}/sync-projects.sh -j ${CPUS} -d kernel/linaro/hisilicon-4.14
 	fi
-elif [ "$version" = "o" ]; then
-	echo "unshallow 4.9 kernel"
-	${BASE}/sync-projects.sh -j ${CPUS} -d kernel/linaro/hisilicon
 else
 	echo "unknown kernel version!"
 fi
