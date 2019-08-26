@@ -189,9 +189,10 @@ if [ "$dbg" = true ]; then
 	echo "CI builds have debugs disabled. Enable them here."
 	for i in $(find android-patchsets/ -name swg-mods*); do
 		sed -i '/^#apply.* 17632/s/^#//' $i
-		sed -i '/^#apply.* 18457/s/^#//' $i
 		sed -i '/^#apply.* 18328/s/^#//' $i
+		sed -i '/^#apply.* 18457/s/^#//' $i
 		sed -i '/^#apply.* 20096/s/^#//' $i
+		sed -i '/^#curl_am_optee.* cf7c607f/s/^#//' $i
 	done
 fi
 
