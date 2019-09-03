@@ -67,7 +67,7 @@ sync(){
     else
         clean_changes abc ${board}-optee-${version}
     fi
-    clean_changes android-patchsets swg-mods-${version}
+    clean_changes android-patchsets swg-mods
     clean_changes device/linaro/hikey fip.bin
 
     if [ "${base_manifest}" = "default.xml" ]; then
