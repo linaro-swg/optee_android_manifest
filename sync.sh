@@ -192,6 +192,7 @@ if [ "$dbg" = true ]; then
 		sed -i '/^#apply.* 18328/s/^#//' $i
 		sed -i '/^#apply.* 18457/s/^#//' $i
 		sed -i '/^#apply.* 20096/s/^#//' $i
+		sed -i '/#curl_am_optee.* a581c9bb/s/#//' $i
 		sed -i '/^#curl_am_optee.* cf7c607f/s/^#//' $i
 	done
 fi
