@@ -178,6 +178,12 @@ fi
 fi
 #end if not pinned manifest
 
+if [ "$dbg" = true ]; then
+	echo "set OPTEE_OS_DBG and OPTEE_CLN_DBG to y"
+	export OPTEE_OS_DBG=y
+	export OPTEE_CLN_DBG=y
+fi
+
 # apply local patches before
 if [ -f "SWG-PATCHSETS-BEFORE" ]; then
 	echo "applying patchset: SWG-PATCHSETS-BEFORE"
