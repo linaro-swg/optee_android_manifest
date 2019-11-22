@@ -70,6 +70,10 @@ sync(){
     clean_changes android-patchsets swg-mods
     clean_changes device/linaro/hikey fip.bin
 
+    if [ -d .repo/local_manifests ]; then
+	clean_changes .repo/local_manifests optee.xml
+    fi
+
     if [ "${base_manifest}" = "default.xml" ]; then
 	echo "repo sync -j${CPUS} -c --force-sync ${TGTS[@]}"
 	repo sync -j${CPUS} -c --force-sync ${TGTS[@]}
