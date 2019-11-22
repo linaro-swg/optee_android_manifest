@@ -167,11 +167,11 @@ main(){
     export_config
 
     # if MIRROR is local then repo sync
-    if [[ "X${MIRROR}" = X/* ]]; then
-        mirror_dir=$(dirname $(dirname ${MIRROR}))
-        echo "Skip repo sync local mirror for now!"
-        #repo sync -j${CPUS} "${mirror_dir}"
-    fi
+    #if [[ "X${MIRROR}" = X/* ]]; then
+    #    mirror_dir=$(dirname $(dirname ${MIRROR}))
+    #    echo "Skip repo sync local mirror for now!"
+    #    #repo sync -j${CPUS} "${mirror_dir}"
+    #fi
 
     # init repos
     sync_init
