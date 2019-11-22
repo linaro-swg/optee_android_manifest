@@ -79,6 +79,7 @@ sync(){
 	repo sync -j${CPUS} -c --force-sync ${TGTS[@]}
 
 	if [ X"$TGTS" != X"" ]; then
+		echo "Pinned manifest NOT generated when syncing specific target(s) only!"
 		return
 	fi
 

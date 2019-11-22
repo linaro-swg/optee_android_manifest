@@ -113,6 +113,7 @@ fi
 main
 
 if [ X"$TGTS" != X"" ]; then
+	echo "Patches NOT applied when syncing specific target(s) only!"
 	exit
 fi
 
