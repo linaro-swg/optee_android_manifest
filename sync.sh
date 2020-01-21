@@ -4,7 +4,9 @@ BASE=$(cd $(dirname $0);pwd)
 
 source ${BASE}/scripts-common/sync-common.sh
 
-unset TGTS
+unset TGTS skip_patch
+
+skip_patch=false
 
 # overwrite remote MIRROR in sync-common.sh if local mirror exists
 if [ -d /opt/aosp/.mirror/platform/manifest.git ]; then
@@ -50,6 +52,10 @@ while [ "$1" != "" ]; do
 			shift
 			echo "set --reference $1"
 			REF=$1
+			;;
+		-sp | -skip-patch)
+			echo "Patches will NOT be applied"
+			skip_patch=true
 			;;
 		-s | -sync-target)
 			echo "Adding sync target: $1"
@@ -118,7 +124,7 @@ if [ X"$TGTS" != X"" ]; then
 fi
 
 #if not stable manifest
-if [[ "${base_manifest}" != "pinned-manifest-stable"* ]]; then
+if [ "$skip_patch" = false ] || [ "${base_manifest}" != "pinned-manifest-stable"* ]; then
 
 if [[ "${base_manifest}" != "pinned-manifest"* ]]; then
 ${BASE}/sync-projects.sh -j ${CPUS} -d \
