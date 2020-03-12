@@ -197,6 +197,18 @@ if [ "$dbg" = true ]; then
 	done
 fi
 
+## TI Git server has moved from http://git.ti.com/ to
+## http://git.ti.com/cgit/. This broke the TI patches.
+## As a workaround the same patches can be pulled from
+## Linaro Gerrit server. The ti.patch file patches the
+## android-patchsets repository to include this workaround.
+## Changes taken from 
+## https://android-git.linaro.org/android-patchsets.git/commit/?id=3f15d1669d9d19cd66dbe75ba4af8f6463028dfa
+  
+cd android-patchsets
+git apply ../ti.patch
+cd -
+
 for i in ${PATCHSETS}; do
 	echo ""
 	echo ""
