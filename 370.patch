@@ -1,0 +1,35 @@
+diff --git a/optee-master-workarounds b/optee-master-workarounds
+index 0985925..307bc0d 100755
+--- a/optee-master-workarounds
++++ b/optee-master-workarounds
+@@ -40,6 +40,6 @@ if [ -d "${AOSP}/external/optee_test" ]; then
+ fi
+ if [ -d "${AOSP}/optee/optee_os" ]; then
+     ## use host python command
+-    ## https://github.com/vchong/optee_os/commit/34ac4922e11bfe7d6721f35c348606b2f8912081
+-    curl_am_optee_vchong optee_os 34ac4922e11bfe7d6721f35c348606b2f8912081 optee/optee_os
++    ## https://github.com/vchong/optee_os/commit/5fa83e2bfec8018ba4f5443bd63f924b30f7bf4f
++    curl_am_optee_vchong optee_os 5fa83e2bfec8018ba4f5443bd63f924b30f7bf4f optee/optee_os
+ fi
+diff --git a/swg-mods-common b/swg-mods-common
+index ed92d55..882f399 100755
+--- a/swg-mods-common
++++ b/swg-mods-common
+@@ -127,7 +127,7 @@ fi
+ 
+ # use /persist/tee as secure storage path
+ # https://github.com/vchong/optee_client/commit/68e907e6c6a05c2e5c8603079dfae5927fce4430
+-curl_am_optee optee_client 68e907e6c6a05c2e5c8603079dfae5927fce4430 external/optee_client vchong
++#curl_am_optee optee_client 68e907e6c6a05c2e5c8603079dfae5927fce4430 external/optee_client vchong
+ 
+ if [ X"$TEE_USE_RPMB" = X"true" ]; then
+ 	# tee-supplicant: disable RPMB emu
+@@ -155,7 +155,7 @@ fi
+ cd optee/optee_os
+ #git fetch https://github.com/vchong/optee_os pull/1/head && git merge --no-edit FETCH_HEAD
+ # cherry pick instead of merge so that patches stay on top
+-git fetch https://github.com/vchong/optee_os kmgk_rebase_mbedtls && git cherry-pick da2619a4a694f436e0b178aa06ac5f830166e682^..25319ff90d708627eb41a7cad20c650a10e30e10
++git fetch https://github.com/vchong/optee_os kmgk_rebase_mbedtls_370_dnd && git cherry-pick 9a3a11d19584f58bd2971b159a2b2165e3df25f5^..f0e7be14cbe36a49a02b8250a99f51b9635b0e80
+ cd -
+ 
+ #######################################################
