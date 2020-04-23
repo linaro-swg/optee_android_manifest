@@ -110,6 +110,8 @@ func_sync_linaro(){
 	echo "git clone ${LOCAL_MANIFEST} -b ${LOCAL_MANIFEST_BRANCH} local_manifest"
         git clone ${LOCAL_MANIFEST} -b ${LOCAL_MANIFEST_BRANCH} local_manifests
     fi
+    #echo "checking out stable version for master-dirty"
+    #git checkout 418d65b06e213ad384e1348c8d232ea250d58824
     popd
 
 #    if [ "$board" = "hikey" ]; then

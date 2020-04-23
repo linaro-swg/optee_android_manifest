@@ -216,7 +216,7 @@ if [ "$dbg" = true ]; then
 fi
 
 #cd android-patchsets
-echo "skip applying patchsets: 390.patch"
+#echo "skip applying patchsets: 390.patch"
 #git stash
 #git apply ../390.patch
 # 'apply' better even if the changes are not committed
