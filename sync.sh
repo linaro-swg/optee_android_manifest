@@ -211,7 +211,7 @@ if [ "$dbg" = true ]; then
 fi
 
 cd android-patchsets
-git apply ../370.patch
+git apply ../380.patch
 cd -
 
 for i in ${PATCHSETS}; do
