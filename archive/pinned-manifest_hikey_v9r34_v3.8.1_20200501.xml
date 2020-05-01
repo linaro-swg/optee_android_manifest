@@ -10,16 +10,11 @@
   
   <default remote="aosp" revision="refs/tags/android-9.0.0_r34" sync-j="4"/>
   
-  <project groups="device,hikey960" name="96boards-hikey/OpenPlatformPkg.git" path="optee/OpenPlatformPkg" remote="github-optee" revision="76bbfcc0bfa4184ed5991fe89c8d7039f8ffeb46" upstream="testing/hikey960_v1.3.4"/>
-  <project groups="device,hikey960" name="96boards-hikey/edk2.git" path="optee/edk2" remote="github-optee" revision="776deafa053da51bfc999f6bc8552744fcd0f33e" upstream="testing/hikey960_v2.5"/>
-  <project groups="device,hikey960" name="96boards-hikey/l-loader.git" path="optee/l-loader" remote="github-optee" revision="a0c5d726cd2a9984f1cb98f0123969cfccce990d" upstream="testing/hikey960_v1.2"/>
-  <project groups="device,hikey960" name="96boards-hikey/tools-images-hikey960.git" path="optee/tools-images-hikey960" remote="github-optee" revision="8bc4493bf3a519982a2c69d4ce07beca300ec4fe" upstream="master"/>
   <project groups="device,hikey" name="OP-TEE/optee_client" path="external/optee_client" remote="github-optee" revision="be4fa2e36f717f03ca46e574aa66f697a897d090" upstream="refs/tags/3.8.0"/>
   <project groups="device,hikey" name="OP-TEE/optee_os" path="optee/optee_os" remote="github-optee" revision="023e33656e2c9557ce50ad63a98b2e2c9b51c118" upstream="refs/tags/3.8.0"/>
   <project groups="device,hikey" name="OP-TEE/optee_test" path="external/optee_test" remote="github-optee" revision="30481e381cb4285706e7516853495a7699c93b2c" upstream="refs/tags/3.8.0"/>
-  <project groups="device,hikey960" name="TF-A/trusted-firmware-a.git" path="optee/arm-trusted-firmware" remote="tfo" revision="62b56a72d24460a8a126847bcc24b0798601289b" upstream="master"/>
   <project name="android-build-configs" remote="linaro-android" revision="e9950df26936f8909879bb803821ebee68f616ce" upstream="master"/>
-  <project name="android-patchsets" remote="linaro-android" revision="9603278aaf74c51448986d1fa9626493b61160e1" upstream="master"/>
+  <project name="android-patchsets" remote="linaro-android" revision="9096e69d298c3e5a18ad0faa4bbb7e223bbb735e" upstream="master"/>
   <project groups="pdk-cw-fs,pdk" name="device/common" revision="20e35d3569a0646dceb105ccc66524d969887759" upstream="refs/tags/android-9.0.0_r34"/>
   <project groups="pdk" name="device/generic/arm64" revision="325b7ec3eab920869050bbfedbd3461f9aed5eb5" upstream="refs/tags/android-9.0.0_r34"/>
   <project groups="pdk" name="device/generic/armv7-a-neon" revision="9e96e041bf3c9d5b57b11f921c6339e076478a7a" upstream="refs/tags/android-9.0.0_r34"/>
@@ -44,10 +39,10 @@
   <project groups="device,hikey" name="device/linaro/bootloader/edk2" revision="6141238127ffcef8fee2af2cd01757264a95bf09" upstream="master"/>
   <project name="device/linaro/common" path="device/linaro/build" remote="linaro-android" revision="bc84557bb333029164af3ad46d28cbf3a7c90a68" upstream="linaro-p-preview"/>
   <project groups="device,hikey,pdk" name="device/linaro/hikey" revision="d8abea8054a7ed7c3e7bc71490e7ec5a4d7aefac" upstream="refs/tags/android-9.0.0_r34"/>
-  <project clone-depth="1" groups="device,hikey,pdk" name="device/linaro/hikey-kernel" revision="11937728c652b4d006c6c6b6e39a927efcc8f40b" upstream="master"/>
+  <project clone-depth="1" groups="device,hikey,pdk" name="device/linaro/hikey-kernel" revision="15d4959bce4198c1f06d290eca2ccbdeda169eab" upstream="master"/>
   <project groups="pdk" name="device/sample" revision="64f95592f3bc922952396445d7dbc7acebdefd96" upstream="refs/tags/android-9.0.0_r34"/>
   <project groups="vts,pdk" name="kernel/configs" revision="f65b344e69ebe936d3148cfb56d446e35e4dce17" upstream="refs/tags/android-9.0.0_r34"/>
-  <project groups="device,hikey" name="kernel/hikey-linaro" path="kernel/linaro/hisilicon-4.14" revision="eca3a1de761510076ef78a8921345ad166609c31" upstream="android-hikey-linaro-4.14"/>
+  <project groups="device,hikey" name="kernel/hikey-linaro" path="kernel/linaro/hisilicon-4.14" revision="ccabdd95c7103a01c174459ad1a25fdd397ff51b" upstream="android-hikey-linaro-4.14"/>
   <project name="kernel/tests" revision="644f4d74b9212e14dc39c21763ae76c832e14f66" upstream="refs/tags/android-9.0.0_r34"/>
   <project groups="device,hikey" name="linaro-swg/kmgk" path="device/linaro/kmgk" remote="github-optee" revision="0d319a4add69be40e40173ea152ca3c658eb9d26" upstream="refs/tags/3.8.0"/>
   <project groups="device,hikey" name="linaro-swg/optee_examples" path="external/optee_examples" remote="github-optee" revision="559b2141c16bf0f57ccd72f60e4deb84fc2a05b0" upstream="refs/tags/3.8.0"/>
@@ -702,7 +697,6 @@
   <project name="toolchain/benchmark" revision="ce43588700ff84f20b6bf6a513d8932f693e33dd" upstream="refs/tags/android-9.0.0_r34"/>
   <project groups="pdk" name="toolchain/binutils" revision="15d7fe529a4fc80dcbb21306e55cb55f7ec1cf4a" upstream="refs/tags/android-9.0.0_r34"/>
   <project groups="pdk" name="toolchain/pgo-profiles" revision="24bd8873cfbddd16a8fb4c485c6ffa3406a33489" upstream="refs/tags/android-9.0.0_r34"/>
-  <project groups="device,hikey960" name="uefi/uefi-tools.git" path="optee/uefi-tools" remote="lin" revision="a47d7f8f4cc4a0ce63588ee3a89a3918f0f0751d" upstream="master"/>
   
   <repo-hooks enabled-list="pre-upload" in-project="platform/tools/repohooks"/>
 </manifest>

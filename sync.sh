@@ -211,7 +211,12 @@ if [ "$dbg" = true ]; then
 fi
 
 cd android-patchsets
-git apply ../380.patch
+git apply ../381.patch
+# 'apply' better even if the changes are not committed
+# cos if committed via 'am' then the 'stray' sha might be saved to the
+# pinned-manifest!
+# 'stray' in the sense that it's not living in any branches or tags
+#git am ../381.patch
 cd -
 
 for i in ${PATCHSETS}; do
