@@ -10,7 +10,7 @@
   
   <default remote="aosp" revision="refs/tags/android-9.0.0_r34" sync-j="4"/>
   
-  <project groups="device,hikey960" name="96boards-hikey/OpenPlatformPkg.git" path="optee/OpenPlatformPkg" remote="github-optee" revision="76bbfcc0bfa4184ed5991fe89c8d7039f8ffeb46" upstream="testing/hikey960_v1.3.4"/>
+  <project groups="device,hikey960" name="96boards-hikey/OpenPlatformPkg.git" path="optee/OpenPlatformPkg" remote="github-optee" revision="245344ea5421ba126e1eb76484d00b590a4a78f7" upstream="testing/hikey960_v1.3.4"/>
   <project groups="device,hikey960" name="96boards-hikey/edk2.git" path="optee/edk2" remote="github-optee" revision="776deafa053da51bfc999f6bc8552744fcd0f33e" upstream="testing/hikey960_v2.5"/>
   <project groups="device,hikey960" name="96boards-hikey/l-loader.git" path="optee/l-loader" remote="github-optee" revision="a0c5d726cd2a9984f1cb98f0123969cfccce990d" upstream="testing/hikey960_v1.2"/>
   <project groups="device,hikey960" name="96boards-hikey/tools-images-hikey960.git" path="optee/tools-images-hikey960" remote="github-optee" revision="8bc4493bf3a519982a2c69d4ce07beca300ec4fe" upstream="master"/>
