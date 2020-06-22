@@ -154,6 +154,7 @@ ${BASE}/sync-projects.sh -j ${CPUS} -d \
                         external/optee_client \
                         external/optee_examples \
                         optee/optee_os \
+                        optee/l-loader \
                         device/linaro/kmgk
 
 if [ "$version" = "master" ] || [ "$version" = "p" ]; then
@@ -166,12 +167,11 @@ else
 	echo "unknown kernel version!"
 fi
 
-if [ "$board" = "hikey960" ]; then
-	echo "unshallow hikey960 bootloader repos"
-	${BASE}/sync-projects.sh -j ${CPUS} -d \
-		optee/uefi-tools \
-		optee/edk2
-fi
+#if [ "$board" = "hikey960" ]; then
+#	echo "unshallow hikey960 bootloader repos"
+#	${BASE}/sync-projects.sh -j ${CPUS} -d \
+#		optee/edk2
+#fi
 
 if [ "$wv" = true ]; then
 	echo "unshallow wv repos"
