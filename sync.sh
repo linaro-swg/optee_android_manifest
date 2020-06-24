@@ -210,14 +210,16 @@ if [ "$dbg" = true ]; then
 	done
 fi
 
-cd android-patchsets
-git apply ../382.patch
+#cd android-patchsets
+echo "skip applying patchsets: 390.patch"
+#git stash
+#git apply ../390.patch
 # 'apply' better even if the changes are not committed
 # cos if committed via 'am' then the 'stray' sha might be saved to the
 # pinned-manifest!
 # 'stray' in the sense that it's not living in any branches or tags
-#git am ../382.patch
-cd -
+#git am ../390.patch
+#cd -
 
 for i in ${PATCHSETS}; do
 	echo ""

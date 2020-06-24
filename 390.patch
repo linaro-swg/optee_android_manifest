@@ -1,0 +1,34 @@
+diff --git a/swg-mods-common b/swg-mods-common
+index 55739db..433fe4f 100755
+--- a/swg-mods-common
++++ b/swg-mods-common
+@@ -63,6 +63,29 @@ fi
+ ## https://android-review.linaro.org/#/c/platform/system/core/+/20241
+ #apply --linaro system/core 20241/1
+ 
++## fs_mgr: add dbg logs
++## https://android-review.linaro.org/c/platform/system/core/+/21588
++apply --linaro system/core 21588/1
++
++## init: reduce init ctl msg log
++## https://android-review.linaro.org/c/platform/system/core/+/21589
++apply --linaro system/core 21589/2
++
++## service: print dbg info for tee-supplicant
++## https://android-review.linaro.org/c/platform/system/core/+/21595
++apply --linaro system/core 21595/1
++
++## init: service: KillProcessGroup dbg logs
++## https://android-review.linaro.org/c/platform/system/core/+/21597
++apply --linaro system/core 21597/1
++
++## init/builtins.cpp: print is_file_crypto
++## http://android-review.linaro.org/c/platform/system/core/+/21616
++apply --linaro system/core 21616/1
++
++## add hexdump() & dbg
++## http://android-review.linaro.org/c/platform/system/vold/+/21611
++apply --linaro system/vold 21611/1
+ 
+ # fastboot: mark nvme partition as ext4
+ # https://android-review.linaro.org/c/device/linaro/bootloader/OpenPlatformPkg/+/20452
