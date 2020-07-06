@@ -20,7 +20,7 @@
   <project dest-branch="master" groups="device,hikey" name="96boards-hikey/tools-images-hikey960.git" path="optee/tools-images-hikey960" remote="github-optee" revision="8bc4493bf3a519982a2c69d4ce07beca300ec4fe" upstream="master"/>
   <project dest-branch="master" groups="device,hikey" name="TF-A/trusted-firmware-a.git" path="optee/trusted-firmware-a" remote="tfo" revision="568a8817281d6acb80580226dfcb4e39edcb74c1" upstream="master"/>
   <project dest-branch="master" name="android-build-configs" remote="linaro-android" revision="42587028b4c65834cbef2e30b1ed9948ecc4d606" upstream="master"/>
-  <project dest-branch="aosp_clang_dev_wip" groups="device,hikey" name="android-patchsets" remote="vc" revision="1ecc9491ab5d9a12e313f9b66953f16bab9c19ad" upstream="aosp_clang_dev_wip"/>
+  <project dest-branch="aosp_clang_dev_wip" groups="device,hikey" name="android-patchsets" remote="vc" revision="466ca13f37a3a5e5e37cb02dc13a527c111562cf" upstream="aosp_clang_dev_wip"/>
   <project dest-branch="aosp_clang_dev_wip2" groups="device,hikey" name="atf-fastboot.git" path="optee/atf-fastboot" remote="vc" revision="ab12858a8907abbcd41156ebbc918f8e30f40959" upstream="aosp_clang_dev_wip2"/>
   <project dest-branch="aosp_clang_dev_wip3" groups="device,hikey" name="device-linaro-hikey" path="device/linaro/hikey" remote="vc" revision="8f8a95ba2fe153cdbb6b037c9fd9a1eeee53253a" upstream="aosp_clang_dev_wip3"/>
   <project dest-branch="master" groups="pdk-cw-fs,pdk" name="device/common" revision="7cc154a9e8dd6b710c9174532751c46419b532d0" upstream="master"/>
