@@ -132,7 +132,6 @@ ${BASE}/sync-projects.sh -j ${CPUS} -d \
                           android-build-configs \
                           build/make \
                           device/linaro/hikey \
-                          device/linaro/bootloader/edk2 \
                           frameworks/av \
                           frameworks/base \
                           frameworks/native \
