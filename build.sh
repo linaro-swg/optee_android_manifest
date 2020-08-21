@@ -35,7 +35,9 @@ function build(){
 	date +%Y%m%d-%H%M >>logs/time.log
     fi
 
+    echo "source build/envsetup.sh" 2>&1 |tee logs/build-${board}.log
     source build/envsetup.sh
+    echo "lunch ${board}-${variant}" 2>&1 |tee logs/build-${board}.log
     lunch ${board}-${variant}
 
     if [ "$MMMA" = true ]; then
