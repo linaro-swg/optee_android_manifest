@@ -105,15 +105,11 @@ func_sync_linaro(){
     if [ -d ./local_manifests ]; then
         cd ./local_manifests;
 	echo "git pull local manifest"
-        git pull origin ${LOCAL_MANIFEST_BRANCH}-dirty
+        git pull origin ${LOCAL_MANIFEST_BRANCH}
     else
-	echo "git clone ${LOCAL_MANIFEST} -b ${LOCAL_MANIFEST_BRANCH}-dirty local_manifest"
-        git clone ${LOCAL_MANIFEST} -b ${LOCAL_MANIFEST_BRANCH}-dirty local_manifests
-        cd ./local_manifests
+	echo "git clone ${LOCAL_MANIFEST} -b ${LOCAL_MANIFEST_BRANCH} local_manifest"
+        git clone ${LOCAL_MANIFEST} -b ${LOCAL_MANIFEST_BRANCH} local_manifests
     fi
-    #use -dirty branch branch above so no need to checkout specific commit
-    #echo "checking out stable version for master-dirty"
-    #git checkout 418d65b06e213ad384e1348c8d232ea250d58824
     popd
 
 #    if [ "$board" = "hikey" ]; then
