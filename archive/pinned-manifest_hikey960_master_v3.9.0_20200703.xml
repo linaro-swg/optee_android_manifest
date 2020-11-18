@@ -39,12 +39,12 @@
   <project dest-branch="master" groups="pdk" name="device/generic/trusty" revision="739031d0546da17b860b816a3acbcc560780b59c" upstream="master"/>
   <project dest-branch="master" groups="pdk" name="device/generic/x86" revision="3f0ca6ed17e03fb19b8a5d3d30cebe4dff50fa19" upstream="master"/>
   <project dest-branch="master" groups="pdk" name="device/generic/x86_64" revision="adccc2135d2c69562be3f8cf45be6849c6cd22a8" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="device/google/vrservices" revision="7cb17e865f59ce40ce0393dfccddbc0807698806" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="device/google/vrservices" revision="7cb17e865f59ce40ce0393dfccddbc0807698806" upstream="master"/>
   <project dest-branch="master" name="device/linaro/bootloader/OpenPlatformPkg" revision="c8d103d0295bcf67eca64d74b8c2ec611125240e" upstream="master"/>
   <project dest-branch="master" name="device/linaro/bootloader/arm-trusted-firmware" revision="e48d9816cf23530327456da2a2ae87ec3eb0514b" upstream="master"/>
   <project dest-branch="master" name="device/linaro/bootloader/edk2" revision="70739421c7bb36e06a2544a2111ea6d18961fa04" upstream="master"/>
   <project dest-branch="linaro-q-preview" name="device/linaro/common" path="device/linaro/build" remote="linaro-android" revision="44857105be83ef84463522c048418a7d1d7ad858" upstream="linaro-q-preview"/>
-  <project clone-depth="1" dest-branch="master" groups="device,hikey,pdk" name="device/linaro/hikey-kernel" revision="116a79898b28bf00390abfc7d73df24fc7905856" upstream="master"/>
+  <project dest-branch="master" groups="device,hikey,pdk" name="device/linaro/hikey-kernel" revision="116a79898b28bf00390abfc7d73df24fc7905856" upstream="master"/>
   <project dest-branch="master" groups="pdk" name="device/sample" revision="783f73ef326d76d4dffa36a5465607d3fd59b371" upstream="master"/>
   <project dest-branch="master" groups="vts,pdk" name="kernel/configs" revision="e4cee088ae80a330d3359fb7f029f2f55e07ba30" upstream="master"/>
   <project dest-branch="android-hikey-linaro-4.14" groups="device,hikey" name="kernel/hikey-linaro" path="kernel/linaro/hisilicon-4.14" revision="ccabdd95c7103a01c174459ad1a25fdd397ff51b" upstream="android-hikey-linaro-4.14"/>
@@ -120,7 +120,7 @@
   <project dest-branch="master" groups="pdk" name="platform/external/cbor-java" path="external/cbor-java" revision="3d7fde33f9364c80cabd241c6560b33ae4c83c7e" upstream="master"/>
   <project dest-branch="master" groups="pdk" name="platform/external/chromium-libpac" path="external/chromium-libpac" revision="ceee94e58c18e6a650051477dda8ae887bb4b630" upstream="master"/>
   <project dest-branch="master" groups="pdk" name="platform/external/chromium-trace" path="external/chromium-trace" revision="fe6a5051c854157fb8579d4139adcaa31f319b40" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/external/chromium-webview" path="external/chromium-webview" revision="d3f0768ab7566dacfc7cadfc4f661ab30d8ecba0" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/external/chromium-webview" path="external/chromium-webview" revision="d3f0768ab7566dacfc7cadfc4f661ab30d8ecba0" upstream="master"/>
   <project dest-branch="master" groups="pdk" name="platform/external/clang" path="external/clang" revision="382efa3f0dd36a342e30e8bf06af717e0664de3f" upstream="master"/>
   <project dest-branch="master" groups="pdk" name="platform/external/cldr" path="external/cldr" revision="09ea71c1137e922826e9c5d60d3307b8b2b73fef" upstream="master"/>
   <project dest-branch="master" groups="pdk" name="platform/external/cn-cbor" path="external/cn-cbor" revision="8f258525f7792d5beefa7fdb2ea064f51651f565" upstream="master"/>
@@ -282,7 +282,7 @@
   <project dest-branch="master" groups="pdk" name="platform/external/libxkbcommon" path="external/libxkbcommon" revision="bbdf3993463b2d792d3d56085c7e6e7d957ddaf6" upstream="master"/>
   <project dest-branch="master" groups="pdk,libxml2" name="platform/external/libxml2" path="external/libxml2" revision="72ac6cf5b8ed69b2c05dcf5ba970b3fcdd4c1c4a" upstream="master"/>
   <project dest-branch="master" groups="pdk,libyuv" name="platform/external/libyuv" path="external/libyuv" revision="2ee3028b36ac61abed29cbb379a411a98fe31677" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="vts,pdk" name="platform/external/linux-kselftest" path="external/linux-kselftest" revision="3e6bd6b610f818a9f491fae0fded5ac53cf073b5" upstream="master"/>
+  <project dest-branch="master" groups="vts,pdk" name="platform/external/linux-kselftest" path="external/linux-kselftest" revision="3e6bd6b610f818a9f491fae0fded5ac53cf073b5" upstream="master"/>
   <project dest-branch="master" groups="pdk" name="platform/external/llvm" path="external/llvm" revision="26b4ad25609ef0f620d6dd9a4102e9fb20b34240" upstream="master"/>
   <project dest-branch="master" groups="pdk" name="platform/external/lmfit" path="external/lmfit" revision="215e9f8136e415f986fbb1c4818c31dad08b8486" upstream="master"/>
   <project dest-branch="master" groups="vts,pdk" name="platform/external/ltp" path="external/ltp" revision="e328e82112e84baad7c5aa8a7176d15e0956f790" upstream="master"/>
@@ -439,7 +439,7 @@
   <project dest-branch="master" groups="pdk" name="platform/external/shaderc/spirv-headers" path="external/shaderc/spirv-headers" revision="b8530f4af8fa45712a2c869b0ebb81f2c5be0969" upstream="master"/>
   <project dest-branch="master" groups="pdk" name="platform/external/shflags" path="external/shflags" revision="3dac286b93162f3ea66f52c2f4dd094c87fd755b" upstream="master"/>
   <project dest-branch="master" groups="pdk,qcom_msm8x26" name="platform/external/skia" path="external/skia" revision="efdb3fb8a591beabdea4aa9240b3a6c9e10567c4" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="cts" name="platform/external/skqp" path="external/skqp" revision="25bec16283807e794c3425dcad8ee81c669faa6b" upstream="master"/>
+  <project dest-branch="master" groups="cts" name="platform/external/skqp" path="external/skqp" revision="25bec16283807e794c3425dcad8ee81c669faa6b" upstream="master"/>
   <project dest-branch="master" groups="pdk" name="platform/external/sl4a" path="external/sl4a" revision="e68776ccc6a32da8806b30eb8fe26465c7d580e9" upstream="master"/>
   <project dest-branch="master" groups="pdk" name="platform/external/slf4j" path="external/slf4j" revision="5dacf58509da9998ef9bf4c4264a36382c2e3a10" upstream="master"/>
   <project dest-branch="master" groups="pdk" name="platform/external/smali" path="external/smali" revision="2da1720fb501e38495e342882f83bdafdf9ec812" upstream="master"/>
@@ -451,7 +451,7 @@
   <project dest-branch="master" groups="pdk" name="platform/external/squashfs-tools" path="external/squashfs-tools" revision="b27e9296bdf70d85b02af711d93c11ec85b8522c" upstream="master"/>
   <project dest-branch="master" groups="pdk" name="platform/external/strace" path="external/strace" revision="e862cfa113f17f40b911c8e58b3babbb98e67263" upstream="master"/>
   <project dest-branch="master" groups="pdk" name="platform/external/stressapptest" path="external/stressapptest" revision="4ac7a2a986e54029c100630c61e91e7edb4f8948" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/external/subsampling-scale-image-view" path="external/subsampling-scale-image-view" revision="ba09fe21ff5114f27aae1e5476dce9cf11530f46" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/external/subsampling-scale-image-view" path="external/subsampling-scale-image-view" revision="ba09fe21ff5114f27aae1e5476dce9cf11530f46" upstream="master"/>
   <project dest-branch="master" groups="pdk" name="platform/external/swiftshader" path="external/swiftshader" revision="6cc15729d8e8c798c69a689ec0722639c1b065c5" upstream="master"/>
   <project dest-branch="master" groups="pdk" name="platform/external/tagsoup" path="external/tagsoup" revision="8d79f4b5dead5a59c57a8b0604f0fcc294ce6886" upstream="master"/>
   <project dest-branch="master" groups="pdk" name="platform/external/tcpdump" path="external/tcpdump" revision="01e0162be7fddf789e79e05a3312fc9b7f2ebe52" upstream="master"/>
@@ -657,7 +657,7 @@
   <project dest-branch="master" groups="pdk-fs" name="platform/packages/apps/WallpaperPicker2" path="packages/apps/WallpaperPicker2" revision="a84f0b107f606a98adb857e35b1e71efbdee3200" upstream="master"/>
   <project dest-branch="master" groups="pdk-fs" name="platform/packages/inputmethods/LatinIME" path="packages/inputmethods/LatinIME" revision="daadf71015bf37651ed81a2d5877b480736db5cd" upstream="master"/>
   <project dest-branch="master" groups="pdk-fs" name="platform/packages/inputmethods/LeanbackIME" path="packages/inputmethods/LeanbackIME" revision="38afee1136642059a6c3d23a6bc38b0786ad29ff" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/packages/modules/ArtPrebuilt" path="packages/modules/ArtPrebuilt" revision="491a40e7de77dac8666f05aab45e6e71e57ceb49" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/packages/modules/ArtPrebuilt" path="packages/modules/ArtPrebuilt" revision="491a40e7de77dac8666f05aab45e6e71e57ceb49" upstream="master"/>
   <project dest-branch="master" groups="pdk-cw-fs,pdk-fs" name="platform/packages/modules/CaptivePortalLogin" path="packages/modules/CaptivePortalLogin" revision="cfafc5e2e93e6df36b0fb198f6346d39b8ad57d0" upstream="master"/>
   <project dest-branch="master" groups="pdk" name="platform/packages/modules/CellBroadcastService" path="packages/modules/CellBroadcastService" revision="768f23a80381fbdc417ba036ae85e864d811b5ae" upstream="master"/>
   <project dest-branch="master" groups="pdk-cw-fs,pdk-fs" name="platform/packages/modules/Cronet" path="packages/modules/Cronet" revision="f22adf20638c1b564bfd9766ed5aabf23a1aab9b" upstream="master"/>
@@ -693,60 +693,60 @@
   <project dest-branch="master" groups="pdk-fs" name="platform/packages/wallpapers/LivePicker" path="packages/wallpapers/LivePicker" revision="2c4affb0eba4131177de2de0650a74d3e6aa4a2b" upstream="master"/>
   <project dest-branch="master" groups="pdk" name="platform/pdk" path="pdk" revision="59deedc9c468ce8ae0f10e9c30742fd6f3ac82b7" upstream="master"/>
   <project dest-branch="master" groups="pdk-fs,pdk-cw-fs,cts" name="platform/platform_testing" path="platform_testing" revision="f15eff8c26b70473e2ac63bcf203c41d9470b02e" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk-fs" name="platform/prebuilts/abi-dumps/ndk" path="prebuilts/abi-dumps/ndk" revision="f6537f21e7a5c9e1f379bfb7bcba560c021dedb9" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk-fs" name="platform/prebuilts/abi-dumps/platform" path="prebuilts/abi-dumps/platform" revision="3a423764c3627dc79985b47111de8f77c7ce0aad" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk-fs" name="platform/prebuilts/abi-dumps/vndk" path="prebuilts/abi-dumps/vndk" revision="be13f0398e1ead68e288502d86fb078cf999b688" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk-fs" name="platform/prebuilts/android-emulator" path="prebuilts/android-emulator" revision="3dff88bfddb4f03ab264b45fe785aa931a0ba92c" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/asuite" path="prebuilts/asuite" revision="d1643e681b7d7f7a703e8c36de4d0c813602996b" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/build-tools" path="prebuilts/build-tools" revision="f612a0670cc68f19fa7e968fa6fd966f56bcf224" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/bundletool" path="prebuilts/bundletool" revision="c6cc587801a6c70796809842c1970a374fc22883" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/checkcolor" path="prebuilts/checkcolor" revision="8740e7ad190a24e7692d6aae424e81c85a7292bc" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/checkstyle" path="prebuilts/checkstyle" revision="9bb3ec57ad252a8f73683fc37d1d4e5347fd355d" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/clang-tools" path="prebuilts/clang-tools" revision="441f03682caa769215949156a2b58d7b1806a816" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk,darwin" name="platform/prebuilts/clang/host/darwin-x86" path="prebuilts/clang/host/darwin-x86" revision="b40fb300258802b9a6c56ce0d33ca8dfd3e665b1" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/clang/host/linux-x86" path="prebuilts/clang/host/linux-x86" revision="03d80bda09b54abcf69ff647f5a8c869df6361d0" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk-fs" name="platform/prebuilts/cmdline-tools" path="prebuilts/cmdline-tools" revision="1b7d724e36df1caab8b6bebbdd0b379eef8d6f69" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk-fs" name="platform/prebuilts/devtools" path="prebuilts/devtools" revision="bc11a72a91685bb0a35e7ecf10ffcba4e07558bd" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk-fs" name="platform/prebuilts/fuchsia_sdk" path="prebuilts/fuchsia_sdk" revision="12c41f24a38aefda3c5dda0dd513945b616cd765" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk,darwin,arm" name="platform/prebuilts/gcc/darwin-x86/aarch64/aarch64-linux-android-4.9" path="prebuilts/gcc/darwin-x86/aarch64/aarch64-linux-android-4.9" revision="e3c9192408e0ad4fa1a7b39f111dac93aef4dca8" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk,darwin,arm" name="platform/prebuilts/gcc/darwin-x86/arm/arm-linux-androideabi-4.9" path="prebuilts/gcc/darwin-x86/arm/arm-linux-androideabi-4.9" revision="9081aab4f83e15d4e097b24b4edd6bac33439351" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk,darwin" name="platform/prebuilts/gcc/darwin-x86/host/i686-apple-darwin-4.2.1" path="prebuilts/gcc/darwin-x86/host/i686-apple-darwin-4.2.1" revision="b616fc20ee024ace07f39b13a1f5a2bbdb67f8f7" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk,darwin,mips" name="platform/prebuilts/gcc/darwin-x86/mips/mips64el-linux-android-4.9" path="prebuilts/gcc/darwin-x86/mips/mips64el-linux-android-4.9" revision="7394043d1bf1189f0963b9e7f87ca44aaafc860c" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk,darwin,x86" name="platform/prebuilts/gcc/darwin-x86/x86/x86_64-linux-android-4.9" path="prebuilts/gcc/darwin-x86/x86/x86_64-linux-android-4.9" revision="3eb882505ec463db6ebaae9b2db27fea1dfa888e" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk,linux,arm" name="platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" path="prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" revision="6db7620069bbcac51474f5e4b0691071273f589a" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk,linux,arm" name="platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9" path="prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9" revision="1d67e7fe709e8f81e91e5f85a5d4c04b27c6b319" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" name="platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-7.2" path="prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-7.2-linaro" remote="linaro-android" revision="89d819e8decb70e421550011aa74da9f014cde97" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk,linux" name="platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8" path="prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8" revision="90e45fec56fdeac84c9eb174c63fa6e748c6faa9" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk-fs" name="platform/prebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8" path="prebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8" revision="4efc2a937f271a766ad1c11eb930d6e150ecb694" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk,linux,mips" name="platform/prebuilts/gcc/linux-x86/mips/mips64el-linux-android-4.9" path="prebuilts/gcc/linux-x86/mips/mips64el-linux-android-4.9" revision="2bf8cb6fba61df1d2725364d1751622979b085e3" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk,linux,x86" name="platform/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9" path="prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9" revision="6d6c9c7e26cf86eafd41b9e73840c7f8d50d1027" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="darwin,pdk" name="platform/prebuilts/gdb/darwin-x86" path="prebuilts/gdb/darwin-x86" revision="284b55fac5598bcd1f986e69b7556befdd663c53" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="linux,pdk" name="platform/prebuilts/gdb/linux-x86" path="prebuilts/gdb/linux-x86" revision="9453bfa625bc14025e6aa50dc296dd82ebbfb8c6" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="darwin,pdk,tradefed" name="platform/prebuilts/go/darwin-x86" path="prebuilts/go/darwin-x86" revision="748609c914d883228a9381c6be86623984d68a2b" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="linux,pdk,tradefed" name="platform/prebuilts/go/linux-x86" path="prebuilts/go/linux-x86" revision="7f4776e1ddb05395a4025a30de8d7b78d62ac9aa" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk,pdk-cw-fs,pdk-fs" name="platform/prebuilts/gradle-plugin" path="prebuilts/gradle-plugin" revision="68f2332cdaab47ad03b3d57be0e83c6cec3d4463" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/jdk/jdk11" path="prebuilts/jdk/jdk11" revision="e4fb089b45a6633baf0233e2c524d614ed7355f1" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/jdk/jdk8" path="prebuilts/jdk/jdk8" revision="74e4f1844dfa9b8df9e0fe2ff34a2ecc24d52b07" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/jdk/jdk9" path="prebuilts/jdk/jdk9" revision="3447ef32fa4961229942fa345c8707c7f9e00246" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/ktlint" path="prebuilts/ktlint" revision="12e4973a914b120dbc996507cd58b3fe14afcf8e" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/manifest-merger" path="prebuilts/manifest-merger" revision="c61778dd7fdef4194cf8592f9d4a7ead9bb16811" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk-cw-fs,pdk-fs" name="platform/prebuilts/maven_repo/android" path="prebuilts/maven_repo/android" revision="ecc2406087855bedf2d8e8e528ab0b2b4e6c7298" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk-cw-fs,pdk-fs" name="platform/prebuilts/maven_repo/bumptech" path="prebuilts/maven_repo/bumptech" revision="52359d0baa6af2c033f5ee57c8fbb3f51deb734e" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/misc" path="prebuilts/misc" revision="cd9a0395ecbd7a288389659825b887337e011fad" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/module_sdk/art" path="prebuilts/module_sdk/art" revision="0a68152386e56eab7fce3813aca01301e197b17b" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/ndk" path="prebuilts/ndk" revision="f5538578aa305b4764283b729b10b3c31a15a558" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="darwin,pdk,pdk-cw-fs,pdk-fs" name="platform/prebuilts/python/darwin-x86/2.7.5" path="prebuilts/python/darwin-x86/2.7.5" revision="0c5958b1636c47ed7c284f859c8e805fd06a0e63" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="linux,pdk,pdk-cw-fs,pdk-fs" name="platform/prebuilts/python/linux-x86/2.7.5" path="prebuilts/python/linux-x86/2.7.5" revision="53add29eb7b4eaa9e128e3ec84eac9e65cf4c986" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/qemu-kernel" path="prebuilts/qemu-kernel" revision="d6b05ef097ca380653b5ec040d25314f95736225" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/r8" path="prebuilts/r8" revision="af11d50e84d57bbbdc3ef39012fc947215a9a9b4" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/remoteexecution-client" path="prebuilts/remoteexecution-client" revision="0e1f82a551573c325c61e2eab7f161d05ba40b1d" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/rust" path="prebuilts/rust" revision="765d27cdd93fb86280c2c8e5a85fde72073a6c8f" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/sdk" path="prebuilts/sdk" revision="5b66c72cef32fb59d5cf8f4090f6ad73a93ce16c" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk,tools" name="platform/prebuilts/tools" path="prebuilts/tools" revision="8aec3d9132bf1f0f142c0221496cc76811b7ad4c" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/vndk/v27" path="prebuilts/vndk/v27" revision="0f6002bffc84a181b476f07f1d1491aacffa8924" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/vndk/v28" path="prebuilts/vndk/v28" revision="2569adfe06033d1758f37e33b5b50e57e2aabd44" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/vndk/v29" path="prebuilts/vndk/v29" revision="da70d9a2d97c65571f1fa353c221afdef2da081a" upstream="master"/>
-  <project clone-depth="1" dest-branch="master" groups="pdk" name="platform/prebuilts/vndk/v30" path="prebuilts/vndk/v30" revision="fe7fcee02ad528d1480f3cc112866953bc51f080" upstream="master"/>
+  <project dest-branch="master" groups="pdk-fs" name="platform/prebuilts/abi-dumps/ndk" path="prebuilts/abi-dumps/ndk" revision="f6537f21e7a5c9e1f379bfb7bcba560c021dedb9" upstream="master"/>
+  <project dest-branch="master" groups="pdk-fs" name="platform/prebuilts/abi-dumps/platform" path="prebuilts/abi-dumps/platform" revision="3a423764c3627dc79985b47111de8f77c7ce0aad" upstream="master"/>
+  <project dest-branch="master" groups="pdk-fs" name="platform/prebuilts/abi-dumps/vndk" path="prebuilts/abi-dumps/vndk" revision="be13f0398e1ead68e288502d86fb078cf999b688" upstream="master"/>
+  <project dest-branch="master" groups="pdk-fs" name="platform/prebuilts/android-emulator" path="prebuilts/android-emulator" revision="3dff88bfddb4f03ab264b45fe785aa931a0ba92c" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/asuite" path="prebuilts/asuite" revision="d1643e681b7d7f7a703e8c36de4d0c813602996b" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/build-tools" path="prebuilts/build-tools" revision="f612a0670cc68f19fa7e968fa6fd966f56bcf224" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/bundletool" path="prebuilts/bundletool" revision="c6cc587801a6c70796809842c1970a374fc22883" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/checkcolor" path="prebuilts/checkcolor" revision="8740e7ad190a24e7692d6aae424e81c85a7292bc" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/checkstyle" path="prebuilts/checkstyle" revision="9bb3ec57ad252a8f73683fc37d1d4e5347fd355d" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/clang-tools" path="prebuilts/clang-tools" revision="441f03682caa769215949156a2b58d7b1806a816" upstream="master"/>
+  <project dest-branch="master" groups="pdk,darwin" name="platform/prebuilts/clang/host/darwin-x86" path="prebuilts/clang/host/darwin-x86" revision="b40fb300258802b9a6c56ce0d33ca8dfd3e665b1" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/clang/host/linux-x86" path="prebuilts/clang/host/linux-x86" revision="03d80bda09b54abcf69ff647f5a8c869df6361d0" upstream="master"/>
+  <project dest-branch="master" groups="pdk-fs" name="platform/prebuilts/cmdline-tools" path="prebuilts/cmdline-tools" revision="1b7d724e36df1caab8b6bebbdd0b379eef8d6f69" upstream="master"/>
+  <project dest-branch="master" groups="pdk-fs" name="platform/prebuilts/devtools" path="prebuilts/devtools" revision="bc11a72a91685bb0a35e7ecf10ffcba4e07558bd" upstream="master"/>
+  <project dest-branch="master" groups="pdk-fs" name="platform/prebuilts/fuchsia_sdk" path="prebuilts/fuchsia_sdk" revision="12c41f24a38aefda3c5dda0dd513945b616cd765" upstream="master"/>
+  <project dest-branch="master" groups="pdk,darwin,arm" name="platform/prebuilts/gcc/darwin-x86/aarch64/aarch64-linux-android-4.9" path="prebuilts/gcc/darwin-x86/aarch64/aarch64-linux-android-4.9" revision="e3c9192408e0ad4fa1a7b39f111dac93aef4dca8" upstream="master"/>
+  <project dest-branch="master" groups="pdk,darwin,arm" name="platform/prebuilts/gcc/darwin-x86/arm/arm-linux-androideabi-4.9" path="prebuilts/gcc/darwin-x86/arm/arm-linux-androideabi-4.9" revision="9081aab4f83e15d4e097b24b4edd6bac33439351" upstream="master"/>
+  <project dest-branch="master" groups="pdk,darwin" name="platform/prebuilts/gcc/darwin-x86/host/i686-apple-darwin-4.2.1" path="prebuilts/gcc/darwin-x86/host/i686-apple-darwin-4.2.1" revision="b616fc20ee024ace07f39b13a1f5a2bbdb67f8f7" upstream="master"/>
+  <project dest-branch="master" groups="pdk,darwin,mips" name="platform/prebuilts/gcc/darwin-x86/mips/mips64el-linux-android-4.9" path="prebuilts/gcc/darwin-x86/mips/mips64el-linux-android-4.9" revision="7394043d1bf1189f0963b9e7f87ca44aaafc860c" upstream="master"/>
+  <project dest-branch="master" groups="pdk,darwin,x86" name="platform/prebuilts/gcc/darwin-x86/x86/x86_64-linux-android-4.9" path="prebuilts/gcc/darwin-x86/x86/x86_64-linux-android-4.9" revision="3eb882505ec463db6ebaae9b2db27fea1dfa888e" upstream="master"/>
+  <project dest-branch="master" groups="pdk,linux,arm" name="platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" path="prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" revision="6db7620069bbcac51474f5e4b0691071273f589a" upstream="master"/>
+  <project dest-branch="master" groups="pdk,linux,arm" name="platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9" path="prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9" revision="1d67e7fe709e8f81e91e5f85a5d4c04b27c6b319" upstream="master"/>
+  <project dest-branch="master" name="platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-7.2" path="prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-7.2-linaro" remote="linaro-android" revision="89d819e8decb70e421550011aa74da9f014cde97" upstream="master"/>
+  <project dest-branch="master" groups="pdk,linux" name="platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8" path="prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8" revision="90e45fec56fdeac84c9eb174c63fa6e748c6faa9" upstream="master"/>
+  <project dest-branch="master" groups="pdk-fs" name="platform/prebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8" path="prebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8" revision="4efc2a937f271a766ad1c11eb930d6e150ecb694" upstream="master"/>
+  <project dest-branch="master" groups="pdk,linux,mips" name="platform/prebuilts/gcc/linux-x86/mips/mips64el-linux-android-4.9" path="prebuilts/gcc/linux-x86/mips/mips64el-linux-android-4.9" revision="2bf8cb6fba61df1d2725364d1751622979b085e3" upstream="master"/>
+  <project dest-branch="master" groups="pdk,linux,x86" name="platform/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9" path="prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9" revision="6d6c9c7e26cf86eafd41b9e73840c7f8d50d1027" upstream="master"/>
+  <project dest-branch="master" groups="darwin,pdk" name="platform/prebuilts/gdb/darwin-x86" path="prebuilts/gdb/darwin-x86" revision="284b55fac5598bcd1f986e69b7556befdd663c53" upstream="master"/>
+  <project dest-branch="master" groups="linux,pdk" name="platform/prebuilts/gdb/linux-x86" path="prebuilts/gdb/linux-x86" revision="9453bfa625bc14025e6aa50dc296dd82ebbfb8c6" upstream="master"/>
+  <project dest-branch="master" groups="darwin,pdk,tradefed" name="platform/prebuilts/go/darwin-x86" path="prebuilts/go/darwin-x86" revision="748609c914d883228a9381c6be86623984d68a2b" upstream="master"/>
+  <project dest-branch="master" groups="linux,pdk,tradefed" name="platform/prebuilts/go/linux-x86" path="prebuilts/go/linux-x86" revision="7f4776e1ddb05395a4025a30de8d7b78d62ac9aa" upstream="master"/>
+  <project dest-branch="master" groups="pdk,pdk-cw-fs,pdk-fs" name="platform/prebuilts/gradle-plugin" path="prebuilts/gradle-plugin" revision="68f2332cdaab47ad03b3d57be0e83c6cec3d4463" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/jdk/jdk11" path="prebuilts/jdk/jdk11" revision="e4fb089b45a6633baf0233e2c524d614ed7355f1" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/jdk/jdk8" path="prebuilts/jdk/jdk8" revision="74e4f1844dfa9b8df9e0fe2ff34a2ecc24d52b07" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/jdk/jdk9" path="prebuilts/jdk/jdk9" revision="3447ef32fa4961229942fa345c8707c7f9e00246" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/ktlint" path="prebuilts/ktlint" revision="12e4973a914b120dbc996507cd58b3fe14afcf8e" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/manifest-merger" path="prebuilts/manifest-merger" revision="c61778dd7fdef4194cf8592f9d4a7ead9bb16811" upstream="master"/>
+  <project dest-branch="master" groups="pdk-cw-fs,pdk-fs" name="platform/prebuilts/maven_repo/android" path="prebuilts/maven_repo/android" revision="ecc2406087855bedf2d8e8e528ab0b2b4e6c7298" upstream="master"/>
+  <project dest-branch="master" groups="pdk-cw-fs,pdk-fs" name="platform/prebuilts/maven_repo/bumptech" path="prebuilts/maven_repo/bumptech" revision="52359d0baa6af2c033f5ee57c8fbb3f51deb734e" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/misc" path="prebuilts/misc" revision="cd9a0395ecbd7a288389659825b887337e011fad" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/module_sdk/art" path="prebuilts/module_sdk/art" revision="0a68152386e56eab7fce3813aca01301e197b17b" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/ndk" path="prebuilts/ndk" revision="f5538578aa305b4764283b729b10b3c31a15a558" upstream="master"/>
+  <project dest-branch="master" groups="darwin,pdk,pdk-cw-fs,pdk-fs" name="platform/prebuilts/python/darwin-x86/2.7.5" path="prebuilts/python/darwin-x86/2.7.5" revision="0c5958b1636c47ed7c284f859c8e805fd06a0e63" upstream="master"/>
+  <project dest-branch="master" groups="linux,pdk,pdk-cw-fs,pdk-fs" name="platform/prebuilts/python/linux-x86/2.7.5" path="prebuilts/python/linux-x86/2.7.5" revision="53add29eb7b4eaa9e128e3ec84eac9e65cf4c986" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/qemu-kernel" path="prebuilts/qemu-kernel" revision="d6b05ef097ca380653b5ec040d25314f95736225" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/r8" path="prebuilts/r8" revision="af11d50e84d57bbbdc3ef39012fc947215a9a9b4" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/remoteexecution-client" path="prebuilts/remoteexecution-client" revision="0e1f82a551573c325c61e2eab7f161d05ba40b1d" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/rust" path="prebuilts/rust" revision="765d27cdd93fb86280c2c8e5a85fde72073a6c8f" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/sdk" path="prebuilts/sdk" revision="5b66c72cef32fb59d5cf8f4090f6ad73a93ce16c" upstream="master"/>
+  <project dest-branch="master" groups="pdk,tools" name="platform/prebuilts/tools" path="prebuilts/tools" revision="8aec3d9132bf1f0f142c0221496cc76811b7ad4c" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/vndk/v27" path="prebuilts/vndk/v27" revision="0f6002bffc84a181b476f07f1d1491aacffa8924" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/vndk/v28" path="prebuilts/vndk/v28" revision="2569adfe06033d1758f37e33b5b50e57e2aabd44" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/vndk/v29" path="prebuilts/vndk/v29" revision="da70d9a2d97c65571f1fa353c221afdef2da081a" upstream="master"/>
+  <project dest-branch="master" groups="pdk" name="platform/prebuilts/vndk/v30" path="prebuilts/vndk/v30" revision="fe7fcee02ad528d1480f3cc112866953bc51f080" upstream="master"/>
   <project dest-branch="master" groups="pdk-cw-fs,pdk-fs" name="platform/sdk" path="sdk" revision="7cb6fc634a03afec776a03f2543185908b3563b0" upstream="master">
     <linkfile dest="frameworks/support/README.md" src="current/androidx-README.md"/>
   </project>
