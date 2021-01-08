@@ -1,0 +1,21 @@
+diff --git a/hikey960-optee-p b/hikey960-optee-p
+index 812fdf4..eeade65 100644
+--- a/hikey960-optee-p
++++ b/hikey960-optee-p
+@@ -27,10 +27,14 @@ REWRITE_MANIFEST=0
+ TARGET_OUT_DIR=hikey960
+ SKIP_LICENSE_CHECK=1
+ REPO_SEED_DIR=/home/buildslave/workspace/linaro-android_aosp-reference-mirror
+-CFG_SECURE_DATA_PATH=n
++CFG_SECURE_DATA_PATH=y
++CFG_ENABLE_EMBEDDED_TESTS=y
++CFG_TEE_CORE_LOG_LEVEL=3
++CFG_TEE_TA_LOG_LEVEL=3
+ CFG_SECSTOR_TA_MGMT_PTA=y
+ CFG_TA_DYNLINK=y
+-CFG_CORE_MBEDTLS_MPI=n
++CFG_CORE_HEAP_SIZE=196608
++CFG_PKCS11_TA=y
+ TARGET_TEE_IS_OPTEE=true
+ OPTEE_PLATFORM_FLAVOR=hikey960
+ TARGET_BUILD_UEFI=true

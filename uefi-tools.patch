@@ -1,0 +1,70 @@
+diff --git a/opteed-build.sh b/opteed-build.sh
+index 4d90eee..7bc80c7 100755
+--- a/opteed-build.sh
++++ b/opteed-build.sh
+@@ -110,6 +110,8 @@ function build_platform
+ 		TOS_BIN_EXTRA2="`$TOOLS_DIR/parse-platforms.py $PLATFORM_CONFIG -p $1 get -o tos_bin_extra2`"
+ 		DESTDIR="$EDK2_DIR/Build/$PLATFORM_IMAGE_DIR/$BUILD_PROFILE/FV/"
+ 		COREDIR="out/$TOS_ARCH-plat-$TOS_PLATFORM/core"
++		TADIR="$COREDIR/../ta"
++		OPT_ARMTZ_DIR="../../out/target/product/$TOS_PLATFORM_FLAVOR/vendor/lib/optee_armtz/"
+ 		if [ $VERBOSE -eq 1 ]; then
+ 			echo "Copying TOS binaries to '$DESTDIR'"
+ 			CPFLAGS="-v"
+@@ -121,6 +123,10 @@ function build_platform
+ 				cp -a $CPFLAGS $file "$DESTDIR"
+ 			fi
+ 		done
++		echo "Copying built-in TAs from $TADIR/* to $OPT_ARMTZ_DIR"
++		mkdir -p $OPT_ARMTZ_DIR
++		cp -a $(find $TADIR -name \*.ta) $OPT_ARMTZ_DIR
++		chmod 755 $OPT_ARMTZ_DIR/*
+ 	else
+ 		return 1
+ 	fi
+diff --git a/platforms.config b/platforms.config
+index 12894f0..c0eb729 100644
+--- a/platforms.config
++++ b/platforms.config
+@@ -40,11 +40,13 @@
+ # - ATF_PLATFORM	Platform name for ARM Trusted Firmware build, if
+ #   			different from UEFI platform name.
+ # - SCP_BIN		SCP image to pass to ARM Trusted Firmware.
+-# - TOS_BIN		Trusted OS image to pass to ARM Trusted Firmware.
+-#			The path is relative to
+-#			$EDK2_DIR/Build/$PLATFORM_IMAGE_DIR/$BUILD_PROFILE/FV/.
+-#			To actually build the Trusted OS, you must also set
+-#			ATF_SPD.
++# - TOS_BIN             Trusted OS image to pass to ARM Trusted Firmware.
++# - TOS_BIN_EXTRA1      First extra Trusted OS image
++# - TOS_BIN_EXTRA2      Second extra Trusted OS image
++#                       The path is relative to
++#                       $EDK2_DIR/Build/$PLATFORM_IMAGE_DIR/$BUILD_PROFILE/FV/.
++#                       To actually build the Trusted OS, you must also set
++#                       ATF_SPD.
+ # - ATF_SPD		Name of Secure Payload Dispatcher
+ #			To actually build the Trusted OS, you must also set
+ #			TOS_BIN.
+@@ -196,11 +198,6 @@ PACKAGES_PATH=OpenPlatformPkg/Platforms/AMD/Styx/Binary
+ UEFI_BIN=STYX_ROM.fd
+ UEFI_IMAGE_DIR=Cello
+ 
+-# NOTE: If using 96board's forks of ATF, i.e.
+-# https://github.com/96boards-hikey/arm-trusted-firmware
+-# or
+-# https://github.com/96boards/arm-trusted-firmware
+-# please set TOS_BIN=tee.bin
+ [hikey]
+ LONGNAME=CircuitCo HiKey
+ DSC=OpenPlatformPkg/Platforms/Hisilicon/HiKey/HiKey.dsc
+@@ -209,7 +206,9 @@ UEFI_BIN=BL33_AP_UEFI.fd
+ UEFI_IMAGE_DIR=HiKey
+ BUILD_ATF=yes
+ ATF_SPD=opteed
+-TOS_BIN=tee-pager.bin
++TOS_BIN=tee-header_v2.bin
++TOS_BIN_EXTRA1=tee-pager_v2.bin
++TOS_BIN_EXTRA2=tee-pageable_v2.bin
+ TOS_PLATFORM_FLAVOR=hikey
+ BUILD_TOS=yes
+ SCP_BIN=OpenPlatformPkg/Platforms/Hisilicon/HiKey/Binary/mcuimage.bin

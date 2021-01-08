@@ -11,8 +11,9 @@ dbg=false
 function get_config(){
 	if [ -d abc ]; then
 		echo "android-build-configs (abc) exists"
-		echo "git pull origin master for android-build-configs (abc)"
+		echo "git checkout . and pull origin master for android-build-configs (abc)"
 		pushd abc
+		git checkout .
 		git pull origin master
 		popd
 	else

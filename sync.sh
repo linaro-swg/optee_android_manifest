@@ -81,6 +81,22 @@ if [ "${base_manifest}" != "default.xml" ] && [[ "${base_manifest}" != "pinned-m
 	exit 1
 fi
 
+clean_clear() {
+	if [ -d $1 ]; then
+		echo "######## CLEAN PATCHED DIRS $1 ########"
+		cd $1
+		git checkout .
+		cd -
+	fi
+}
+
+clean_clear android-patchsets
+clean_clear android-build-configs
+clean_clear abc
+clean_clear optee/uefi-tools
+clean_clear device/linaro/hikey
+clean_clear kernel/linaro/hisilicon-4.14
+
 main
 
 #if not stable manifest
@@ -150,12 +166,32 @@ if [ "$dbg" = true ]; then
 	done
 fi
 
+git_apply() {
+	echo "######## applying $1 to $2 ########"
+	cd $1
+	git checkout .
+	git apply $2
+	cd -
+}
+
+git_apply android-patchsets ../android-patchsets.patch
+
+# so wif below we'll export different CFG_*
+# but it's ok since those CFG_* doesn't affect syncing
+# only building
+git_apply android-build-configs ../android-build-configs.patch
+git_apply abc ../android-build-configs.patch
+
 for i in ${PATCHSETS}; do
 	echo ""
 	echo ""
 	echo "applying patchset: $i"
 	func_apply_patch $i
 done
+
+git_apply optee/uefi-tools ../../uefi-tools.patch
+git_apply device/linaro/hikey ../../../dlh.patch
+git_apply kernel/linaro/hisilicon-4.14 ../../../kernel.patch
 
 # apply local patches after
 if [ -f "SWG-PATCHSETS-AFTER" ]; then

@@ -1,0 +1,40 @@
+diff --git a/swg-kmgk-common b/swg-kmgk-common
+index 690c674..707ca0c 100755
+--- a/swg-kmgk-common
++++ b/swg-kmgk-common
+@@ -43,29 +43,10 @@ fi
+ # kmgk: add dbg prints
+ #curl_am_optee_vchong kmgk 36780a94 device/linaro/kmgk
+ 
+-# ltc: asn1: der: add support of additional types
+-curl_am_optee_optee optee_os 394c2d4e optee/optee_os
++cd optee/optee_os
++git fetch https://github.com/vchong/optee_os kmgk_rebase_mbedtls_pie_20210118 && git cherry-pick 4286b81b^..a235065f
++cd -
+ 
+-# libtomcrypt: rsa: oaep: Use SHA-1 by default for MGF1
+-curl_am_optee_optee optee_os 0cd6a35b optee/optee_os
+-
+-# core: crypto: add support MD5 hashes in RSA sign/verify
+-curl_am_optee_optee optee_os 199d0b73 optee/optee_os
+-
+-# core: crypto: detect elliptic curve size
+-curl_am_optee_optee optee_os 6dd386fc optee/optee_os
+-
+-# libutee: remove restrictions for TEE_ALG_RSA_NOPAD
+-curl_am_optee_optee optee_os 962d0040 optee/optee_os
+-
+-#core: crypto: change supported HMAC key size ranges
+-curl_am_optee_optee optee_os ab43191a optee/optee_os
+-
+-# hikey: increase core heap size to 192 kB
+-curl_am_optee_optee optee_os 86381e23 optee/optee_os
+-
+-# core: crypto: add free rsa/ecc keypair calls
+-curl_am_optee_vchong optee_os 2228380b optee/optee_os
+-
+-# core: pta: introduce pTA to access LTC ASN.1 parser
+-curl_am_optee_vchong optee_os e2e0d277 optee/optee_os
++cd device/linaro/kmgk
++git fetch https://github.com/vchong/kmgk opt312_pie_20210118 && git cherry-pick 8446828^..aa06a74
++cd -

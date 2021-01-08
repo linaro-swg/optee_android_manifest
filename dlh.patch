@@ -1,0 +1,72 @@
+diff --git a/init.common.rc b/init.common.rc
+index cf2c10d9..a102bc0e 100644
+--- a/init.common.rc
++++ b/init.common.rc
+@@ -133,7 +133,8 @@ on post-fs-data
+     restorecon_recursive /data/vendor/tee
+ 
+ service tee-supplicant /vendor/bin/tee-supplicant -d
+-    class main
++    class early_hal
++    #class main
+     #https://stackoverflow.com/questions/10255881/ice-cream-sandwich-init-rc-documentation
+     #class late_start
+     user shell
+diff --git a/optee-packages.mk b/optee-packages.mk
+index 2a62f1fe..43cc5f7a 100644
+--- a/optee-packages.mk
++++ b/optee-packages.mk
+@@ -7,11 +7,15 @@ BUILD_OPTEE_MK := $(OPTEE_OS_DIR)/mk/aosp_optee.mk
+ 
+ # OP TEE client library and service
+ PRODUCT_PACKAGES += libteec \
+-                    tee-supplicant
+-#                    liboptee_cryptoki
++                    tee-supplicant \
++                    libckteec
+ 
+ # optee_test and TA
+ PRODUCT_PACKAGES += xtest
++# tpm_log_test
++PRODUCT_PACKAGES += ee90d523-90ad-46a0-859d-8eea0b150086.ta
++# os_test_lib_dl
++PRODUCT_PACKAGES += b3091a65-9751-4784-abf7-0298a7cc35ba.ta
+ # os_test_lib
+ PRODUCT_PACKAGES += ffd2bded-ab7d-4988-95ee-e4962fff7154.ta
+ # os_test
+@@ -42,6 +46,10 @@ PRODUCT_PACKAGES += f157cda0-550c-11e5-a6fa-0002a5d5c51b.ta
+ PRODUCT_PACKAGES += 873bcd08-c2c3-11e6-a937-d0bf9c45c61c.ta
+ # sdp-basic
+ PRODUCT_PACKAGES += 12345678-5b69-11e4-9dbb-101f74f00099.ta
++# miss
++PRODUCT_PACKAGES += 528938ce-fc59-11e8-8eb2-f2801f1b9fd1.ta
++# keepalive
++PRODUCT_PACKAGES += a4c04d50-f180-11e8-8eb2-f2801f1b9fd1.ta
+ 
+ # optee examples
+ PRODUCT_PACKAGES += optee_example_hello_world
+@@ -52,6 +60,15 @@ PRODUCT_PACKAGES += optee_example_aes
+ PRODUCT_PACKAGES += 5dbac793-f574-4871-8ad3-04331ec17f24.ta
+ PRODUCT_PACKAGES += optee_example_hotp
+ PRODUCT_PACKAGES += 484d4143-2d53-4841-3120-4a6f636b6542.ta
++PRODUCT_PACKAGES += optee_example_acipher
++PRODUCT_PACKAGES += a734eed9-d6a1-4244-aa50-7c99719e7b7b.ta
++PRODUCT_PACKAGES += optee_example_secure_storage
++PRODUCT_PACKAGES += f4e750bb-1437-4fbf-8785-8d3580c34994.ta
++
++# optee_os builtin TAs
++PRODUCT_PACKAGES += fd02c9da-306c-48c7-a49c-bbd827ae86ee.ta
++PRODUCT_PACKAGES += 023f8f1a-292a-432b-8fc4-de8471358067.ta
++PRODUCT_PACKAGES += f04a0fe7-1f5d-4b9b-abf7-619b85b4ce8c.ta
+ 
+ # sks TA
+ #PRODUCT_PACKAGES += fd02c9da-306c-48c7-a49c-bbd827ae86ee.ta
+@@ -59,6 +76,8 @@ PRODUCT_PACKAGES += 484d4143-2d53-4841-3120-4a6f636b6542.ta
+ # gl km & gk TA
+ PRODUCT_PACKAGES += dba51a17-0563-11e7-93b1-6fa7b0071a51.ta
+ PRODUCT_PACKAGES += 4d573443-6a56-4272-ac6f-2425af9ef9bb.ta
++PRODUCT_PACKAGES += wait_for_keymaster_optee
++PRODUCT_PACKAGES += KMGK_gtest
+ 
+ # km TA
+ #PRODUCT_PACKAGES += d36b30c7-5a5f-472c-af97-7f38a2edab7d.ta
