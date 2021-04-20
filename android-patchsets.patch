@@ -1,5 +1,23 @@
+diff --git a/hikey960-p-workarounds b/hikey960-p-workarounds
+index 1de8285..3d5025c 100755
+--- a/hikey960-p-workarounds
++++ b/hikey960-p-workarounds
+@@ -58,7 +58,12 @@ revert kernel/linaro/hisilicon-4.14 f5e69000aa80880491ca4a613679bd21c60b048b
+ 
+ ## adv7511: Add more modes to HiKey whitelist
+ ## https://android-review.linaro.org/?#/c/kernel/hikey-linaro/+/20165/
+-apply --linaro --local kernel/linaro/hisilicon-4.14 --remote kernel/hikey-linaro 20165/1
++#apply --linaro --local kernel/linaro/hisilicon-4.14 --remote kernel/hikey-linaro 20165/1
++cd kernel/linaro/hisilicon-4.14
++git fetch https://android.googlesource.com/kernel/hikey-linaro refs/changes/96/889696/2 && git cherry-pick FETCH_HEAD
++git fetch https://android.googlesource.com/kernel/hikey-linaro refs/changes/97/889697/3 && git cherry-pick FETCH_HEAD
++git fetch https://android.googlesource.com/kernel/hikey-linaro refs/changes/98/889698/3 && git cherry-pick FETCH_HEAD
++cd -
+ 
+ ## hikey960: Add version check on the hisi vdec package
+ cherrypick device/linaro/hikey 221be176e245ec9deb22d6cba799777b4e9c8e3e
 diff --git a/swg-kmgk-common b/swg-kmgk-common
-index 690c674..707ca0c 100755
+index 690c674..528b195 100755
 --- a/swg-kmgk-common
 +++ b/swg-kmgk-common
 @@ -43,29 +43,10 @@ fi
@@ -9,7 +27,7 @@ index 690c674..707ca0c 100755
 -# ltc: asn1: der: add support of additional types
 -curl_am_optee_optee optee_os 394c2d4e optee/optee_os
 +cd optee/optee_os
-+git fetch https://github.com/vchong/optee_os kmgk_rebase_mbedtls_pie_20210118 && git cherry-pick 4286b81b^..a235065f
++git fetch https://github.com/vchong/optee_os kmgk_rebase_mbedtls_pie_20210421 && git cherry-pick e57a4f60^..9fa8c132
 +cd -
  
 -# libtomcrypt: rsa: oaep: Use SHA-1 by default for MGF1
@@ -36,5 +54,5 @@ index 690c674..707ca0c 100755
 -# core: pta: introduce pTA to access LTC ASN.1 parser
 -curl_am_optee_vchong optee_os e2e0d277 optee/optee_os
 +cd device/linaro/kmgk
-+git fetch https://github.com/vchong/kmgk opt312_pie_20210118 && git cherry-pick 8446828^..aa06a74
++git fetch https://github.com/vchong/kmgk opt313_pie_20210428 && git cherry-pick d089968^..bafd4df
 +cd -

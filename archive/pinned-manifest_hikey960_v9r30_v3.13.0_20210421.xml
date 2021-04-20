@@ -14,9 +14,9 @@
   <project groups="device,hikey960" name="96boards-hikey/l-loader.git" path="optee/l-loader" remote="github-optee" revision="49db0a01f8cc4f2a7e0dea01d843d72092635870" upstream="testing/hikey960_v1.2"/>
   <project groups="device,hikey960" name="96boards-hikey/tools-images-hikey960.git" path="optee/tools-images-hikey960" remote="github-optee" revision="052b33813564e123da9aef8fcbacbd14d020f035" upstream="master"/>
   <project groups="device,hikey960" name="TF-A/trusted-firmware-a.git" path="optee/arm-trusted-firmware" remote="tfo" revision="7ca572d93c88bf8a86fccf30b2725315f092aef4" upstream="master"/>
-  <project groups="device,hikey" name="OP-TEE/optee_client" path="external/optee_client" remote="github-optee" revision="refs/tags/3.12.0" upstream="master"/>
-  <project groups="device,hikey" name="OP-TEE/optee_os" path="optee/optee_os" remote="github-optee" revision="refs/tags/3.12.0" upstream="master"/>
-  <project groups="device,hikey" name="OP-TEE/optee_test" path="external/optee_test" remote="github-optee" revision="refs/tags/3.12.0" upstream="master"/>
+  <project groups="device,hikey" name="OP-TEE/optee_client" path="external/optee_client" remote="github-optee" revision="5ade810a790631416dc52aeab71b54a315147df9" upstream="master"/>
+  <project groups="device,hikey" name="OP-TEE/optee_os" path="optee/optee_os" remote="github-optee" revision="refs/tags/3.13.0" upstream="master"/>
+  <project groups="device,hikey" name="OP-TEE/optee_test" path="external/optee_test" remote="github-optee" revision="8c53f6931ce11478a457b04890361cd8833a3276" upstream="master"/>
   <project name="android-build-configs" remote="linaro-android" revision="244d09c4f1ecf2bbb2673600ccd7bdd8ef667d66" upstream="master"/>
   <project name="android-patchsets" remote="linaro-android" revision="88a34f7117be091d5007c0a764008ad50495ae52" upstream="master"/>
   <project groups="pdk-cw-fs,pdk" name="device/common" revision="20e35d3569a0646dceb105ccc66524d969887759" upstream="refs/tags/android-9.0.0_r30"/>
@@ -49,8 +49,8 @@
   <project groups="device,hikey" name="kernel/hikey-linaro" path="kernel/linaro/hisilicon-4.14" revision="7edc44ec52897172de9f2ce873ce30f5c7a0535f" upstream="android-hikey-linaro-4.14"/>
   <!-- project groups="device,hikey" name="vchong/linux" path="kernel/linaro/hisilicon-4.14" revision="5c7dd81f6ae5749c1a269ca40fbc78380b0694c7" upstream="android-hikey-linaro-4.14_branch-optee-v4.12-20180906" remote="github-optee"/-->
   <project name="kernel/tests" revision="e57d074dc520ab1feabe5b202e6ef1c3f9f9844b" upstream="refs/tags/android-9.0.0_r30"/>
-  <project groups="device,hikey" name="linaro-swg/kmgk" path="device/linaro/kmgk" remote="github-optee" revision="refs/tags/3.12.0" upstream="master"/>
-  <project groups="device,hikey" name="linaro-swg/optee_examples" path="external/optee_examples" remote="github-optee" revision="refs/tags/3.12.0" upstream="master"/>
+  <project groups="device,hikey" name="linaro-swg/kmgk" path="device/linaro/kmgk" remote="github-optee" revision="refs/tags/3.13.0" upstream="master"/>
+  <project groups="device,hikey" name="linaro-swg/optee_examples" path="external/optee_examples" remote="github-optee" revision="5ceb1ffedf0fe5263697794a64ab47a7d35fe412" upstream="master"/>
   <project groups="pdk" name="platform/art" path="art" revision="f0e3a368c80b7d32e2f85ffa948751525a9f903b" upstream="refs/tags/android-9.0.0_r30"/>
   <project groups="pdk" name="platform/bionic" path="bionic" revision="88aacf8b28afc7ac7c4068d89041cd5af15a2906" upstream="refs/tags/android-9.0.0_r30"/>
   <project groups="pdk" name="platform/bootable/recovery" path="bootable/recovery" revision="723056a83f8c8b15af02d9c302862dbb2304ea8c" upstream="refs/tags/android-9.0.0_r30"/>

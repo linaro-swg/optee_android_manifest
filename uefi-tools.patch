@@ -1,7 +1,16 @@
 diff --git a/opteed-build.sh b/opteed-build.sh
-index 4d90eee..7bc80c7 100755
+index 4d90eee..c78973e 100755
 --- a/opteed-build.sh
 +++ b/opteed-build.sh
+@@ -10,7 +10,7 @@
+ . "$TOOLS_DIR"/common-functions
+ 
+ export CFG_TEE_CORE_LOG_LEVEL=3  # 0=none 1=err 2=info 3=debug 4=flow
+-export CFG_TEE_TA_LOG_LEVEL=3  # 0=none 1=err 2=info 3=debug 4=flow
++export CFG_TEE_TA_LOG_LEVEL=2  # 0=none 1=err 2=info 3=debug 4=flow
+ 
+ function usage
+ {
 @@ -110,6 +110,8 @@ function build_platform
  		TOS_BIN_EXTRA2="`$TOOLS_DIR/parse-platforms.py $PLATFORM_CONFIG -p $1 get -o tos_bin_extra2`"
  		DESTDIR="$EDK2_DIR/Build/$PLATFORM_IMAGE_DIR/$BUILD_PROFILE/FV/"
